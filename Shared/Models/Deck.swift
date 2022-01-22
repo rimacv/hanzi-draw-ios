@@ -25,7 +25,7 @@ extension Deck{
 extension Deck {
     static var sampleData: [Deck] {
         [
-            Deck(title: "Basics A", deckEntries: ["你", "我"],theme: .yellow),
+            Deck(title: "Basics A", deckEntries: ["是" ,"我", "你"],theme: .yellow),
             Deck(title: "Basics B",deckEntries: ["你", "我"], theme: .orange),
         ]
     }

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct DeckView: View {
     let deck : Deck
+        
     var body: some View {
         VStack(alignment: .leading){
             Text(deck.title)
@@ -16,7 +17,9 @@ struct DeckView: View {
                 .accessibilityAddTraits(.isHeader)
             Spacer()
             HStack {
-                NavigationLink(destination: PracticeView()  ){
+                NavigationLink(destination: PracticeView(deck: deck).onAppear{
+                    
+                }  ){
                     Label("\(deck.numberOfEntries)", systemImage: "character.book.closed.fill.zh")
                         .accessibilityLabel("\(deck.numberOfEntries) cards in deck")
                 

@@ -7,6 +7,8 @@
 
 import SwiftUI
 import CachedAsyncImage
+import BottomSheet
+
 
 struct DrawingPadView: View {
     @Binding var currentDrawing: Stroke
@@ -14,7 +16,8 @@ struct DrawingPadView: View {
     @Binding var color: Color
     @Binding var lineWidth: CGFloat
     @Binding var inverseDrawPadOpacity : Double
-    
+    @Binding var bottomSheetPosition: BottomSheetPosition
+    @Binding var score: CGFloat
     var body: some View {
         VStack{
             
@@ -64,7 +67,7 @@ struct DrawingPadView: View {
             
             DrawingControlsView(strokes: $drawings,
                                 color: $color,
-                                lineWidth: $lineWidth, backendApi: Api()).padding(5).opacity((1 - inverseDrawPadOpacity)).padding(.bottom)
+                                lineWidth: $lineWidth,bottomSheetPosition: $bottomSheetPosition, score:$score, backendApi: Api()).padding(5).opacity((1 - inverseDrawPadOpacity)).padding(.bottom)
             
             Spacer()
         }
@@ -81,6 +84,6 @@ struct DrawingPadView: View {
             }
         }
     }
-
+    
     
 }

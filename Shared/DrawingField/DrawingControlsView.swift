@@ -6,11 +6,14 @@
 //
 
 import SwiftUI
+import BottomSheet
 
 struct DrawingControlsView: View {
     @Binding var strokes: [Stroke]
     @Binding var color: Color
     @Binding var lineWidth: CGFloat
+    @Binding var bottomSheetPosition: BottomSheetPosition
+    @Binding var score: CGFloat
     @State private var lastRemovedStroke : Stroke? = nil
     
     let backendApi : BackendApi
@@ -38,6 +41,13 @@ struct DrawingControlsView: View {
                         print(score)
                         let hanzis =  await backendApi.validateDrawing(strokes: strokes, currentHanzi: "T")
                         print(hanzis)
+                        withAnimation(.linear(duration:0.2)){
+                            bottomSheetPosition = .top
+                        }
+                        withAnimation(.linear(duration: 0)){
+                            self.score = score!
+                        }
+                       
                     }
                 }
                 .padding()
@@ -56,7 +66,6 @@ struct DrawingControlsView: View {
                     .background(buttonColor)
                     .clipShape(RoundedRectangle(cornerRadius: 5))
                 
-                
             }
             
         }
@@ -69,8 +78,10 @@ struct DrawingControlsView_Previews: PreviewProvider {
     @State static private var drawings: [Stroke] = [Stroke]()
     @State static private var color: Color = Color.black
     @State static private var lineWidth: CGFloat = 3.0
+    @State static private var bottomSheetPosition: BottomSheetPosition = .hidden
+    @State static private var score: CGFloat = 0
     static private var backendApi = Api()
     static var previews: some View {
-        DrawingControlsView(strokes:$drawings,color:$color, lineWidth:$lineWidth, backendApi: backendApi)
+        DrawingControlsView(strokes:$drawings,color:$color, lineWidth:$lineWidth,bottomSheetPosition:$bottomSheetPosition, score: $score, backendApi: backendApi)
     }
 }

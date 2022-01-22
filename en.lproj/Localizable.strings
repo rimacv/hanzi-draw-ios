@@ -1,3 +1,6 @@
 /* No comment provided by engineer. */
 "Hello, world!" = "Hello, world!";
 "app_name" = "Hanzi Draw";
+"Continue" = "Continue";
+"Well done" = "Well done";
+"Retry" = "Retry";

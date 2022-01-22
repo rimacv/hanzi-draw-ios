@@ -38,6 +38,14 @@
 		957D254427976ED000029D6C /* ValidationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957D254327976ED000029D6C /* ValidationRequest.swift */; };
 		957D254527976ED000029D6C /* ValidationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957D254327976ED000029D6C /* ValidationRequest.swift */; };
 		957D25482797741600029D6C /* BottomSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 957D25472797741600029D6C /* BottomSheet */; };
+		957D254A279A0A1A00029D6C /* BottomSheetResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957D2549279A0A1A00029D6C /* BottomSheetResultView.swift */; };
+		957D254B279A0A1A00029D6C /* BottomSheetResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957D2549279A0A1A00029D6C /* BottomSheetResultView.swift */; };
+		957D254E279AB12600029D6C /* ResultProgressBarStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957D254D279AB12600029D6C /* ResultProgressBarStyle.swift */; };
+		957D254F279AB12600029D6C /* ResultProgressBarStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957D254D279AB12600029D6C /* ResultProgressBarStyle.swift */; };
+		957D2553279C48B200029D6C /* ViewForeground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957D2552279C48B200029D6C /* ViewForeground.swift */; };
+		957D2554279C48B200029D6C /* ViewForeground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957D2552279C48B200029D6C /* ViewForeground.swift */; };
+		957D2559279C559300029D6C /* HanziImageUrlRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957D2558279C559300029D6C /* HanziImageUrlRequest.swift */; };
+		957D255A279C559300029D6C /* HanziImageUrlRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957D2558279C559300029D6C /* HanziImageUrlRequest.swift */; };
 		95AF52BC2783915D00CBACFD /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AF52BB2783915D00CBACFD /* Tests_iOS.swift */; };
 		95AF52BE2783915D00CBACFD /* Tests_iOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AF52BD2783915D00CBACFD /* Tests_iOSLaunchTests.swift */; };
 		95AF52C82783915D00CBACFD /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AF52C72783915D00CBACFD /* Tests_macOS.swift */; };
@@ -83,6 +91,10 @@
 		957D2535278F7D6300029D6C /* DrawingControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingControlsView.swift; sourceTree = "<group>"; };
 		957D253927941AE500029D6C /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		957D254327976ED000029D6C /* ValidationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationRequest.swift; sourceTree = "<group>"; };
+		957D2549279A0A1A00029D6C /* BottomSheetResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetResultView.swift; sourceTree = "<group>"; };
+		957D254D279AB12600029D6C /* ResultProgressBarStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultProgressBarStyle.swift; sourceTree = "<group>"; };
+		957D2552279C48B200029D6C /* ViewForeground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewForeground.swift; sourceTree = "<group>"; };
+		957D2558279C559300029D6C /* HanziImageUrlRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HanziImageUrlRequest.swift; sourceTree = "<group>"; };
 		95AF52A32783915C00CBACFD /* hanzidrawApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hanzidrawApp.swift; sourceTree = "<group>"; };
 		95AF52A42783915C00CBACFD /* DeckListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckListView.swift; sourceTree = "<group>"; };
 		95AF52A52783915D00CBACFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -155,8 +167,34 @@
 			isa = PBXGroup;
 			children = (
 				957D254327976ED000029D6C /* ValidationRequest.swift */,
+				957D2558279C559300029D6C /* HanziImageUrlRequest.swift */,
 			);
 			path = RequestObjects;
+			sourceTree = "<group>";
+		};
+		957D254C279AB10800029D6C /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				957D254D279AB12600029D6C /* ResultProgressBarStyle.swift */,
+			);
+			path = Styles;
+			sourceTree = "<group>";
+		};
+		957D2550279B632A00029D6C /* DrawingField */ = {
+			isa = PBXGroup;
+			children = (
+				957D2526278AF1CE00029D6C /* DrawingPadView.swift */,
+				957D2535278F7D6300029D6C /* DrawingControlsView.swift */,
+			);
+			path = DrawingField;
+			sourceTree = "<group>";
+		};
+		957D2551279C489800029D6C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				957D2552279C48B200029D6C /* ViewForeground.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		95AF529D2783915B00CBACFD = {
@@ -177,16 +215,18 @@
 				957D251F2789C66200029D6C /* Models */,
 				95AF52A32783915C00CBACFD /* hanzidrawApp.swift */,
 				95AF52A42783915C00CBACFD /* DeckListView.swift */,
+				957D2550279B632A00029D6C /* DrawingField */,
 				957D25162789C02F00029D6C /* DeckView.swift */,
 				957D25192789C4DA00029D6C /* PracticeView.swift */,
-				957D2535278F7D6300029D6C /* DrawingControlsView.swift */,
 				957D253827941AAA00029D6C /* Backend */,
 				957D2532278F7AC000029D6C /* QuizView.swift */,
 				957D252F278B998B00029D6C /* QuizButtonView.swift */,
 				957D251C2789C4EC00029D6C /* EditDeckView.swift */,
 				95AF52A52783915D00CBACFD /* Assets.xcassets */,
 				957D25132789B49500029D6C /* SplashScreenView.swift */,
-				957D2526278AF1CE00029D6C /* DrawingPadView.swift */,
+				957D2549279A0A1A00029D6C /* BottomSheetResultView.swift */,
+				957D2551279C489800029D6C /* Extensions */,
+				957D254C279AB10800029D6C /* Styles */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -409,11 +449,15 @@
 				957D25142789B49500029D6C /* SplashScreenView.swift in Sources */,
 				957D25172789C02F00029D6C /* DeckView.swift in Sources */,
 				957D254427976ED000029D6C /* ValidationRequest.swift in Sources */,
+				957D2559279C559300029D6C /* HanziImageUrlRequest.swift in Sources */,
 				957D251D2789C4EC00029D6C /* EditDeckView.swift in Sources */,
 				957D25212789C67100029D6C /* Theme.swift in Sources */,
 				957D2536278F7D6300029D6C /* DrawingControlsView.swift in Sources */,
 				957D253A27941AE500029D6C /* Api.swift in Sources */,
+				957D254A279A0A1A00029D6C /* BottomSheetResultView.swift in Sources */,
+				957D2553279C48B200029D6C /* ViewForeground.swift in Sources */,
 				957D2527278AF1CE00029D6C /* DrawingPadView.swift in Sources */,
+				957D254E279AB12600029D6C /* ResultProgressBarStyle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,11 +475,15 @@
 				957D25152789B49500029D6C /* SplashScreenView.swift in Sources */,
 				957D25182789C02F00029D6C /* DeckView.swift in Sources */,
 				957D254527976ED000029D6C /* ValidationRequest.swift in Sources */,
+				957D255A279C559300029D6C /* HanziImageUrlRequest.swift in Sources */,
 				957D251E2789C4EC00029D6C /* EditDeckView.swift in Sources */,
 				957D25222789C67100029D6C /* Theme.swift in Sources */,
 				957D2537278F7D6300029D6C /* DrawingControlsView.swift in Sources */,
 				957D253B27941AE500029D6C /* Api.swift in Sources */,
+				957D254B279A0A1A00029D6C /* BottomSheetResultView.swift in Sources */,
+				957D2554279C48B200029D6C /* ViewForeground.swift in Sources */,
 				957D2528278AF1CE00029D6C /* DrawingPadView.swift in Sources */,
+				957D254F279AB12600029D6C /* ResultProgressBarStyle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
