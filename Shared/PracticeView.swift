@@ -20,6 +20,8 @@ struct PracticeView: View {
     @State private var bottomSheetPosition: BottomSheetPosition = .hidden
     @State private var score: CGFloat = 0
     @State private var currentHanzi = ""
+    @State private var currentHanziDefinition = ""
+    @State private var currentHanziPinyin = ""
     @State private var hanziImageUrl = ""
     @State private var deckIndex = 0
     let deck : Deck
@@ -43,7 +45,7 @@ struct PracticeView: View {
                                lineWidth: $lineWidth,
                                inverseDrawPadOpacity: $quizOpacity, bottomSheetPosition: $bottomSheetPosition, score: $score, currentHanzi: $currentHanzi)
                 
-                QuizView(quizOpacity: $quizOpacity).padding(.bottom, 20)
+                QuizView(quizOpacity: $quizOpacity,answerOptions: generateQuizAnswers()).padding(.bottom, 20)
                     .bottomSheet( bottomSheetPosition: $bottomSheetPosition, options: [.cornerRadius(8),.notResizeable], content: {
                         BottomSheetResultView(score: $score, resetDrawField: resetDrawField, nextHanzi: nextHanzi)
                     })
@@ -55,8 +57,16 @@ struct PracticeView: View {
             currentHanzi = deck.deckEntries[deckIndex]
             hanziImageUrl =  await Api().getImageUrlForHanzi(hanzi:currentHanzi)
             
-            ??  hanziImageUrl
             
+            ??  hanziImageUrl
+            let hanziInfo = await Api().getHanziInfo(hanzi: currentHanzi)
+            currentHanziPinyin = hanziInfo?.pinyin ?? currentHanziPinyin
+            currentHanziDefinition = hanziInfo?.definition ?? currentHanziDefinition
+            var hanziList = ""
+            for entry in deck.deckEntries{
+                hanziList += entry
+            }
+            let pinyinList = await Api().getPinyinList(hanziList: hanziList)
             print(hanziImageUrl)
         }
         
@@ -69,19 +79,31 @@ struct PracticeView: View {
         currentDrawing = Stroke()
         drawings = [Stroke]()
         score = 0
-       
-        
     }
     
+    func generateQuizAnswers() -> [(String,Bool)]{
+        var answers = [(String, Bool)](repeating:("bb",false), count:4)
+        answers[0] = (currentHanziPinyin,true)
+        answers.shuffle()
+        return answers
+    }
     
+     
     func nextHanzi() -> Void {
         if(deckIndex < deck.numberOfEntries - 1){
+            
+            if ((deckIndex + 1)  % 2 == 0) {
+                adsViewModel.showInterstitial.toggle()
+            }
+            
             resetDrawField()
             deckIndex += 1
             currentHanzi = deck.deckEntries[deckIndex]
             Task {
                 hanziImageUrl =  await Api().getImageUrlForHanzi(hanzi:currentHanzi)
                 ??  hanziImageUrl
+              
+          
             }
         }else{
             adsViewModel.showInterstitial.toggle()

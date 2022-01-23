@@ -46,8 +46,8 @@
 		957D254F279AB12600029D6C /* ResultProgressBarStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957D254D279AB12600029D6C /* ResultProgressBarStyle.swift */; };
 		957D2553279C48B200029D6C /* ViewForeground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957D2552279C48B200029D6C /* ViewForeground.swift */; };
 		957D2554279C48B200029D6C /* ViewForeground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957D2552279C48B200029D6C /* ViewForeground.swift */; };
-		957D2559279C559300029D6C /* HanziImageUrlRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957D2558279C559300029D6C /* HanziImageUrlRequest.swift */; };
-		957D255A279C559300029D6C /* HanziImageUrlRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957D2558279C559300029D6C /* HanziImageUrlRequest.swift */; };
+		957D2559279C559300029D6C /* HanziRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957D2558279C559300029D6C /* HanziRequest.swift */; };
+		957D255A279C559300029D6C /* HanziRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957D2558279C559300029D6C /* HanziRequest.swift */; };
 		957D2560279D6BE000029D6C /* AdsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957D255F279D6BE000029D6C /* AdsManager.swift */; };
 		957D2561279D6BE000029D6C /* AdsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957D255F279D6BE000029D6C /* AdsManager.swift */; };
 		95AF52BC2783915D00CBACFD /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AF52BB2783915D00CBACFD /* Tests_iOS.swift */; };
@@ -101,7 +101,7 @@
 		957D2549279A0A1A00029D6C /* BottomSheetResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetResultView.swift; sourceTree = "<group>"; };
 		957D254D279AB12600029D6C /* ResultProgressBarStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultProgressBarStyle.swift; sourceTree = "<group>"; };
 		957D2552279C48B200029D6C /* ViewForeground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewForeground.swift; sourceTree = "<group>"; };
-		957D2558279C559300029D6C /* HanziImageUrlRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HanziImageUrlRequest.swift; sourceTree = "<group>"; };
+		957D2558279C559300029D6C /* HanziRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HanziRequest.swift; sourceTree = "<group>"; };
 		957D255B279D5A0700029D6C /* hanzidraw--iOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "hanzidraw--iOS--Info.plist"; sourceTree = "<group>"; };
 		957D255F279D6BE000029D6C /* AdsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsManager.swift; sourceTree = "<group>"; };
 		95AF52A32783915C00CBACFD /* hanzidrawApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hanzidrawApp.swift; sourceTree = "<group>"; };
@@ -192,7 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				957D254327976ED000029D6C /* ValidationRequest.swift */,
-				957D2558279C559300029D6C /* HanziImageUrlRequest.swift */,
+				957D2558279C559300029D6C /* HanziRequest.swift */,
 			);
 			path = RequestObjects;
 			sourceTree = "<group>";
@@ -555,7 +555,7 @@
 				957D25142789B49500029D6C /* SplashScreenView.swift in Sources */,
 				957D25172789C02F00029D6C /* DeckView.swift in Sources */,
 				957D254427976ED000029D6C /* ValidationRequest.swift in Sources */,
-				957D2559279C559300029D6C /* HanziImageUrlRequest.swift in Sources */,
+				957D2559279C559300029D6C /* HanziRequest.swift in Sources */,
 				957D251D2789C4EC00029D6C /* EditDeckView.swift in Sources */,
 				957D25212789C67100029D6C /* Theme.swift in Sources */,
 				957D2536278F7D6300029D6C /* DrawingControlsView.swift in Sources */,
@@ -582,7 +582,7 @@
 				957D25152789B49500029D6C /* SplashScreenView.swift in Sources */,
 				957D25182789C02F00029D6C /* DeckView.swift in Sources */,
 				957D254527976ED000029D6C /* ValidationRequest.swift in Sources */,
-				957D255A279C559300029D6C /* HanziImageUrlRequest.swift in Sources */,
+				957D255A279C559300029D6C /* HanziRequest.swift in Sources */,
 				957D251E2789C4EC00029D6C /* EditDeckView.swift in Sources */,
 				957D25222789C67100029D6C /* Theme.swift in Sources */,
 				957D2537278F7D6300029D6C /* DrawingControlsView.swift in Sources */,

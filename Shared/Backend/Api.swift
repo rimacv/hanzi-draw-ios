@@ -58,7 +58,7 @@ struct Api : BackendApi {
     }
     
     func getImageUrlForHanzi(hanzi: String) async -> String? {
-        let evaluationRequest = HanziImageUrlRequest(hanzi: hanzi)
+        let evaluationRequest = HanziRequest(hanzi: hanzi)
         do {
             let response =  try await AF.request("https://hanzi-draw.de/api/imagename",
                                                  method: .post,
@@ -71,5 +71,44 @@ struct Api : BackendApi {
         catch {
             return nil
         }
+    }
+    
+    func getHanziInfo(hanzi: String) async -> HanziInfoResponse? {
+        let evaluationRequest = HanziRequest(hanzi: hanzi)
+        do {
+            let response =  try await AF.request("https://hanzi-draw.de/api/info",
+                                                 method: .post,
+                                                 parameters: evaluationRequest,
+                                                 encoder: JSONParameterEncoder.default,
+                                                 headers: ["Content-Type" : "application/json", "App-Version": "0.1", "Accept-Language": "en" ]).serializingData().value
+            let decodedResponse = try JSONDecoder().decode(HanziInfoResponse.self, from: response)
+            return decodedResponse
+        }
+        catch {
+            return nil
+        }
+    }
+    
+    
+    
+    func getPinyinList(hanziList: String) async -> [String]? {
+        let evaluationRequest = PinyinListRequest(hanziList: hanziList)
+        do {
+            let headers = getHeaders()
+            let response =  try await AF.request("https://hanzi-draw.de/api/infoList/pinyin",
+                                                 method: .post,
+                                                 parameters: evaluationRequest,
+                                                 encoder: JSONParameterEncoder.default,
+                                                 headers: headers).serializingData().value
+            let decodedResponse = try JSONDecoder().decode(PinyinListResponse.self, from: response)
+            return decodedResponse.pinyinList
+        }
+        catch {
+            return nil
+        }
+    }
+    
+    func getHeaders() -> HTTPHeaders {
+        return  ["Content-Type" : "application/json", "App-Version": "0.1", "Accept-Language": "en" ]
     }
 }

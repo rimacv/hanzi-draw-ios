@@ -24,7 +24,7 @@ struct QuizButtonStyle : ButtonStyle {
 struct QuizButtonView: View {
     let isCorrectAnswer : Bool
     @Binding var quizOpacity : Double
-    
+    let text: String
     var body: some View {
         Button(action:{
             if(isCorrectAnswer){
@@ -36,7 +36,7 @@ struct QuizButtonView: View {
         }) {
             ZStack{
                 Rectangle().opacity(0)
-                Text("Sign In").foregroundColor(.white)
+                Text(text).foregroundColor(.white)
                
             }
             
@@ -50,6 +50,6 @@ struct QuizButtonView: View {
 struct QuizButtonView_Previews: PreviewProvider {
     @State static var quizOpacity : Double = 1
     static var previews: some View {
-        QuizButtonView(isCorrectAnswer: false, quizOpacity: $quizOpacity)
+        QuizButtonView(isCorrectAnswer: false, quizOpacity: $quizOpacity, text: "")
     }
 }
