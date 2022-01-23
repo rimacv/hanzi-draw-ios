@@ -28,7 +28,7 @@ struct ValidationResponse : Decodable {
 struct Api : BackendApi {
     
     func getDrawingScore(strokes: [Stroke], currentHanzi: String) async -> Double? {
-        let evaluationRequest = ValidationRequest(strokes: strokes, limit: 20, hanzi: "你")
+        let evaluationRequest = ValidationRequest(strokes: strokes, limit: 20, hanzi: currentHanzi)
         do {
             let response =  try await AF.request("http://127.0.0.1:11000/api/similarity",
                                                  method: .post,
@@ -43,7 +43,7 @@ struct Api : BackendApi {
     }
     
     func validateDrawing(strokes: [Stroke], currentHanzi: String) async -> String?{
-        let evaluationRequest = ValidationRequest(strokes: strokes, limit: 20, hanzi: "你")
+        let evaluationRequest = ValidationRequest(strokes: strokes, limit: 20, hanzi: currentHanzi)
         do {
             let response =  try await AF.request("http://127.0.0.1:11000/api/validate/v2",
                                                  method: .post,

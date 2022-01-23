@@ -14,6 +14,7 @@ struct DrawingControlsView: View {
     @Binding var lineWidth: CGFloat
     @Binding var bottomSheetPosition: BottomSheetPosition
     @Binding var score: CGFloat
+    @Binding var currentHanzi: String
     @State private var lastRemovedStroke : Stroke? = nil
     
     let backendApi : BackendApi
@@ -37,9 +38,9 @@ struct DrawingControlsView: View {
                 Button("Done") {
                     //self.drawings = [Drawing]()
                     Task {
-                        let score =  await backendApi.getDrawingScore(strokes: strokes, currentHanzi: "T")
+                        let score =  await backendApi.getDrawingScore(strokes: strokes, currentHanzi: currentHanzi)
                         print(score)
-                        let hanzis =  await backendApi.validateDrawing(strokes: strokes, currentHanzi: "T")
+                        let hanzis =  await backendApi.validateDrawing(strokes: strokes, currentHanzi: currentHanzi)
                         print(hanzis)
                         withAnimation(.linear(duration:0.2)){
                             bottomSheetPosition = .top
@@ -56,7 +57,7 @@ struct DrawingControlsView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 5))
                 
                 Button("Redo") {
-                    if lastRemovedStroke != nil{
+                    if lastRemovedStroke != nil {
                         strokes.append(lastRemovedStroke!)
                         lastRemovedStroke = nil
                     }
@@ -82,6 +83,6 @@ struct DrawingControlsView_Previews: PreviewProvider {
     @State static private var score: CGFloat = 0
     static private var backendApi = Api()
     static var previews: some View {
-        DrawingControlsView(strokes:$drawings,color:$color, lineWidth:$lineWidth,bottomSheetPosition:$bottomSheetPosition, score: $score, backendApi: backendApi)
+        DrawingControlsView(strokes:$drawings,color:$color, lineWidth:$lineWidth,bottomSheetPosition:$bottomSheetPosition, score: $score, currentHanzi: .constant(""), backendApi: backendApi)
     }
 }

@@ -19,46 +19,67 @@ struct PracticeView: View {
     @State private var showDrawPad = false
     @State private var bottomSheetPosition: BottomSheetPosition = .hidden
     @State private var score: CGFloat = 0
-    
+    @State private var currentHanzi = ""
     @State private var hanziImageUrl = ""
+    @State private var deckIndex = 0
     
-    var deckIndex = 0
     let deck : Deck
     
     var body: some View {
         VStack{
             
-//            if(hanziImageUrl != ""){
-                CachedAsyncImage(url: URL(string: hanziImageUrl)) { image in
-                    image.resizable()
-                        .aspectRatio(contentMode: .fit)
-                } placeholder: {
-                    ProgressView()
-                }
-                .frame(width: Constants.drawPadSize, height: Constants.drawPadSize)
-//            }
+            CachedAsyncImage(url: URL(string: hanziImageUrl)) { image in
+                image.resizable()
+                    .aspectRatio(contentMode: .fit)
+            } placeholder: {
+                ProgressView()
+            }
+            .frame(width: Constants.drawPadSize, height: Constants.drawPadSize)
+            
             ZStack{
                 DrawingPadView(currentDrawing: $currentDrawing,
                                drawings: $drawings,
                                color: $color,
                                lineWidth: $lineWidth,
-                               inverseDrawPadOpacity: $quizOpacity, bottomSheetPosition: $bottomSheetPosition, score: $score)
+                               inverseDrawPadOpacity: $quizOpacity, bottomSheetPosition: $bottomSheetPosition, score: $score, currentHanzi: $currentHanzi)
                 
                 QuizView(quizOpacity: $quizOpacity).padding(.bottom, 20)
                     .bottomSheet( bottomSheetPosition: $bottomSheetPosition, options: [.cornerRadius(8),.notResizeable], content: {
-                        BottomSheetResultView(score: $score)
+                        BottomSheetResultView(score: $score, resetDrawField: resetDrawField, nextHanzi: nextHanzi)
                     })
                 
             }
             
         }
         .task {
-            hanziImageUrl =  await Api().getImageUrlForHanzi(hanzi: deck.deckEntries[deckIndex])
+            currentHanzi = deck.deckEntries[deckIndex]
+            hanziImageUrl =  await Api().getImageUrlForHanzi(hanzi:currentHanzi)
+            
             ??  hanziImageUrl
             
             print(hanziImageUrl)
         }
         
+        
+        
+    }
+    
+    func resetDrawField() -> Void {
+        bottomSheetPosition = .hidden
+        currentDrawing = Stroke()
+        drawings = [Stroke]()
+        score = 0
+    }
+    
+    
+    func nextHanzi() -> Void {
+        resetDrawField()
+        deckIndex += 1
+        currentHanzi = deck.deckEntries[deckIndex]
+        Task {
+            hanziImageUrl =  await Api().getImageUrlForHanzi(hanzi:currentHanzi)
+            ??  hanziImageUrl
+        }
     }
 }
 

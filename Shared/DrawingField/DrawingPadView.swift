@@ -18,6 +18,8 @@ struct DrawingPadView: View {
     @Binding var inverseDrawPadOpacity : Double
     @Binding var bottomSheetPosition: BottomSheetPosition
     @Binding var score: CGFloat
+    @Binding var currentHanzi: String
+    
     var body: some View {
         VStack{
             
@@ -67,7 +69,7 @@ struct DrawingPadView: View {
             
             DrawingControlsView(strokes: $drawings,
                                 color: $color,
-                                lineWidth: $lineWidth,bottomSheetPosition: $bottomSheetPosition, score:$score, backendApi: Api()).padding(5).opacity((1 - inverseDrawPadOpacity)).padding(.bottom)
+                                lineWidth: $lineWidth,bottomSheetPosition: $bottomSheetPosition, score:$score, currentHanzi: $currentHanzi, backendApi: Api()).padding(5).opacity((1 - inverseDrawPadOpacity)).padding(.bottom)
             
             Spacer()
         }

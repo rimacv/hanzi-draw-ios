@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import BottomSheet
 
 struct DialogButton : ButtonStyle {
     let highlightColor : Color
@@ -28,6 +29,8 @@ struct DialogButton : ButtonStyle {
 
 struct BottomSheetResultView: View {
     @Binding var score : CGFloat
+    var resetDrawField: () -> Void
+    var nextHanzi: () -> Void
     var body: some View {
         ZStack{
             Rectangle().fill(.white).border(.white)
@@ -43,13 +46,13 @@ struct BottomSheetResultView: View {
                 
                 
                 HStack{
-                    Button(action:{}){
+                    Button(action: resetDrawField){
                         Text(String(localized: "Retry")).foregroundColor(.white)
                     }
                     .buttonStyle(DialogButton(highlightColor:  Color.red))
                     .frame( height: 30).padding().padding(.bottom)
                     
-                    Button(action:{}){
+                    Button(action:nextHanzi){
                         Text(String(localized: "Continue")).foregroundColor(.white)
                     }
                     .buttonStyle(DialogButton(highlightColor:  Color.red))
@@ -70,6 +73,6 @@ struct BottomSheetResultView: View {
 struct BottomSheetResultView_Previews: PreviewProvider {
     @State static private var score : CGFloat = 1
     static var previews: some View {
-        BottomSheetResultView(score: $score).previewLayout(.fixed(width: 200, height: 200))
+        BottomSheetResultView(score: $score, resetDrawField: {}, nextHanzi: {}).previewLayout(.fixed(width: 200, height: 200))
     }
 }
