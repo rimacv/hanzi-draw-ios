@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		23D5A71EE83CB88FC89647E8 /* Pods_hanzidraw__iOS_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB754A11B896C86CEC56FF26 /* Pods_hanzidraw__iOS_.framework */; };
+		2B342AF85706F5B0686D33C7 /* Pods_hanzidraw__macOS_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00F2706BD664FBD42AAC9715 /* Pods_hanzidraw__macOS_.framework */; };
 		957D25102789B22600029D6C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 957D250E2789B22600029D6C /* Localizable.strings */; };
 		957D25112789B22600029D6C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 957D250E2789B22600029D6C /* Localizable.strings */; };
 		957D25142789B49500029D6C /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957D25132789B49500029D6C /* SplashScreenView.swift */; };
@@ -46,6 +48,8 @@
 		957D2554279C48B200029D6C /* ViewForeground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957D2552279C48B200029D6C /* ViewForeground.swift */; };
 		957D2559279C559300029D6C /* HanziImageUrlRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957D2558279C559300029D6C /* HanziImageUrlRequest.swift */; };
 		957D255A279C559300029D6C /* HanziImageUrlRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957D2558279C559300029D6C /* HanziImageUrlRequest.swift */; };
+		957D2560279D6BE000029D6C /* AdsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957D255F279D6BE000029D6C /* AdsManager.swift */; };
+		957D2561279D6BE000029D6C /* AdsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957D255F279D6BE000029D6C /* AdsManager.swift */; };
 		95AF52BC2783915D00CBACFD /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AF52BB2783915D00CBACFD /* Tests_iOS.swift */; };
 		95AF52BE2783915D00CBACFD /* Tests_iOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AF52BD2783915D00CBACFD /* Tests_iOSLaunchTests.swift */; };
 		95AF52C82783915D00CBACFD /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AF52C72783915D00CBACFD /* Tests_macOS.swift */; };
@@ -76,6 +80,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		00F2706BD664FBD42AAC9715 /* Pods_hanzidraw__macOS_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_hanzidraw__macOS_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2BFA891FCABF078E05CC9AEC /* Pods-hanzidraw (macOS).debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hanzidraw (macOS).debug.xcconfig"; path = "Target Support Files/Pods-hanzidraw (macOS)/Pods-hanzidraw (macOS).debug.xcconfig"; sourceTree = "<group>"; };
+		5B37D5DA68253E0318D1557C /* Pods-hanzidraw (iOS).debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hanzidraw (iOS).debug.xcconfig"; path = "Target Support Files/Pods-hanzidraw (iOS)/Pods-hanzidraw (iOS).debug.xcconfig"; sourceTree = "<group>"; };
 		957D250F2789B22600029D6C /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		957D25122789B2D400029D6C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		957D25132789B49500029D6C /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
@@ -95,6 +102,8 @@
 		957D254D279AB12600029D6C /* ResultProgressBarStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultProgressBarStyle.swift; sourceTree = "<group>"; };
 		957D2552279C48B200029D6C /* ViewForeground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewForeground.swift; sourceTree = "<group>"; };
 		957D2558279C559300029D6C /* HanziImageUrlRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HanziImageUrlRequest.swift; sourceTree = "<group>"; };
+		957D255B279D5A0700029D6C /* hanzidraw--iOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "hanzidraw--iOS--Info.plist"; sourceTree = "<group>"; };
+		957D255F279D6BE000029D6C /* AdsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsManager.swift; sourceTree = "<group>"; };
 		95AF52A32783915C00CBACFD /* hanzidrawApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hanzidrawApp.swift; sourceTree = "<group>"; };
 		95AF52A42783915C00CBACFD /* DeckListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckListView.swift; sourceTree = "<group>"; };
 		95AF52A52783915D00CBACFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -107,6 +116,9 @@
 		95AF52C32783915D00CBACFD /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		95AF52C72783915D00CBACFD /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		95AF52C92783915D00CBACFD /* Tests_macOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSLaunchTests.swift; sourceTree = "<group>"; };
+		9C554742E81F709E5B8079F2 /* Pods-hanzidraw (macOS).release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hanzidraw (macOS).release.xcconfig"; path = "Target Support Files/Pods-hanzidraw (macOS)/Pods-hanzidraw (macOS).release.xcconfig"; sourceTree = "<group>"; };
+		CF932F18EC3030DCCE162ACD /* Pods-hanzidraw (iOS).release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hanzidraw (iOS).release.xcconfig"; path = "Target Support Files/Pods-hanzidraw (iOS)/Pods-hanzidraw (iOS).release.xcconfig"; sourceTree = "<group>"; };
+		FB754A11B896C86CEC56FF26 /* Pods_hanzidraw__iOS_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_hanzidraw__iOS_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +129,7 @@
 				957D25412794B32100029D6C /* Alamofire in Frameworks */,
 				957D25482797741600029D6C /* BottomSheet in Frameworks */,
 				957D252E278B162900029D6C /* CachedAsyncImage in Frameworks */,
+				23D5A71EE83CB88FC89647E8 /* Pods_hanzidraw__iOS_.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,6 +137,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B342AF85706F5B0686D33C7 /* Pods_hanzidraw__macOS_.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,6 +158,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6C05A7383AB36C863F2B6E79 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5B37D5DA68253E0318D1557C /* Pods-hanzidraw (iOS).debug.xcconfig */,
+				CF932F18EC3030DCCE162ACD /* Pods-hanzidraw (iOS).release.xcconfig */,
+				2BFA891FCABF078E05CC9AEC /* Pods-hanzidraw (macOS).debug.xcconfig */,
+				9C554742E81F709E5B8079F2 /* Pods-hanzidraw (macOS).release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		957D251F2789C66200029D6C /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -200,12 +225,15 @@
 		95AF529D2783915B00CBACFD = {
 			isa = PBXGroup;
 			children = (
+				957D255B279D5A0700029D6C /* hanzidraw--iOS--Info.plist */,
 				957D250E2789B22600029D6C /* Localizable.strings */,
 				95AF52A22783915C00CBACFD /* Shared */,
 				95AF52B12783915D00CBACFD /* macOS */,
 				95AF52BA2783915D00CBACFD /* Tests iOS */,
 				95AF52C62783915D00CBACFD /* Tests macOS */,
 				95AF52AB2783915D00CBACFD /* Products */,
+				6C05A7383AB36C863F2B6E79 /* Pods */,
+				E19D00B37408725E192B8BED /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -227,6 +255,7 @@
 				957D2549279A0A1A00029D6C /* BottomSheetResultView.swift */,
 				957D2551279C489800029D6C /* Extensions */,
 				957D254C279AB10800029D6C /* Styles */,
+				957D255F279D6BE000029D6C /* AdsManager.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -268,6 +297,15 @@
 			path = "Tests macOS";
 			sourceTree = "<group>";
 		};
+		E19D00B37408725E192B8BED /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FB754A11B896C86CEC56FF26 /* Pods_hanzidraw__iOS_.framework */,
+				00F2706BD664FBD42AAC9715 /* Pods_hanzidraw__macOS_.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -275,9 +313,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 95AF52D32783915D00CBACFD /* Build configuration list for PBXNativeTarget "hanzidraw (iOS)" */;
 			buildPhases = (
+				AAC7C19F0DBB8BAD61F1EE71 /* [CP] Check Pods Manifest.lock */,
 				95AF52A62783915D00CBACFD /* Sources */,
 				95AF52A72783915D00CBACFD /* Frameworks */,
 				95AF52A82783915D00CBACFD /* Resources */,
+				F98888613D34E5DBB30068AC /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -297,6 +337,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 95AF52D62783915D00CBACFD /* Build configuration list for PBXNativeTarget "hanzidraw (macOS)" */;
 			buildPhases = (
+				66F35239199E346A5A8EE93A /* [CP] Check Pods Manifest.lock */,
 				95AF52AC2783915D00CBACFD /* Sources */,
 				95AF52AD2783915D00CBACFD /* Frameworks */,
 				95AF52AE2783915D00CBACFD /* Resources */,
@@ -434,6 +475,70 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		66F35239199E346A5A8EE93A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-hanzidraw (macOS)-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AAC7C19F0DBB8BAD61F1EE71 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-hanzidraw (iOS)-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F98888613D34E5DBB30068AC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-hanzidraw (iOS)/Pods-hanzidraw (iOS)-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-hanzidraw (iOS)/Pods-hanzidraw (iOS)-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-hanzidraw (iOS)/Pods-hanzidraw (iOS)-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		95AF52A62783915D00CBACFD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -441,6 +546,7 @@
 			files = (
 				957D25242789C6D100029D6C /* Deck.swift in Sources */,
 				95AF52CD2783915D00CBACFD /* DeckListView.swift in Sources */,
+				957D2560279D6BE000029D6C /* AdsManager.swift in Sources */,
 				957D2530278B998B00029D6C /* QuizButtonView.swift in Sources */,
 				957D251A2789C4DA00029D6C /* PracticeView.swift in Sources */,
 				95AF52CB2783915D00CBACFD /* hanzidrawApp.swift in Sources */,
@@ -467,6 +573,7 @@
 			files = (
 				957D25252789C6D100029D6C /* Deck.swift in Sources */,
 				95AF52CE2783915D00CBACFD /* DeckListView.swift in Sources */,
+				957D2561279D6BE000029D6C /* AdsManager.swift in Sources */,
 				957D2531278B998B00029D6C /* QuizButtonView.swift in Sources */,
 				957D251B2789C4DA00029D6C /* PracticeView.swift in Sources */,
 				95AF52CC2783915D00CBACFD /* hanzidrawApp.swift in Sources */,
@@ -646,6 +753,7 @@
 		};
 		95AF52D42783915D00CBACFD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5B37D5DA68253E0318D1557C /* Pods-hanzidraw (iOS).debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -653,6 +761,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "hanzidraw--iOS--Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -664,6 +773,8 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				NEW_SETTING = "";
+				NEW_SETTING1 = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.papanda.hanzidraw;
 				PRODUCT_NAME = hanzidraw;
 				SDKROOT = iphoneos;
@@ -675,6 +786,7 @@
 		};
 		95AF52D52783915D00CBACFD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CF932F18EC3030DCCE162ACD /* Pods-hanzidraw (iOS).release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -682,6 +794,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "hanzidraw--iOS--Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -693,6 +806,8 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				NEW_SETTING = "";
+				NEW_SETTING1 = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.papanda.hanzidraw;
 				PRODUCT_NAME = hanzidraw;
 				SDKROOT = iphoneos;
@@ -705,6 +820,7 @@
 		};
 		95AF52D72783915D00CBACFD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2BFA891FCABF078E05CC9AEC /* Pods-hanzidraw (macOS).debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -731,6 +847,7 @@
 		};
 		95AF52D82783915D00CBACFD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9C554742E81F709E5B8079F2 /* Pods-hanzidraw (macOS).release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

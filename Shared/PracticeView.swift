@@ -22,9 +22,9 @@ struct PracticeView: View {
     @State private var currentHanzi = ""
     @State private var hanziImageUrl = ""
     @State private var deckIndex = 0
-    
     let deck : Deck
-    
+    @EnvironmentObject var adsViewModel: AdsViewModel
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var body: some View {
         VStack{
             
@@ -69,17 +69,26 @@ struct PracticeView: View {
         currentDrawing = Stroke()
         drawings = [Stroke]()
         score = 0
+       
+        
     }
     
     
     func nextHanzi() -> Void {
-        resetDrawField()
-        deckIndex += 1
-        currentHanzi = deck.deckEntries[deckIndex]
-        Task {
-            hanziImageUrl =  await Api().getImageUrlForHanzi(hanzi:currentHanzi)
-            ??  hanziImageUrl
+        if(deckIndex < deck.numberOfEntries - 1){
+            resetDrawField()
+            deckIndex += 1
+            currentHanzi = deck.deckEntries[deckIndex]
+            Task {
+                hanziImageUrl =  await Api().getImageUrlForHanzi(hanzi:currentHanzi)
+                ??  hanziImageUrl
+            }
+        }else{
+            adsViewModel.showInterstitial.toggle()
+            resetDrawField()
+            self.presentationMode.wrappedValue.dismiss()
         }
+  
     }
 }
 

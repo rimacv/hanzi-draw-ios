@@ -1,0 +1,34 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Alamofire",
+        "repositoryURL": "https://github.com/Alamofire/Alamofire.git",
+        "state": {
+          "branch": null,
+          "revision": "f82c23a8a7ef8dc1a49a8bfc6a96883e79121864",
+          "version": "5.5.0"
+        }
+      },
+      {
+        "package": "BottomSheet",
+        "repositoryURL": "https://github.com/LucasMucGH/BottomSheet",
+        "state": {
+          "branch": null,
+          "revision": "e72f137d71ba311e9e3f39b75ed4c0c2c97c8a98",
+          "version": "2.6.0"
+        }
+      },
+      {
+        "package": "CachedAsyncImage",
+        "repositoryURL": "https://github.com/lorenzofiamingo/SwiftUI-CachedAsyncImage",
+        "state": {
+          "branch": null,
+          "revision": "db2ab0cec264f3035181002c91f058ddcacc7e92",
+          "version": "1.9.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import GoogleMobileAds
 
 struct Constants {
     static let drawPadSize = CGFloat(200)
@@ -13,10 +14,15 @@ struct Constants {
 
 @main
 struct hanzidrawApp: App {
+    let adsVM = AdsViewModel.shared
+    init(){
+        GADMobileAds.sharedInstance().start(completionHandler: nil)
+    }
     
     var body: some Scene {
         WindowGroup {
             SplashScreenView()
+                .environmentObject(adsVM)
         }
     }
 }
