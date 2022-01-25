@@ -4,3 +4,10 @@
 "Continue" = "Continue";
 "Well done" = "Well done";
 "Retry" = "Retry";
+"ScoreFetchError" = "Score could not be calculated. Check your internet connection.";
+"ErrorTitle" = "对不起! - Sorry!";
+"Decks" = "Decks";
+"New Decks" = "New Decks";
+"Undo" = "Undo";
+"Done" = "Done";
+"Redo" = "Redo";

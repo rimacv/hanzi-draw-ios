@@ -151,22 +151,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "A4DC6589-E11E-4DC5-85B0-E851B93D84EC"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Shared/DrawingField/DrawingControlsView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
-            landmarkName = "body"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "0A2B0D3B-19A8-47A1-846A-FA14EEC9BA10"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -194,22 +178,6 @@
             endingLineNumber = "72"
             landmarkName = "getImageUrlForHanzi(hanzi:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "B2914A67-EB8A-4CB3-8A33-C6E9AF325D82"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Shared/PracticeView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
-            landmarkName = "body"
-            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

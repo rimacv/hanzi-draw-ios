@@ -9,6 +9,20 @@ import SwiftUI
 import CachedAsyncImage
 import BottomSheet
 
+struct HanziImage : View{
+    @Binding var hanziImageUrl : String
+    
+    var body: some View {
+        CachedAsyncImage(url: URL(string: hanziImageUrl)) { image in
+            image.resizable()
+                .aspectRatio(contentMode: .fit)
+        } placeholder: {
+            ProgressView()
+        }
+        .frame(width: Constants.drawPadSize, height: Constants.drawPadSize)
+    }
+}
+
 
 struct PracticeView: View {
     @State private var currentDrawing: Stroke = Stroke()
@@ -24,54 +38,63 @@ struct PracticeView: View {
     @State private var currentHanziPinyin = ""
     @State private var hanziImageUrl = ""
     @State private var deckIndex = 0
+    @State private var isLoaded = false
+    @State private var correctAnswerIndex = Int.random(in: 0..<4)
+ 
     let deck : Deck
+    
     @EnvironmentObject var adsViewModel: AdsViewModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
+    
+    
     var body: some View {
-        VStack{
-            
-            CachedAsyncImage(url: URL(string: hanziImageUrl)) { image in
-                image.resizable()
-                    .aspectRatio(contentMode: .fit)
-            } placeholder: {
-                ProgressView()
-            }
-            .frame(width: Constants.drawPadSize, height: Constants.drawPadSize)
-            
-            ZStack{
-                DrawingPadView(currentDrawing: $currentDrawing,
-                               drawings: $drawings,
-                               color: $color,
-                               lineWidth: $lineWidth,
-                               inverseDrawPadOpacity: $quizOpacity, bottomSheetPosition: $bottomSheetPosition, score: $score, currentHanzi: $currentHanzi)
+        
+        if(!isLoaded){
+            ProgressView()
+                .onAppear{
+                    correctAnswerIndex = Int.random(in: 0..<4)
+                }
+                .task {
+                    
+                    currentHanzi = deck.deckEntries[deckIndex]
+                    hanziImageUrl =  await Api().getImageUrlForHanzi(hanzi:currentHanzi) ??  hanziImageUrl
+                    let hanziInfo = await Api().getHanziInfo(hanzi: currentHanzi)
+                    currentHanziPinyin = hanziInfo?.pinyin ?? ""
+                    currentHanziDefinition = hanziInfo?.definition ?? ""
+                    
+                    var hanziList = ""
+                    for entry in deck.deckEntries{
+                        hanziList += entry
+                    }
+                    let pinyinList = await Api().getPinyinList(hanziList: hanziList)
+                    print(hanziImageUrl)
+                    isLoaded.toggle()
+                }
+        }else{
+            VStack{
+                HanziImage(hanziImageUrl: $hanziImageUrl)
                 
-                QuizView(quizOpacity: $quizOpacity,answerOptions: generateQuizAnswers()).padding(.bottom, 20)
-                    .bottomSheet( bottomSheetPosition: $bottomSheetPosition, options: [.cornerRadius(8),.notResizeable], content: {
-                        BottomSheetResultView(score: $score, resetDrawField: resetDrawField, nextHanzi: nextHanzi)
-                    })
-                
+                ZStack{
+                    DrawingPadView(currentDrawing: $currentDrawing,
+                                   drawings: $drawings,
+                                   color: $color,
+                                   lineWidth: $lineWidth,
+                                   inverseDrawPadOpacity: $quizOpacity, bottomSheetPosition: $bottomSheetPosition, score: $score, currentHanzi: $currentHanzi )
+                    
+                    
+                    QuizView(quizOpacity: $quizOpacity, currentHanziPinyin: $currentHanziPinyin, correctAnswerIndex: $correctAnswerIndex).padding(.bottom, 20)
+                    
+                    
+                    
+                    
+                }
+                .bottomSheet( bottomSheetPosition: $bottomSheetPosition, options: [.cornerRadius(8),.notResizeable], content: {
+                    BottomSheetResultView(score: $score, resetDrawField: resetDrawField, nextHanzi: nextHanzi)
+                })
             }
-            
+
         }
-        .task {
-            currentHanzi = deck.deckEntries[deckIndex]
-            hanziImageUrl =  await Api().getImageUrlForHanzi(hanzi:currentHanzi)
-            
-            
-            ??  hanziImageUrl
-            let hanziInfo = await Api().getHanziInfo(hanzi: currentHanzi)
-            currentHanziPinyin = hanziInfo?.pinyin ?? currentHanziPinyin
-            currentHanziDefinition = hanziInfo?.definition ?? currentHanziDefinition
-            var hanziList = ""
-            for entry in deck.deckEntries{
-                hanziList += entry
-            }
-            let pinyinList = await Api().getPinyinList(hanziList: hanziList)
-            print(hanziImageUrl)
-        }
-        
-        
-        
     }
     
     func resetDrawField() -> Void {
@@ -81,14 +104,7 @@ struct PracticeView: View {
         score = 0
     }
     
-    func generateQuizAnswers() -> [(String,Bool)]{
-        var answers = [(String, Bool)](repeating:("bb",false), count:4)
-        answers[0] = (currentHanziPinyin,true)
-        answers.shuffle()
-        return answers
-    }
-    
-     
+
     func nextHanzi() -> Void {
         if(deckIndex < deck.numberOfEntries - 1){
             
@@ -99,23 +115,25 @@ struct PracticeView: View {
             resetDrawField()
             deckIndex += 1
             currentHanzi = deck.deckEntries[deckIndex]
+            quizOpacity = 1.0
             Task {
                 hanziImageUrl =  await Api().getImageUrlForHanzi(hanzi:currentHanzi)
                 ??  hanziImageUrl
-              
-          
+                
+                
             }
         }else{
             adsViewModel.showInterstitial.toggle()
             resetDrawField()
             self.presentationMode.wrappedValue.dismiss()
         }
-  
+        
     }
 }
 
 struct PracticeView_Previews: PreviewProvider {
     @State static private var decks : [Deck] = Deck.sampleData
+    static private var answers = [(String, Bool)]()
     static var previews: some View {
         PracticeView(deck: decks[0])
     }

@@ -1,3 +1,12 @@
-/* No comment provided by engineer. */
-"Hello, world!" = "Hallo, Welt!";
+"Hello, world!" = "Hello, world!";
 "app_name" = "Hanzi Draw";
+"Continue" = "Weiter";
+"Well done" = "Gut gemacht";
+"Retry" = "Nochmal";
+"ScoreFetchError" = "Score konnte nicht berechnet werden.  Prüfe deine Internetverbindung.";
+"ErrorTitle" = "对不起! - Entschuldigung!";
+"Decks" = "Decks";
+"New Decks" = "Neues Deck";
+"Undo" = "Undo";
+"Done" = "Done";
+"Redo" = "Redo";

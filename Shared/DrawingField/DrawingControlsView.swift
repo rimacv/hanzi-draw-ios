@@ -16,7 +16,7 @@ struct DrawingControlsView: View {
     @Binding var score: CGFloat
     @Binding var currentHanzi: String
     @State private var lastRemovedStroke : Stroke? = nil
-    
+    @State private var errorWrapper: ErrorWrapper?
     let backendApi : BackendApi
     private let spacing: CGFloat = 40
     private let buttonColor = Color("dark")
@@ -26,7 +26,7 @@ struct DrawingControlsView: View {
         VStack{
             HStack(spacing: spacing) {
                 
-                Button("Undo") {
+                Button(String(localized: "Undo")) {
                     if self.strokes.count > 0 {
                         lastRemovedStroke = strokes.removeLast()
                     }
@@ -35,28 +35,37 @@ struct DrawingControlsView: View {
                 .foregroundColor(.white)
                 .background(buttonColor)
                 .clipShape(RoundedRectangle(cornerRadius: 5))
-                Button("Done") {
+                Button(String(localized: "Done")) {
                     //self.drawings = [Drawing]()
                     Task {
                         let score =  await backendApi.getDrawingScore(strokes: strokes, currentHanzi: currentHanzi)
                         print(score)
                         let hanzis =  await backendApi.validateDrawing(strokes: strokes, currentHanzi: currentHanzi)
                         print(hanzis)
-                        withAnimation(.linear(duration:0.2)){
-                            bottomSheetPosition = .top
+                        if(score != nil){
+                            withAnimation(.linear(duration:0.2)){
+                                bottomSheetPosition = .top
+                            }
+                            withAnimation(.linear(duration: 0)){
+                                self.score = score!
+                            }
+                        }else{
+                            errorWrapper = ErrorWrapper(error: nil, guidance: String(localized: "ScoreFetchError"))
                         }
-                        withAnimation(.linear(duration: 0)){
-                            self.score = score!
-                        }
+                 
                        
                     }
+                }
+                .sheet(item: $errorWrapper, onDismiss: {
+                }) { wrapper in
+                    ErrorView(errorWrapper: wrapper)
                 }
                 .padding()
                 .foregroundColor(.white)
                 .background(buttonColor)
                 .clipShape(RoundedRectangle(cornerRadius: 5))
                 
-                Button("Redo") {
+                Button(String(localized: "Redo")) {
                     if lastRemovedStroke != nil {
                         strokes.append(lastRemovedStroke!)
                         lastRemovedStroke = nil

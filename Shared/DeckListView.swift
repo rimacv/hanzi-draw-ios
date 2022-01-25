@@ -18,14 +18,14 @@ struct DeckListView: View {
                         .listRowBackground(deck.theme.mainColor)
                 }
             }
-            .navigationTitle("Decks")
+            .navigationTitle(String(localized: "Decks"))
             .toolbar {
                 Button(action: {
                     
                 }) {
                     Image(systemName: "plus")
                 }
-                .accessibilityLabel("New Deck")
+                .accessibilityLabel(String(localized: "New Decks"))
             }
         }
         

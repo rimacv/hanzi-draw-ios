@@ -69,9 +69,8 @@ struct DrawingPadView: View {
             
             DrawingControlsView(strokes: $drawings,
                                 color: $color,
-                                lineWidth: $lineWidth,bottomSheetPosition: $bottomSheetPosition, score:$score, currentHanzi: $currentHanzi, backendApi: Api()).padding(5).opacity((1 - inverseDrawPadOpacity)).padding(.bottom)
+                                lineWidth: $lineWidth,bottomSheetPosition: $bottomSheetPosition, score:$score, currentHanzi: $currentHanzi, backendApi: Api()).opacity((1 - inverseDrawPadOpacity)).padding().padding(.top, 10).padding(.bottom, 10)
             
-            Spacer()
         }
     }
     

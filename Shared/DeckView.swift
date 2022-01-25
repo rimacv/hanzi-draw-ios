@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DeckView: View {
     let deck : Deck
-        
+    
     var body: some View {
         VStack(alignment: .leading){
             Text(deck.title)

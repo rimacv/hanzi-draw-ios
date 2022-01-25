@@ -50,6 +50,14 @@
 		957D255A279C559300029D6C /* HanziRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957D2558279C559300029D6C /* HanziRequest.swift */; };
 		957D2560279D6BE000029D6C /* AdsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957D255F279D6BE000029D6C /* AdsManager.swift */; };
 		957D2561279D6BE000029D6C /* AdsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957D255F279D6BE000029D6C /* AdsManager.swift */; };
+		957D2563279DEE2F00029D6C /* FillUpPinyin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957D2562279DEE2E00029D6C /* FillUpPinyin.swift */; };
+		957D2564279DEE2F00029D6C /* FillUpPinyin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957D2562279DEE2E00029D6C /* FillUpPinyin.swift */; };
+		957F2701279E037900DFA8FF /* ViewDidLoadModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957F2700279E037900DFA8FF /* ViewDidLoadModifier.swift */; };
+		957F2702279E037900DFA8FF /* ViewDidLoadModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957F2700279E037900DFA8FF /* ViewDidLoadModifier.swift */; };
+		957F270527A09DA500DFA8FF /* ErrorWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957F270427A09DA500DFA8FF /* ErrorWrapper.swift */; };
+		957F270627A09DA500DFA8FF /* ErrorWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957F270427A09DA500DFA8FF /* ErrorWrapper.swift */; };
+		957F270827A09DC900DFA8FF /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957F270727A09DC900DFA8FF /* ErrorView.swift */; };
+		957F270927A09DC900DFA8FF /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957F270727A09DC900DFA8FF /* ErrorView.swift */; };
 		95AF52BC2783915D00CBACFD /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AF52BB2783915D00CBACFD /* Tests_iOS.swift */; };
 		95AF52BE2783915D00CBACFD /* Tests_iOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AF52BD2783915D00CBACFD /* Tests_iOSLaunchTests.swift */; };
 		95AF52C82783915D00CBACFD /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AF52C72783915D00CBACFD /* Tests_macOS.swift */; };
@@ -104,6 +112,10 @@
 		957D2558279C559300029D6C /* HanziRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HanziRequest.swift; sourceTree = "<group>"; };
 		957D255B279D5A0700029D6C /* hanzidraw--iOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "hanzidraw--iOS--Info.plist"; sourceTree = "<group>"; };
 		957D255F279D6BE000029D6C /* AdsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsManager.swift; sourceTree = "<group>"; };
+		957D2562279DEE2E00029D6C /* FillUpPinyin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillUpPinyin.swift; sourceTree = "<group>"; };
+		957F2700279E037900DFA8FF /* ViewDidLoadModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDidLoadModifier.swift; sourceTree = "<group>"; };
+		957F270427A09DA500DFA8FF /* ErrorWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorWrapper.swift; sourceTree = "<group>"; };
+		957F270727A09DC900DFA8FF /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		95AF52A32783915C00CBACFD /* hanzidrawApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hanzidrawApp.swift; sourceTree = "<group>"; };
 		95AF52A42783915C00CBACFD /* DeckListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckListView.swift; sourceTree = "<group>"; };
 		95AF52A52783915D00CBACFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -175,6 +187,7 @@
 				957D25202789C67100029D6C /* Theme.swift */,
 				957D25232789C6D100029D6C /* Deck.swift */,
 				957D2529278AF1F900029D6C /* Stroke.swift */,
+				957D2562279DEE2E00029D6C /* FillUpPinyin.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -218,8 +231,18 @@
 			isa = PBXGroup;
 			children = (
 				957D2552279C48B200029D6C /* ViewForeground.swift */,
+				957F2700279E037900DFA8FF /* ViewDidLoadModifier.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		957F270327A09D9700DFA8FF /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				957F270427A09DA500DFA8FF /* ErrorWrapper.swift */,
+				957F270727A09DC900DFA8FF /* ErrorView.swift */,
+			);
+			path = Error;
 			sourceTree = "<group>";
 		};
 		95AF529D2783915B00CBACFD = {
@@ -242,6 +265,7 @@
 			children = (
 				957D251F2789C66200029D6C /* Models */,
 				95AF52A32783915C00CBACFD /* hanzidrawApp.swift */,
+				957F270327A09D9700DFA8FF /* Error */,
 				95AF52A42783915C00CBACFD /* DeckListView.swift */,
 				957D2550279B632A00029D6C /* DrawingField */,
 				957D25162789C02F00029D6C /* DeckView.swift */,
@@ -549,7 +573,9 @@
 				957D2560279D6BE000029D6C /* AdsManager.swift in Sources */,
 				957D2530278B998B00029D6C /* QuizButtonView.swift in Sources */,
 				957D251A2789C4DA00029D6C /* PracticeView.swift in Sources */,
+				957F2701279E037900DFA8FF /* ViewDidLoadModifier.swift in Sources */,
 				95AF52CB2783915D00CBACFD /* hanzidrawApp.swift in Sources */,
+				957F270827A09DC900DFA8FF /* ErrorView.swift in Sources */,
 				957D2533278F7AC000029D6C /* QuizView.swift in Sources */,
 				957D252A278AF1F900029D6C /* Stroke.swift in Sources */,
 				957D25142789B49500029D6C /* SplashScreenView.swift in Sources */,
@@ -560,9 +586,11 @@
 				957D25212789C67100029D6C /* Theme.swift in Sources */,
 				957D2536278F7D6300029D6C /* DrawingControlsView.swift in Sources */,
 				957D253A27941AE500029D6C /* Api.swift in Sources */,
+				957F270527A09DA500DFA8FF /* ErrorWrapper.swift in Sources */,
 				957D254A279A0A1A00029D6C /* BottomSheetResultView.swift in Sources */,
 				957D2553279C48B200029D6C /* ViewForeground.swift in Sources */,
 				957D2527278AF1CE00029D6C /* DrawingPadView.swift in Sources */,
+				957D2563279DEE2F00029D6C /* FillUpPinyin.swift in Sources */,
 				957D254E279AB12600029D6C /* ResultProgressBarStyle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -576,7 +604,9 @@
 				957D2561279D6BE000029D6C /* AdsManager.swift in Sources */,
 				957D2531278B998B00029D6C /* QuizButtonView.swift in Sources */,
 				957D251B2789C4DA00029D6C /* PracticeView.swift in Sources */,
+				957F2702279E037900DFA8FF /* ViewDidLoadModifier.swift in Sources */,
 				95AF52CC2783915D00CBACFD /* hanzidrawApp.swift in Sources */,
+				957F270927A09DC900DFA8FF /* ErrorView.swift in Sources */,
 				957D2534278F7AC000029D6C /* QuizView.swift in Sources */,
 				957D252B278AF1F900029D6C /* Stroke.swift in Sources */,
 				957D25152789B49500029D6C /* SplashScreenView.swift in Sources */,
@@ -587,9 +617,11 @@
 				957D25222789C67100029D6C /* Theme.swift in Sources */,
 				957D2537278F7D6300029D6C /* DrawingControlsView.swift in Sources */,
 				957D253B27941AE500029D6C /* Api.swift in Sources */,
+				957F270627A09DA500DFA8FF /* ErrorWrapper.swift in Sources */,
 				957D254B279A0A1A00029D6C /* BottomSheetResultView.swift in Sources */,
 				957D2554279C48B200029D6C /* ViewForeground.swift in Sources */,
 				957D2528278AF1CE00029D6C /* DrawingPadView.swift in Sources */,
+				957D2564279DEE2F00029D6C /* FillUpPinyin.swift in Sources */,
 				957D254F279AB12600029D6C /* ResultProgressBarStyle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
