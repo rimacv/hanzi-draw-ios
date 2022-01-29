@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SplashScreenView: View {
     @State private var hasTimeElapsed = false
+    
     var body: some View {
         if(hasTimeElapsed){
             DeckListView()

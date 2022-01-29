@@ -36,12 +36,8 @@ struct DrawingControlsView: View {
                 .background(buttonColor)
                 .clipShape(RoundedRectangle(cornerRadius: 5))
                 Button(String(localized: "Done")) {
-                    //self.drawings = [Drawing]()
                     Task {
                         let score =  await backendApi.getDrawingScore(strokes: strokes, currentHanzi: currentHanzi)
-                        print(score)
-                        let hanzis =  await backendApi.validateDrawing(strokes: strokes, currentHanzi: currentHanzi)
-                        print(hanzis)
                         if(score != nil){
                             withAnimation(.linear(duration:0.2)){
                                 bottomSheetPosition = .top

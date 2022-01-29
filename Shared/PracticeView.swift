@@ -36,6 +36,7 @@ struct PracticeView: View {
     @State private var currentHanzi = ""
     @State private var currentHanziDefinition = ""
     @State private var currentHanziPinyin = ""
+    @State private var pinyinList : [String]?
     @State private var hanziImageUrl = ""
     @State private var deckIndex = 0
     @State private var isLoaded = false
@@ -44,7 +45,7 @@ struct PracticeView: View {
     let deck : Deck
     
     @EnvironmentObject var adsViewModel: AdsViewModel
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @Environment(\.dismiss) var dismiss
     
     
     
@@ -56,8 +57,9 @@ struct PracticeView: View {
                     correctAnswerIndex = Int.random(in: 0..<4)
                 }
                 .task {
+                    currentHanzi = deck.deckEntries[deckIndex].text
                     
-                    currentHanzi = deck.deckEntries[deckIndex]
+                    
                     hanziImageUrl =  await Api().getImageUrlForHanzi(hanzi:currentHanzi) ??  hanziImageUrl
                     let hanziInfo = await Api().getHanziInfo(hanzi: currentHanzi)
                     currentHanziPinyin = hanziInfo?.pinyin ?? ""
@@ -65,9 +67,9 @@ struct PracticeView: View {
                     
                     var hanziList = ""
                     for entry in deck.deckEntries{
-                        hanziList += entry
+                        hanziList += entry.text
                     }
-                    let pinyinList = await Api().getPinyinList(hanziList: hanziList)
+                    pinyinList = await Api().getPinyinList(hanziList: hanziList)
                     print(hanziImageUrl)
                     isLoaded.toggle()
                 }
@@ -83,13 +85,13 @@ struct PracticeView: View {
                                    inverseDrawPadOpacity: $quizOpacity, bottomSheetPosition: $bottomSheetPosition, score: $score, currentHanzi: $currentHanzi )
                     
                     
-                    QuizView(quizOpacity: $quizOpacity, currentHanziPinyin: $currentHanziPinyin, correctAnswerIndex: $correctAnswerIndex).padding(.bottom, 20)
+                    QuizView(quizOpacity: $quizOpacity, currentHanziPinyin: $currentHanziPinyin, correctAnswerIndex: $correctAnswerIndex, pinyinList: pinyinList!).padding(.bottom, 20)
                     
                     
                     
                     
                 }
-                .bottomSheet( bottomSheetPosition: $bottomSheetPosition, options: [.cornerRadius(8),.notResizeable], content: {
+                .bottomSheet( bottomSheetPosition: $bottomSheetPosition, options: [.cornerRadius(8),.notResizeable]	,content: {
                     BottomSheetResultView(score: $score, resetDrawField: resetDrawField, nextHanzi: nextHanzi)
                 })
             }
@@ -114,18 +116,20 @@ struct PracticeView: View {
             
             resetDrawField()
             deckIndex += 1
-            currentHanzi = deck.deckEntries[deckIndex]
+            currentHanzi = deck.deckEntries[deckIndex].text
             quizOpacity = 1.0
             Task {
                 hanziImageUrl =  await Api().getImageUrlForHanzi(hanzi:currentHanzi)
                 ??  hanziImageUrl
-                
+                let hanziInfo = await Api().getHanziInfo(hanzi: currentHanzi)
+                currentHanziPinyin = hanziInfo?.pinyin ?? ""
+                currentHanziDefinition = hanziInfo?.definition ?? ""
                 
             }
         }else{
             adsViewModel.showInterstitial.toggle()
             resetDrawField()
-            self.presentationMode.wrappedValue.dismiss()
+            dismiss()
         }
         
     }

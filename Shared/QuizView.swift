@@ -12,7 +12,7 @@ struct QuizView: View {
     @Binding var quizOpacity : Double
     @Binding var currentHanziPinyin: String
     @Binding var correctAnswerIndex : Int
-    
+    var pinyinList : [String]
     var body: some View {
         let answerOptions = generateAnswerOptions()
         VStack{
@@ -34,7 +34,28 @@ struct QuizView: View {
     }
     
     func generateAnswerOptions() ->[(String, Bool)]{
-        var answerOptions = [(String, Bool)](repeating:("",false), count:4)
+        var answerOptions = [(String, Bool)]()
+        var listOfWrongAnswers = [String]()
+        
+        for pinyin in pinyinList {
+            if(!listOfWrongAnswers.contains(pinyin)){
+                listOfWrongAnswers.append(pinyin)
+            }
+            if(listOfWrongAnswers.count == 4){
+                break
+            }
+        }
+        
+        while listOfWrongAnswers.count != 4 {
+            let randomElement = FillUpPinyin.listOfFillUpPinyin.randomElement()!
+            if(!listOfWrongAnswers.contains(randomElement) && randomElement != currentHanziPinyin){
+                listOfWrongAnswers.append(randomElement)
+               
+            }
+        }
+        for wrongAnswer in listOfWrongAnswers{
+            answerOptions.append((wrongAnswer, false))
+        }
         answerOptions[correctAnswerIndex] = (currentHanziPinyin,true)
         return answerOptions
     }
@@ -44,6 +65,6 @@ struct QuizView: View {
 struct QuizView_Previews: PreviewProvider {
     @State static var quizOpacity : Double = 1
     static var previews: some View {
-        QuizView(quizOpacity: $quizOpacity, currentHanziPinyin: .constant(""), correctAnswerIndex: .constant(0))
+        QuizView(quizOpacity: $quizOpacity, currentHanziPinyin: .constant(""), correctAnswerIndex: .constant(0),pinyinList: [""])
     }
 }

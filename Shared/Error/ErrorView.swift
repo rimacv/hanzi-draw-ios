@@ -7,7 +7,7 @@ struct ErrorView: View {
     var body: some View {
         NavigationView {
             VStack {
-                Text("对不起! - Sorry!")
+                Text(String(localized: "ErrorTitle"))
                     .font(.title)
                     .padding(.bottom)
                     .foregroundColor(.black)

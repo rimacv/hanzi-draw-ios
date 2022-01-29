@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct DeckView: View {
-    let deck : Deck
-    
+    @State var deck : Deck
     var body: some View {
         VStack(alignment: .leading){
             Text(deck.title)
@@ -17,18 +16,14 @@ struct DeckView: View {
                 .accessibilityAddTraits(.isHeader)
             Spacer()
             HStack {
-                NavigationLink(destination: PracticeView(deck: deck).onAppear{
+                NavigationLink(destination: DeckDetailView(deck: $deck).onAppear{
                     
                 }  ){
                     Label("\(deck.numberOfEntries)", systemImage: "character.book.closed.fill.zh")
                         .accessibilityLabel("\(deck.numberOfEntries) cards in deck")
-                
-                
-                
                 Spacer()
-                
-                Label("\(deck.numberOfLearningSessions)", systemImage: "graduationcap.fill")
-                    .accessibilityLabel("\(deck.numberOfLearningSessions) number of learning sessions")
+                    Label("\(deck.history.count)", systemImage: "graduationcap.fill")
+                    .accessibilityLabel("\(deck.history.count) number of learning sessions")
                 
                 }
                 //.labelStyle(.trailingIcon)
