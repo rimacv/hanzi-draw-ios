@@ -15,6 +15,7 @@ struct Constants {
 @main
 struct hanzidrawApp: App {
     let adsVM = AdsViewModel.shared
+    
     init(){
         GADMobileAds.sharedInstance().start(completionHandler: nil)
     }

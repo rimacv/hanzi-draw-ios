@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DeckView: View {
-    @State var deck : Deck
+    @Binding var deck : Deck
     var body: some View {
         VStack(alignment: .leading){
             Text(deck.title)
@@ -39,9 +39,9 @@ struct DeckView: View {
 }
 
 struct DeckView_Previews: PreviewProvider {
-    static var deck = Deck.sampleData[0]
+    @State static var deck = Deck.sampleData[0]
     static var previews: some View {
-        DeckView(deck: deck)
+        DeckView(deck: $deck)
             .previewLayout(.fixed(width: 400, height: 60))
     }
 }

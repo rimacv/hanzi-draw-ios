@@ -38,7 +38,19 @@ struct DeckDetailView: View {
             }
             Section(header: Text("Cards")) {
                 ForEach(deck.deckEntries) { deckEntry in
-                    Label(deckEntry.text, systemImage: "character.book.closed.fill.zh")
+                    HStack{
+                        Label(deckEntry.text, systemImage: "character.book.closed.fill.zh")
+                        Spacer()
+                        if(deckEntry.history.count > 0){
+                            let averageScore = calculateAverageScore(deckEntryHistory: deckEntry.history)
+                         
+                            Label("\(NumberFormatter().string(from: NSNumber(value: averageScore)) ?? "$0") ", systemImage: "percent")
+                        }else{
+                            Label("0", systemImage: "percent")
+                        }
+                    
+                    }
+                   
                 }
             }
             Section(header: Text("History")) {
@@ -79,6 +91,18 @@ struct DeckDetailView: View {
                     }
             }
         }
+    }
+    
+    func calculateAverageScore(deckEntryHistory: [DeckEntryHistory]) -> Double{
+        if deckEntryHistory.count == 0{
+            return 0
+        }
+        var averageHistory = 0.0
+        for entry in deckEntryHistory{
+            averageHistory += entry.score
+        }
+        averageHistory /= Double(deckEntryHistory.count)
+        return averageHistory
     }
 }
 

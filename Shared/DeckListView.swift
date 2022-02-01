@@ -9,15 +9,19 @@ import SwiftUI
 
 
 struct DeckListView: View {
-    @State var decks : [Deck] = Deck.sampleData
+    
+    @Binding var decks: [Deck]
+    @Environment(\.scenePhase) private var scenePhase
     @State private var isEditViewShown: Bool = false
     @State private var newDeckData : Deck.Data =  Deck.Data()
+    
+    let saveAction: ()->Void
     
     var body: some View {
         NavigationView{
             List{
                 ForEach($decks) { $deck in
-                    DeckView(deck: deck)
+                    DeckView(deck: $deck)
                         .listRowBackground(deck.theme.mainColor)
                 }
                 .onDelete { indices in
@@ -55,6 +59,9 @@ struct DeckListView: View {
                     }
                 }
             }
+            .onChange(of: scenePhase) { phase in
+                if phase == .inactive { saveAction() }
+            }
         }
      
         
@@ -62,7 +69,8 @@ struct DeckListView: View {
 }
 
 struct ContentView_Previews: PreviewProvider {
+    @State static var decks = [Deck]()
     static var previews: some View {
-        DeckListView()
+        DeckListView(decks: $decks, saveAction: {})
     }
 }

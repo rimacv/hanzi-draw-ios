@@ -49,7 +49,7 @@ extension Deck{
     struct DeckEntry : Codable, Identifiable{
         var id: UUID = UUID()
         var text: String
-        
+        var history : [DeckEntryHistory] = []
         init(id: UUID? = nil, text: String) {
             self.id = id ?? self.id
             self.text = text

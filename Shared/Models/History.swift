@@ -16,3 +16,13 @@ struct History: Identifiable, Codable {
         self.date = date
     }
 }
+
+struct DeckEntryHistory: Identifiable, Codable {
+    let id: UUID
+    let score : Double
+
+    init(id: UUID = UUID(), score : Double) {
+        self.id = id
+        self.score = score
+    }
+}

@@ -38,7 +38,7 @@ struct QuizView: View {
         var listOfWrongAnswers = [String]()
         
         for pinyin in pinyinList {
-            if(!listOfWrongAnswers.contains(pinyin)){
+            if(!listOfWrongAnswers.contains(pinyin) && pinyin != currentHanziPinyin){
                 listOfWrongAnswers.append(pinyin)
             }
             if(listOfWrongAnswers.count == 4){
