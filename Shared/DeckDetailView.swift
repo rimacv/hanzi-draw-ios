@@ -14,7 +14,7 @@ struct DeckDetailView: View {
     var body: some View {
         List {
             Section(header: Text("Deck Info")) {
-                NavigationLink(destination: PracticeView(deck: deck)) {
+                NavigationLink(destination: PracticeView(deck: $deck)) {
                     Label("Start Learning Session", systemImage: "graduationcap.fill")
                         .font(.headline)
                         .foregroundColor(.accentColor)

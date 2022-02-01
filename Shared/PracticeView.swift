@@ -59,8 +59,7 @@ struct PracticeView: View {
     @State private var sessionInfo = Info()
     @State private var isLoaded = false
     @State private var correctAnswerIndex = Int.random(in: 0..<4)
-    let deck : Deck
-    @State var deckCopy : Deck = Deck(data: Deck.Data())
+    @Binding var deck : Deck
 
     
     @EnvironmentObject var adsViewModel: AdsViewModel
@@ -129,17 +128,14 @@ struct PracticeView: View {
 
     func nextHanzi() -> Void {
         
-        if(sessionInfo.getHanziCounter() == 0){
-            deckCopy = deck
-        }
-        
+    
         if(sessionInfo.getDeckIndex() < deck.numberOfEntries - 1){
             
             if ((sessionInfo.getDeckIndex() + 1)  % 2 == 0) {
                 adsViewModel.showInterstitial.toggle()
             }
             
-            deckCopy.deckEntries[sessionInfo.getDeckIndex()].history.insert(DeckEntryHistory(score: score), at: 0)
+            deck.deckEntries[sessionInfo.getDeckIndex()].history.insert(DeckEntryHistory(score: score), at: 0)
             
             resetDrawField()
             sessionInfo.nextHanzi()
@@ -155,10 +151,9 @@ struct PracticeView: View {
             }
         }else{
             let newHistory = History()
-            deckCopy.history.insert(newHistory, at: 0)
+            deck.history.insert(newHistory, at: 0)
             adsViewModel.showInterstitial.toggle()
             resetDrawField()
-            deckCopy = deckCopy
             dismiss()
         }
         
@@ -169,6 +164,6 @@ struct PracticeView_Previews: PreviewProvider {
     @State static private var decks : [Deck] = Deck.sampleData
     static private var answers = [(String, Bool)]()
     static var previews: some View {
-        PracticeView(deck:  decks[0])
+        PracticeView(deck:  $decks[0])
     }
 }
