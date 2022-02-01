@@ -26,7 +26,7 @@ struct DeckView: View {
                     .accessibilityLabel("\(deck.history.count) number of learning sessions")
                 
                 }
-                //.labelStyle(.trailingIcon)
+                .isDetailLink(false)
                 
             }.font(.caption)
         }
