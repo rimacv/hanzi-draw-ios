@@ -9,14 +9,16 @@
 /* Begin PBXBuildFile section */
 		23D5A71EE83CB88FC89647E8 /* Pods_hanzidraw__iOS_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB754A11B896C86CEC56FF26 /* Pods_hanzidraw__iOS_.framework */; };
 		2B342AF85706F5B0686D33C7 /* Pods_hanzidraw__macOS_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00F2706BD664FBD42AAC9715 /* Pods_hanzidraw__macOS_.framework */; };
+		9532E2AB27A9DA94007C7960 /* BottomSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 9532E2AA27A9DA94007C7960 /* BottomSheet */; };
+		9532E2AD27AB329A007C7960 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9532E2AC27AB329A007C7960 /* HistoryView.swift */; };
+		9532E2AE27AB329A007C7960 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9532E2AC27AB329A007C7960 /* HistoryView.swift */; };
+		9532E2B427AB366D007C7960 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 9532E2B327AB366D007C7960 /* SwiftUICharts */; };
 		9577582627A57C440099C271 /* DeckDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9577582527A57C440099C271 /* DeckDetailView.swift */; };
 		9577582727A57C440099C271 /* DeckDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9577582527A57C440099C271 /* DeckDetailView.swift */; };
 		9577582927A5812C0099C271 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9577582827A5812C0099C271 /* History.swift */; };
 		9577582A27A5812C0099C271 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9577582827A5812C0099C271 /* History.swift */; };
 		9577582C27A5AA580099C271 /* DeckStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9577582B27A5AA580099C271 /* DeckStore.swift */; };
 		9577582D27A5AA580099C271 /* DeckStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9577582B27A5AA580099C271 /* DeckStore.swift */; };
-		957758BF27A6C60D0099C271 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 957758BE27A6C60D0099C271 /* Realm */; };
-		957758C127A6C60D0099C271 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 957758C027A6C60D0099C271 /* RealmSwift */; };
 		957D25102789B22600029D6C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 957D250E2789B22600029D6C /* Localizable.strings */; };
 		957D25112789B22600029D6C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 957D250E2789B22600029D6C /* Localizable.strings */; };
 		957D25142789B49500029D6C /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957D25132789B49500029D6C /* SplashScreenView.swift */; };
@@ -47,7 +49,6 @@
 		957D25412794B32100029D6C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 957D25402794B32100029D6C /* Alamofire */; };
 		957D254427976ED000029D6C /* ValidationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957D254327976ED000029D6C /* ValidationRequest.swift */; };
 		957D254527976ED000029D6C /* ValidationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957D254327976ED000029D6C /* ValidationRequest.swift */; };
-		957D25482797741600029D6C /* BottomSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 957D25472797741600029D6C /* BottomSheet */; };
 		957D254A279A0A1A00029D6C /* BottomSheetResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957D2549279A0A1A00029D6C /* BottomSheetResultView.swift */; };
 		957D254B279A0A1A00029D6C /* BottomSheetResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957D2549279A0A1A00029D6C /* BottomSheetResultView.swift */; };
 		957D254E279AB12600029D6C /* ResultProgressBarStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957D254D279AB12600029D6C /* ResultProgressBarStyle.swift */; };
@@ -105,6 +106,7 @@
 		00F2706BD664FBD42AAC9715 /* Pods_hanzidraw__macOS_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_hanzidraw__macOS_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BFA891FCABF078E05CC9AEC /* Pods-hanzidraw (macOS).debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hanzidraw (macOS).debug.xcconfig"; path = "Target Support Files/Pods-hanzidraw (macOS)/Pods-hanzidraw (macOS).debug.xcconfig"; sourceTree = "<group>"; };
 		5B37D5DA68253E0318D1557C /* Pods-hanzidraw (iOS).debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hanzidraw (iOS).debug.xcconfig"; path = "Target Support Files/Pods-hanzidraw (iOS)/Pods-hanzidraw (iOS).debug.xcconfig"; sourceTree = "<group>"; };
+		9532E2AC27AB329A007C7960 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		9577582527A57C440099C271 /* DeckDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckDetailView.swift; sourceTree = "<group>"; };
 		9577582827A5812C0099C271 /* History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
 		9577582B27A5AA580099C271 /* DeckStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckStore.swift; sourceTree = "<group>"; };
@@ -158,12 +160,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				957758C127A6C60D0099C271 /* RealmSwift in Frameworks */,
 				957D25412794B32100029D6C /* Alamofire in Frameworks */,
-				957D25482797741600029D6C /* BottomSheet in Frameworks */,
+				9532E2AB27A9DA94007C7960 /* BottomSheet in Frameworks */,
 				957D252E278B162900029D6C /* CachedAsyncImage in Frameworks */,
 				23D5A71EE83CB88FC89647E8 /* Pods_hanzidraw__iOS_.framework in Frameworks */,
-				957758BF27A6C60D0099C271 /* Realm in Frameworks */,
+				9532E2B427AB366D007C7960 /* SwiftUICharts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,6 +296,7 @@
 				95AF52A42783915C00CBACFD /* DeckListView.swift */,
 				957F270A27A305A700DFA8FF /* DeckEditView.swift */,
 				9577582527A57C440099C271 /* DeckDetailView.swift */,
+				9532E2AC27AB329A007C7960 /* HistoryView.swift */,
 				957D25192789C4DA00029D6C /* PracticeView.swift */,
 				957D253827941AAA00029D6C /* Backend */,
 				957D2532278F7AC000029D6C /* QuizView.swift */,
@@ -379,9 +381,8 @@
 			packageProductDependencies = (
 				957D252D278B162900029D6C /* CachedAsyncImage */,
 				957D25402794B32100029D6C /* Alamofire */,
-				957D25472797741600029D6C /* BottomSheet */,
-				957758BE27A6C60D0099C271 /* Realm */,
-				957758C027A6C60D0099C271 /* RealmSwift */,
+				9532E2AA27A9DA94007C7960 /* BottomSheet */,
+				9532E2B327AB366D007C7960 /* SwiftUICharts */,
 			);
 			productName = "hanzidraw (iOS)";
 			productReference = 95AF52AA2783915D00CBACFD /* hanzidraw.app */;
@@ -480,8 +481,8 @@
 			packageReferences = (
 				957D252C278B162900029D6C /* XCRemoteSwiftPackageReference "SwiftUI-CachedAsyncImage" */,
 				957D253F2794B32100029D6C /* XCRemoteSwiftPackageReference "Alamofire" */,
-				957D25462797741600029D6C /* XCRemoteSwiftPackageReference "BottomSheet" */,
-				957758BD27A6C60D0099C271 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				9532E2A927A9DA94007C7960 /* XCRemoteSwiftPackageReference "BottomSheet" */,
+				9532E2B227AB366D007C7960 /* XCRemoteSwiftPackageReference "ChartView" */,
 			);
 			productRefGroup = 95AF52AB2783915D00CBACFD /* Products */;
 			projectDirPath = "";
@@ -615,6 +616,7 @@
 				957D25172789C02F00029D6C /* DeckView.swift in Sources */,
 				957D254427976ED000029D6C /* ValidationRequest.swift in Sources */,
 				957D2559279C559300029D6C /* HanziRequest.swift in Sources */,
+				9532E2AD27AB329A007C7960 /* HistoryView.swift in Sources */,
 				957D251D2789C4EC00029D6C /* EditDeckView.swift in Sources */,
 				957D25212789C67100029D6C /* Theme.swift in Sources */,
 				957D2536278F7D6300029D6C /* DrawingControlsView.swift in Sources */,
@@ -652,6 +654,7 @@
 				957D25182789C02F00029D6C /* DeckView.swift in Sources */,
 				957D254527976ED000029D6C /* ValidationRequest.swift in Sources */,
 				957D255A279C559300029D6C /* HanziRequest.swift in Sources */,
+				9532E2AE27AB329A007C7960 /* HistoryView.swift in Sources */,
 				957D251E2789C4EC00029D6C /* EditDeckView.swift in Sources */,
 				957D25222789C67100029D6C /* Theme.swift in Sources */,
 				957D2537278F7D6300029D6C /* DrawingControlsView.swift in Sources */,
@@ -1073,12 +1076,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		957758BD27A6C60D0099C271 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+		9532E2A927A9DA94007C7960 /* XCRemoteSwiftPackageReference "BottomSheet" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/realm/realm-swift.git";
+			repositoryURL = "https://github.com/LucasMucGH/BottomSheet";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		9532E2B227AB366D007C7960 /* XCRemoteSwiftPackageReference "ChartView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AppPear/ChartView";
 			requirement = {
 				kind = exactVersion;
-				version = 10.22.0;
+				version = 1.5.5;
 			};
 		};
 		957D252C278B162900029D6C /* XCRemoteSwiftPackageReference "SwiftUI-CachedAsyncImage" */ = {
@@ -1097,26 +1108,18 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		957D25462797741600029D6C /* XCRemoteSwiftPackageReference "BottomSheet" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/LucasMucGH/BottomSheet";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		957758BE27A6C60D0099C271 /* Realm */ = {
+		9532E2AA27A9DA94007C7960 /* BottomSheet */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 957758BD27A6C60D0099C271 /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = Realm;
+			package = 9532E2A927A9DA94007C7960 /* XCRemoteSwiftPackageReference "BottomSheet" */;
+			productName = BottomSheet;
 		};
-		957758C027A6C60D0099C271 /* RealmSwift */ = {
+		9532E2B327AB366D007C7960 /* SwiftUICharts */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 957758BD27A6C60D0099C271 /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = RealmSwift;
+			package = 9532E2B227AB366D007C7960 /* XCRemoteSwiftPackageReference "ChartView" */;
+			productName = SwiftUICharts;
 		};
 		957D252D278B162900029D6C /* CachedAsyncImage */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -1127,11 +1130,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 957D253F2794B32100029D6C /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
-		};
-		957D25472797741600029D6C /* BottomSheet */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 957D25462797741600029D6C /* XCRemoteSwiftPackageReference "BottomSheet" */;
-			productName = BottomSheet;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

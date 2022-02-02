@@ -1,10 +1,11 @@
-/* No comment provided by engineer. */
 "Hello, world!" = "Hello, world!";
 "app_name" = "Hanzi Draw";
 "Continue" = "Continue";
 "Well done" = "Well done";
 "Retry" = "Retry";
 "ScoreFetchError" = "Score could not be calculated. Check your internet connection.";
+"DeckLoadError" = "Deck data could not be read. Hanzi Draw will load sample data and continue";
+"SaveError" = "Data could not be save. File might be corrupted.";
 "ErrorTitle" = "对不起! - Sorry!";
 "Decks" = "Decks";
 "New Decks" = "New Decks";

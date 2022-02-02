@@ -38,19 +38,21 @@ struct DeckDetailView: View {
             }
             Section(header: Text("Cards")) {
                 ForEach(deck.deckEntries) { deckEntry in
+                    
                     HStack{
                         Label(deckEntry.text, systemImage: "character.book.closed.fill.zh")
                         Spacer()
-                        if(deckEntry.history.count > 0){
-                            let averageScore = calculateAverageScore(deckEntryHistory: deckEntry.history)
-                         
+                        if(deck.history.count > 0){
+                            let averageScore = calculateAverageScore(deckEntry: deckEntry, deckHistory: deck.history)
+                            
                             Label("\(NumberFormatter().string(from: NSNumber(value: averageScore)) ?? "$0") ", systemImage: "percent")
                         }else{
                             Label("0", systemImage: "percent")
                         }
-                    
+                        
                     }
-                   
+                    
+                    
                 }
             }
             Section(header: Text("History")) {
@@ -58,9 +60,11 @@ struct DeckDetailView: View {
                     Label("No sessions yet", systemImage: "calendar.badge.exclamationmark")
                 }
                 ForEach(deck.history) { history in
-                    HStack {
-                        Image(systemName: "calendar")
-                        Text(history.date, style: .date)
+                    NavigationLink(destination:HistoryView(history:history)){
+                        HStack {
+                            Image(systemName: "calendar")
+                            Text(history.date, style: .date)
+                        }
                     }
                 }
             }
@@ -93,16 +97,26 @@ struct DeckDetailView: View {
         }
     }
     
-    func calculateAverageScore(deckEntryHistory: [DeckEntryHistory]) -> Double{
-        if deckEntryHistory.count == 0{
+    func calculateAverageScore(deckEntry:Deck.DeckEntry , deckHistory: [History]) -> Double{
+        if deckHistory.count == 0{
             return 0
         }
-        var averageHistory = 0.0
-        for entry in deckEntryHistory{
-            averageHistory += entry.score
+        var averageScore = 0.0
+        var occurenceCounter = 0
+        for historyEntry in deckHistory{
+            for score in historyEntry.sessionScores{
+                if(score.text == deckEntry.text){
+                    averageScore += score.score
+                    occurenceCounter += 1
+                }
+            }
+            
         }
-        averageHistory /= Double(deckEntryHistory.count)
-        return averageHistory
+        if(occurenceCounter != 0){
+            averageScore /= Double(occurenceCounter)
+        }
+        
+        return averageScore
     }
 }
 

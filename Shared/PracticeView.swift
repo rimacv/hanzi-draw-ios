@@ -59,6 +59,7 @@ struct PracticeView: View {
     @State private var sessionInfo = Info()
     @State private var isLoaded = false
     @State private var correctAnswerIndex = Int.random(in: 0..<4)
+    @State private var sessionScores = [SessionScore]()
     @Binding var deck : Deck
 
     
@@ -128,14 +129,14 @@ struct PracticeView: View {
 
     func nextHanzi() -> Void {
         
-    
+        sessionScores.append(SessionScore( text:currentHanzi, score: score))
         if(sessionInfo.getDeckIndex() < deck.numberOfEntries - 1){
             
             if ((sessionInfo.getDeckIndex() + 1)  % 2 == 0) {
                 adsViewModel.showInterstitial.toggle()
             }
             
-            deck.deckEntries[sessionInfo.getDeckIndex()].history.insert(DeckEntryHistory(score: score), at: 0)
+           
             
             resetDrawField()
             sessionInfo.nextHanzi()
@@ -150,7 +151,7 @@ struct PracticeView: View {
                 
             }
         }else{
-            let newHistory = History()
+            let newHistory = History(sessionScores: sessionScores)
             deck.history.insert(newHistory, at: 0)
             adsViewModel.showInterstitial.toggle()
             resetDrawField()

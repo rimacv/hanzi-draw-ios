@@ -4,6 +4,8 @@
 "Well done" = "Gut gemacht";
 "Retry" = "Nochmal";
 "ScoreFetchError" = "Score konnte nicht berechnet werden.  Prüfe deine Internetverbindung.";
+"DeckLoadError" = "Daten konnten nicht geladen werden.\nHanzi Draw fährt mit Beispieldaten fort.";
+"SaveError" = "Daten konnten nicht gespeichert werden. ";
 "ErrorTitle" = "对不起! - Entschuldigung!";
 "Decks" = "Decks";
 "New Decks" = "Neues Deck";

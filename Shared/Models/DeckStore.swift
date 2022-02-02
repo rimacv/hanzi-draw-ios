@@ -71,6 +71,7 @@ class DeckStore: ObservableObject {
         DispatchQueue.global(qos: .background).async {
             do {
                 let data = try JSONEncoder().encode(scrums)
+                let decoded = try JSONDecoder().decode([Deck].self, from: data)
                 let outfile = try fileURL()
                 try data.write(to: outfile)
                 DispatchQueue.main.async {

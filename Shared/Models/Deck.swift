@@ -6,7 +6,6 @@ struct Deck: Identifiable, Codable {
     var deckEntries: [DeckEntry]
     var history : [History] = []
     var theme: Theme
-    
     init(id: UUID = UUID(), title: String, deckEntries: [DeckEntry],theme: Theme) {
         self.id = id
         self.title = title
@@ -49,7 +48,6 @@ extension Deck{
     struct DeckEntry : Codable, Identifiable{
         var id: UUID = UUID()
         var text: String
-        var history : [DeckEntryHistory] = []
         init(id: UUID? = nil, text: String) {
             self.id = id ?? self.id
             self.text = text

@@ -13,7 +13,6 @@ struct SplashScreenView: View {
     
     @StateObject private var store = DeckStore()
     @State private var errorWrapper: ErrorWrapper?
-    
     var body: some View {
         if(hasTimeElapsed){
             DeckListView(decks: $store.decks){
@@ -21,7 +20,7 @@ struct SplashScreenView: View {
                     do {
                         try await DeckStore.save(scrums: store.decks)
                     } catch {
-                        errorWrapper = ErrorWrapper(error: error, guidance: "Try again later.")
+                        errorWrapper = ErrorWrapper(error: nil, guidance: String(localized: "SaveError"))
                     }
                 }
             }
@@ -40,6 +39,12 @@ struct SplashScreenView: View {
                 }
                 .statusBar(hidden: true)
             }
+            .sheet(item: $errorWrapper, onDismiss: {
+                hasTimeElapsed = true
+                errorWrapper = nil
+            }) { wrapper in
+                ErrorView(errorWrapper: wrapper)
+            }
         }
     
         
@@ -55,7 +60,9 @@ struct SplashScreenView: View {
             }
             await oneshotTimer()
         } catch {
-            errorWrapper = ErrorWrapper(error: error, guidance: "Scrumdinger will load sample data and continue.")
+            print(error)
+            store.decks = Deck.sampleData
+            errorWrapper = ErrorWrapper(error: nil, guidance: String(localized: "DeckLoadError"))
         }
     }
     
