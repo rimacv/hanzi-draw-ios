@@ -12,7 +12,6 @@
 		9532E2AB27A9DA94007C7960 /* BottomSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 9532E2AA27A9DA94007C7960 /* BottomSheet */; };
 		9532E2AD27AB329A007C7960 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9532E2AC27AB329A007C7960 /* HistoryView.swift */; };
 		9532E2AE27AB329A007C7960 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9532E2AC27AB329A007C7960 /* HistoryView.swift */; };
-		9532E2B427AB366D007C7960 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 9532E2B327AB366D007C7960 /* SwiftUICharts */; };
 		9577582627A57C440099C271 /* DeckDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9577582527A57C440099C271 /* DeckDetailView.swift */; };
 		9577582727A57C440099C271 /* DeckDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9577582527A57C440099C271 /* DeckDetailView.swift */; };
 		9577582927A5812C0099C271 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9577582827A5812C0099C271 /* History.swift */; };
@@ -164,7 +163,6 @@
 				9532E2AB27A9DA94007C7960 /* BottomSheet in Frameworks */,
 				957D252E278B162900029D6C /* CachedAsyncImage in Frameworks */,
 				23D5A71EE83CB88FC89647E8 /* Pods_hanzidraw__iOS_.framework in Frameworks */,
-				9532E2B427AB366D007C7960 /* SwiftUICharts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,7 +380,6 @@
 				957D252D278B162900029D6C /* CachedAsyncImage */,
 				957D25402794B32100029D6C /* Alamofire */,
 				9532E2AA27A9DA94007C7960 /* BottomSheet */,
-				9532E2B327AB366D007C7960 /* SwiftUICharts */,
 			);
 			productName = "hanzidraw (iOS)";
 			productReference = 95AF52AA2783915D00CBACFD /* hanzidraw.app */;
@@ -482,7 +479,6 @@
 				957D252C278B162900029D6C /* XCRemoteSwiftPackageReference "SwiftUI-CachedAsyncImage" */,
 				957D253F2794B32100029D6C /* XCRemoteSwiftPackageReference "Alamofire" */,
 				9532E2A927A9DA94007C7960 /* XCRemoteSwiftPackageReference "BottomSheet" */,
-				9532E2B227AB366D007C7960 /* XCRemoteSwiftPackageReference "ChartView" */,
 			);
 			productRefGroup = 95AF52AB2783915D00CBACFD /* Products */;
 			projectDirPath = "";
@@ -1084,14 +1080,6 @@
 				kind = branch;
 			};
 		};
-		9532E2B227AB366D007C7960 /* XCRemoteSwiftPackageReference "ChartView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/AppPear/ChartView";
-			requirement = {
-				kind = exactVersion;
-				version = 1.5.5;
-			};
-		};
 		957D252C278B162900029D6C /* XCRemoteSwiftPackageReference "SwiftUI-CachedAsyncImage" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/lorenzofiamingo/SwiftUI-CachedAsyncImage";
@@ -1115,11 +1103,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9532E2A927A9DA94007C7960 /* XCRemoteSwiftPackageReference "BottomSheet" */;
 			productName = BottomSheet;
-		};
-		9532E2B327AB366D007C7960 /* SwiftUICharts */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 9532E2B227AB366D007C7960 /* XCRemoteSwiftPackageReference "ChartView" */;
-			productName = SwiftUICharts;
 		};
 		957D252D278B162900029D6C /* CachedAsyncImage */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -20,15 +20,6 @@
         }
       },
       {
-        "package": "SwiftUICharts",
-        "repositoryURL": "https://github.com/AppPear/ChartView",
-        "state": {
-          "branch": null,
-          "revision": "9115a992c91fa19cbb4f2241084240d38654a1fc",
-          "version": "1.5.5"
-        }
-      },
-      {
         "package": "CachedAsyncImage",
         "repositoryURL": "https://github.com/lorenzofiamingo/SwiftUI-CachedAsyncImage",
         "state": {

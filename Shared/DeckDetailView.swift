@@ -36,7 +36,7 @@ struct DeckDetailView: View {
                 }
                 .accessibilityElement(children: .combine)
             }
-            Section(header: Text("Cards")) {
+            Section(header: Text("Cards - Average Score")) {
                 ForEach(deck.deckEntries) { deckEntry in
                     
                     HStack{

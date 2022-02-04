@@ -6,49 +6,50 @@
 //
 
 import SwiftUI
-import SwiftUICharts
 
 struct HistoryView: View {
     let history: History
+
+    
+    
     var body: some View {
-        
-        VStack{
+        GeometryReader { geometry in
             //LineView(data: [8,23,54,32,12,37,7,23,43], title: "Line chart", legend: "Full screen")
-            BarChartView(data: ChartData(values: GetChartData()), title: "Scores", legend: "Deck Entry", form: ChartForm.medium)
+            List {
+                Section(header: Text("Session Info")) {
+                    
+                    HStack {
+                        Image(systemName: "calendar")
+                        Text(history.date, style: .date)
+                    }.accessibilityElement(children: .combine)
+                    
+                    HStack {
+                        Label("Deck Size", systemImage: "character.book.closed.fill.zh")
+                        Spacer()
+                        Text("\(history.sessionScores.count) cards")
+                    }
+                    .accessibilityElement(children: .combine)
+                    
+                }
+                Section(header: Text("Charachter scores")) {
+                    ForEach(history.sessionScores) { score in
+                        HStack {
+                            Text(score.text + ": ")
+                            RoundedRectangle(cornerRadius: 8).fill(LinearGradient(
+                                gradient: .init(colors: [.green, .green]),
+                                startPoint: .init(x: 0.5, y: 0),
+                                endPoint: .init(x: 0.5, y: 0.6)
+                            )).frame(width: (geometry.size.width - geometry.size.width * 0.5) * (score.score / 100), height:15)
+                            Text("\(NumberFormatter().string(from: NSNumber(value: score.score)) ?? "$0")")
+                            Spacer()
+                        }
+                    }
+                }
+            }
+            .navigationTitle("Session History")
         }
-//
-        
-     
-//
-//        ForEach(history.sessionScores) { SessionScore in
-//            HStack{
-//
-//
-//
-//
-//
-//            }
-        }
-    
-           
-        //}
-    //}
-    
-    func GetChartData()-> [(String, Double)]{
-        var data : [(String, Double)] = []
-        for entry in history.sessionScores{
-            data.append((entry.text, entry.score))
-            data.append((entry.text, entry.score))
-            data.append((entry.text, entry.score))
-            data.append((entry.text, entry.score))
-            data.append((entry.text, entry.score))
-            data.append((entry.text, entry.score))
-            data.append((entry.text, entry.score))
-            data.append((entry.text, entry.score))
-            data.append((entry.text, entry.score))
-        }
-        return data
     }
+    
 }
 
 struct HistoryView_Previews: PreviewProvider {
