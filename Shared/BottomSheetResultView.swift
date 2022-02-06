@@ -35,28 +35,28 @@ struct BottomSheetResultView: View {
         ZStack{
             Rectangle().fill(.white).border(.white)
             VStack{
-                Rectangle().fill(Color("dark")).border(Color("dark")).overlay(Text("Score").bold().foregroundColor(.white)).frame( height: 80).padding(.leading,0).padding(.bottom, 20)
-            
+                Rectangle().fill(Color("dark")).border(Color("dark")).overlay(Text("Score").bold().foregroundColor(.white)).padding(.leading,0).padding(.bottom, 20)
+        
                 HStack{
    
                     ProgressView(value: self.score,total: 100)
                         .progressViewStyle(ResultProgressBarStyle(theme: .bubblegum)) 
                     Text(String(format: "%.2f",score))
-                }.padding(.leading).padding(.trailing)
-                
-                
+                }.padding(.leading).padding(.trailing).frame(height:30)
+                    
                 HStack{
+                   
                     Button(action: resetDrawField){
                         Text(String(localized: "Retry")).foregroundColor(.white)
                     }
                     .buttonStyle(DialogButton(highlightColor:  Color.red))
-                    .frame( height: 30).padding().padding(.bottom)
+                    .padding().padding(.bottom)
                     
                     Button(action:nextHanzi){
                         Text(String(localized: "Continue")).foregroundColor(.white)
                     }
                     .buttonStyle(DialogButton(highlightColor:  Color.red))
-                    .frame( height: 30).padding().padding(.bottom)
+                    .padding().padding(.bottom)
                     
                  
                 }

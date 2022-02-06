@@ -14,7 +14,6 @@ struct HistoryView: View {
     
     var body: some View {
         GeometryReader { geometry in
-            //LineView(data: [8,23,54,32,12,37,7,23,43], title: "Line chart", legend: "Full screen")
             List {
                 Section(header: Text("Session Info")) {
                     

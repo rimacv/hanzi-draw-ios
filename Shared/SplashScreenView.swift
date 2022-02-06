@@ -59,6 +59,10 @@ struct SplashScreenView: View {
                 }
             }
             await oneshotTimer()
+            let adFrequency = await Api().getAddFrequency()
+            if(adFrequency != nil){
+                Constants.adFrequency = adFrequency!
+            }
         } catch {
             print(error)
             store.decks = Deck.sampleData

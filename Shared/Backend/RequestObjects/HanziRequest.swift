@@ -35,5 +35,9 @@ struct HanziInfoResponse : Decodable {
     let pinyin: String
 }
 
+struct AdFrequenceResponse : Decodable {
+    let frequence: Int
+}
+
 
 

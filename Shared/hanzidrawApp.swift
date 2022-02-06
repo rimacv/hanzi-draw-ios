@@ -9,7 +9,9 @@ import SwiftUI
 import GoogleMobileAds
 
 struct Constants {
-    static let drawPadSize = CGFloat(200)
+    static var drawPadSize = CGFloat(200)
+    
+    static var adFrequency : Int = 5
 }
 
 @main

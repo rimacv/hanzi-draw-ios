@@ -108,6 +108,23 @@ struct Api : BackendApi {
         }
     }
     
+    func getAddFrequency() async -> Int? {
+        do {
+            let headers = getHeaders()
+            let parameters : [String: [String]]? = nil
+            let response =  try await AF.request("https://hanzi-draw.de/api/adfrequence",
+                                                 method: .get,
+                                                 parameters: parameters,
+                                                 encoder: JSONParameterEncoder.default,
+                                                 headers: headers).serializingData().value
+            let decodedResponse = try JSONDecoder().decode(AdFrequenceResponse.self, from: response)
+            return decodedResponse.frequence
+        }
+        catch {
+            return nil
+        }
+    }
+    
     func getHeaders() -> HTTPHeaders {
         return  ["Content-Type" : "application/json", "App-Version": "0.1", "Accept-Language": "en" ]
     }

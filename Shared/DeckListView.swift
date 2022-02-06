@@ -29,41 +29,63 @@ struct DeckListView: View {
                 }
             }
             .navigationTitle(String(localized: "Decks"))
-            .toolbar {
-                Button(action: {
-                    isEditViewShown
-                    = true
-                }) {
-                    Image(systemName: "plus")
+            .toolbar (content:{
+                ToolbarItem(placement: .navigationBarLeading) {
+                    HStack{
+                        NavigationLink(destination: InfoView()){
+                                Image(systemName: "info.circle")
+                            .accessibilityLabel(String(localized: "New Decks"))
+                        }
+                     
+                        
+                        Button(action: {
+                            isEditViewShown
+                            = true
+                        }) {
+                            Image(systemName: "dollarsign.circle")
+                        }
+                        .accessibilityLabel(String(localized: "New Decks"))
+                    }
+        
                 }
-                .accessibilityLabel(String(localized: "New Decks"))
-            }
+                ToolbarItem(placement:  .navigationBarTrailing) {
+                    Button(action: {
+                        isEditViewShown
+                        = true
+                    }) {
+                        Image(systemName: "plus")
+                    }
+                    .accessibilityLabel(String(localized: "New Decks"))
+                }
+                
+            } )
+            
+            
             .sheet(isPresented: $isEditViewShown){
                 NavigationView {
                     DeckEditView(data: $newDeckData)
-                    .toolbar {
-                        ToolbarItem(placement: .cancellationAction) {
-                            Button("Dismiss") {
-                                isEditViewShown = false
-                                newDeckData = Deck.Data()
+                        .toolbar {
+                            ToolbarItem(placement: .cancellationAction) {
+                                Button("Dismiss") {
+                                    isEditViewShown = false
+                                    newDeckData = Deck.Data()
+                                }
+                            }
+                            ToolbarItem(placement: .confirmationAction) {
+                                Button("Add") {
+                                    let newDeck = Deck(data: newDeckData)
+                                    decks.append(newDeck)
+                                    newDeckData = Deck.Data()
+                                    isEditViewShown = false
+                                }.disabled(newDeckData.title == "" || newDeckData.deckEntries.count == 0)
                             }
                         }
-                        ToolbarItem(placement: .confirmationAction) {
-                            Button("Add") {
-                                let newDeck = Deck(data: newDeckData)
-                                decks.append(newDeck)
-                                newDeckData = Deck.Data()
-                                isEditViewShown = false
-                            }.disabled(newDeckData.title == "" || newDeckData.deckEntries.count == 0)
-                        }
-                    }
                 }
             }
             .onChange(of: scenePhase) { phase in
                 if phase == .inactive { saveAction() }
             }
-        }
-     
+        }.navigationViewStyle(StackNavigationViewStyle())
         
     }
 }

@@ -21,26 +21,32 @@ struct DrawingControlsView: View {
     private let spacing: CGFloat = 40
     private let buttonColor = Color("dark")
     
+    let scale = 0.5
     var body: some View {
         
         VStack{
+            
+        
+        
             HStack(spacing: spacing) {
                 
-                Button(String(localized: "Undo")) {
+                Button(action: {
                     if self.strokes.count > 0 {
                         lastRemovedStroke = strokes.removeLast()
                     }
-                }
-                .padding()
-                .foregroundColor(.white)
-                .background(buttonColor)
-                .clipShape(RoundedRectangle(cornerRadius: 5))
-                Button(String(localized: "Done")) {
+                }){
+                
+                Image(systemName:"arrow.uturn.backward").foregroundColor(.white)
+                       
+                  
+                }.cornerRadius(8).buttonStyle(QuizButtonStyle(highlightColor: Color.gray))
+                
+                Button(action: {
                     Task {
                         let score =  await backendApi.getDrawingScore(strokes: strokes, currentHanzi: currentHanzi)
                         if(score != nil){
                             withAnimation(.linear(duration:0.2)){
-                                bottomSheetPosition = .top
+                                bottomSheetPosition = .middle
                             }
                             withAnimation(.linear(duration: 0)){
                                 self.score = score!
@@ -51,30 +57,31 @@ struct DrawingControlsView: View {
                  
                        
                     }
+                }){
+                    Image(systemName: "checkmark").foregroundColor(.white)
                 }
                 .sheet(item: $errorWrapper, onDismiss: {
                 }) { wrapper in
                     ErrorView(errorWrapper: wrapper)
-                }
-                .padding()
-                .foregroundColor(.white)
-                .background(buttonColor)
-                .clipShape(RoundedRectangle(cornerRadius: 5))
+                }.cornerRadius(8).buttonStyle(QuizButtonStyle(highlightColor: Color.gray))
                 
-                Button(String(localized: "Redo")) {
+                Button(action: {
                     if lastRemovedStroke != nil {
                         strokes.append(lastRemovedStroke!)
                         lastRemovedStroke = nil
                     }
-                    
-                }.padding()
-                    .foregroundColor(.white)
-                    .background(buttonColor)
-                    .clipShape(RoundedRectangle(cornerRadius: 5))
+               
+                }){
+                   Image(systemName: "arrow.uturn.forward").foregroundColor(.white)
+                } .cornerRadius(8).buttonStyle(QuizButtonStyle(highlightColor: Color.gray))
+                 
                 
             }
-            
+ 
+            Spacer()
         }
+            
+        
         
         
     }
