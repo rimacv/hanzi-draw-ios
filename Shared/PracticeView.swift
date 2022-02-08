@@ -80,7 +80,7 @@ struct PracticeView: View {
                         correctAnswerIndex = Int.random(in: 0..<4)
                     }
                     .task {
-                        test(size: geometry.size.height * 0.42)
+                        test(size: geometry.size.height * 0.38)
                         currentHanzi = deck.deckEntries[sessionInfo.getDeckIndex()].text
                         
                         
@@ -109,7 +109,7 @@ struct PracticeView: View {
                                            lineWidth: $lineWidth,
                                            inverseDrawPadOpacity: $quizOpacity, bottomSheetPosition: $bottomSheetPosition, score: $score, currentHanzi: $currentHanzi )
                             
-                            
+                            Spacer()
                             QuizView(quizOpacity: $quizOpacity, currentHanziPinyin: $currentHanziPinyin, correctAnswerIndex: $correctAnswerIndex, pinyinList: pinyinList!).padding(.bottom, 20)
                             
                             

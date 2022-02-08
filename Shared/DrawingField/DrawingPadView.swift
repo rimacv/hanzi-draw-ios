@@ -22,10 +22,7 @@ struct DrawingPadView: View {
     
     var body: some View {
         VStack{
-            
-            
             CachedAsyncImage(url: URL(string: "https://hanzi-draw.de/text/raster.png")) { image in
-                
                 VStack{
                     image.resizable()
                         .aspectRatio(contentMode: .fit)
@@ -57,8 +54,6 @@ struct DrawingPadView: View {
                                 )
                             }
                         }
-                    
-                    
                 }
                 
             } placeholder: {
@@ -67,10 +62,11 @@ struct DrawingPadView: View {
             .frame(width: Constants.drawPadSize, height: Constants.drawPadSize)
             .opacity((1 - inverseDrawPadOpacity))
             
-            DrawingControlsView(strokes: $drawings,
-                                color: $color,
-                                lineWidth: $lineWidth,bottomSheetPosition: $bottomSheetPosition, score:$score, currentHanzi: $currentHanzi, backendApi: Api()).opacity((1 - inverseDrawPadOpacity)).padding().padding(.top, 5).padding(.bottom, 10)
-            
+            Spacer()
+                DrawingControlsView(strokes: $drawings,
+                                    color: $color,
+                                    lineWidth: $lineWidth,bottomSheetPosition: $bottomSheetPosition, score:$score, currentHanzi: $currentHanzi, backendApi: Api()).opacity((1 - inverseDrawPadOpacity)).padding().padding(.top, 5).padding(.bottom, 10)
+            Spacer()
         }
     }
     

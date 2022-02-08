@@ -32,39 +32,49 @@ struct BottomSheetResultView: View {
     var resetDrawField: () -> Void
     var nextHanzi: () -> Void
     var body: some View {
-        ZStack{
-            Rectangle().fill(.white).border(.white)
-            VStack{
-                Rectangle().fill(Color("dark")).border(Color("dark")).overlay(Text("Score").bold().foregroundColor(.white)).padding(.leading,0).padding(.bottom, 20)
-        
-                HStack{
-   
-                    ProgressView(value: self.score,total: 100)
-                        .progressViewStyle(ResultProgressBarStyle(theme: .bubblegum)) 
-                    Text(String(format: "%.2f",score))
-                }.padding(.leading).padding(.trailing).frame(height:30)
+        GeometryReader{  geometry in
+            ZStack{
+                Rectangle().fill(.white).border(.white)
+                VStack{
+                    Rectangle().fill(Color("dark")).border(Color("dark")).overlay(Text("Score").bold().foregroundColor(.white)).padding(.leading,0).padding(.bottom, 20).frame(height:geometry.size.height * 0.35)
                     
-                HStack{
-                   
-                    Button(action: resetDrawField){
-                        Text(String(localized: "Retry")).foregroundColor(.white)
+                    Spacer()
+                    HStack{
+                        
+                        ProgressView(value: self.score,total: 100)
+                            .progressViewStyle(ResultProgressBarStyle(theme: .bubblegum))
+                        Text(String(format: "%.2f",score))
+                    }.padding(.leading).padding(.trailing).frame(height:50)
+                    Spacer()
+                    HStack{
+                        
+                        Button(action: resetDrawField){
+                            ZStack{
+                                Rectangle().opacity(0).frame(height: geometry.size.height * 0.1)
+                                Text(String(localized: "Retry")).foregroundColor(.white)
+                            }
+                            
+                        }
+                        .buttonStyle(QuizButtonStyle(highlightColor:  Color.gray))
+                        .padding().padding(.bottom)
+                        
+                        Button(action:nextHanzi){
+                            ZStack{
+                                Rectangle().opacity(0).frame(height:  geometry.size.height * 0.1)
+                                Text(String(localized: "Continue")).foregroundColor(.white)
+                            }
+                        }
+                        .buttonStyle(QuizButtonStyle(highlightColor:  Color.gray))
+                        .padding().padding(.bottom)
+                        
+                        
                     }
-                    .buttonStyle(DialogButton(highlightColor:  Color.red))
-                    .padding().padding(.bottom)
                     
-                    Button(action:nextHanzi){
-                        Text(String(localized: "Continue")).foregroundColor(.white)
-                    }
-                    .buttonStyle(DialogButton(highlightColor:  Color.red))
-                    .padding().padding(.bottom)
+                    Spacer()
                     
-                 
                 }
-             
-                
             }
         }
-        
         
     }
     

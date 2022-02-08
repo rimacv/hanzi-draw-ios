@@ -20,14 +20,8 @@ struct DrawingControlsView: View {
     let backendApi : BackendApi
     private let spacing: CGFloat = 40
     private let buttonColor = Color("dark")
-    
-    let scale = 0.5
+
     var body: some View {
-        
-        VStack{
-            
-        
-        
             HStack(spacing: spacing) {
                 
                 Button(action: {
@@ -35,10 +29,13 @@ struct DrawingControlsView: View {
                         lastRemovedStroke = strokes.removeLast()
                     }
                 }){
-                
-                Image(systemName:"arrow.uturn.backward").foregroundColor(.white)
-                       
-                  
+                    ZStack{
+                        Rectangle().opacity(0).frame(height:10)
+                        HStack{
+                            Image(systemName:"arrow.uturn.backward").foregroundColor(.white)
+                            //Text(String(localized: "Undo")).foregroundColor(.white)
+                        }
+                    }
                 }.cornerRadius(8).buttonStyle(QuizButtonStyle(highlightColor: Color.gray))
                 
                 Button(action: {
@@ -46,7 +43,7 @@ struct DrawingControlsView: View {
                         let score =  await backendApi.getDrawingScore(strokes: strokes, currentHanzi: currentHanzi)
                         if(score != nil){
                             withAnimation(.linear(duration:0.2)){
-                                bottomSheetPosition = .middle
+                                bottomSheetPosition = .top
                             }
                             withAnimation(.linear(duration: 0)){
                                 self.score = score!
@@ -58,7 +55,13 @@ struct DrawingControlsView: View {
                        
                     }
                 }){
-                    Image(systemName: "checkmark").foregroundColor(.white)
+                    ZStack{
+                        Rectangle().opacity(0).frame(height:10)
+                    HStack{
+                        Image(systemName: "checkmark").foregroundColor(.white)
+                        //Text(String(localized: "Done")).foregroundColor(.white)
+                    }
+                    }
                 }
                 .sheet(item: $errorWrapper, onDismiss: {
                 }) { wrapper in
@@ -72,18 +75,18 @@ struct DrawingControlsView: View {
                     }
                
                 }){
-                   Image(systemName: "arrow.uturn.forward").foregroundColor(.white)
+                    ZStack{
+                        Rectangle().opacity(0).frame(height:10)
+                    HStack{
+                        Image(systemName: "arrow.uturn.forward").foregroundColor(.white)
+                        //Text(String("Redo")).foregroundColor(.white)
+                    }
+                    }
+                
                 } .cornerRadius(8).buttonStyle(QuizButtonStyle(highlightColor: Color.gray))
                  
                 
             }
- 
-            Spacer()
-        }
-            
-        
-        
-        
     }
 }
 
