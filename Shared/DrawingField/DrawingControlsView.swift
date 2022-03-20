@@ -20,73 +20,70 @@ struct DrawingControlsView: View {
     let backendApi : BackendApi
     private let spacing: CGFloat = 40
     private let buttonColor = Color("dark")
-
+    
     var body: some View {
-            HStack(spacing: spacing) {
-                
-                Button(action: {
-                    if self.strokes.count > 0 {
-                        lastRemovedStroke = strokes.removeLast()
-                    }
-                }){
-                    ZStack{
-                        Rectangle().opacity(0).frame(height:10)
-                        HStack{
-                            Image(systemName:"arrow.uturn.backward").foregroundColor(.white)
-                            //Text(String(localized: "Undo")).foregroundColor(.white)
-                        }
-                    }
-                }.cornerRadius(8).buttonStyle(QuizButtonStyle(highlightColor: Color.gray))
-                
-                Button(action: {
-                    Task {
-                        let score =  await backendApi.getDrawingScore(strokes: strokes, currentHanzi: currentHanzi)
-                        if(score != nil){
-                            withAnimation(.linear(duration:0.2)){
-                                bottomSheetPosition = .top
-                            }
-                            withAnimation(.linear(duration: 0)){
-                                self.score = score!
-                            }
-                        }else{
-                            errorWrapper = ErrorWrapper(error: nil, guidance: String(localized: "ScoreFetchError"))
-                        }
-                 
-                       
-                    }
-                }){
-                    ZStack{
-                        Rectangle().opacity(0).frame(height:10)
+        HStack(spacing: spacing) {
+            
+            Button(action: {
+                if self.strokes.count > 0 {
+                    lastRemovedStroke = strokes.removeLast()
+                }
+            }){
+                ZStack{
+                    Rectangle().opacity(0).frame(height:10)
                     HStack{
-                        Image(systemName: "checkmark").foregroundColor(.white)
-                        //Text(String(localized: "Done")).foregroundColor(.white)
-                    }
+                        Image(systemName:"arrow.uturn.backward").foregroundColor(.white)
                     }
                 }
-                .sheet(item: $errorWrapper, onDismiss: {
-                }) { wrapper in
-                    ErrorView(errorWrapper: wrapper)
-                }.cornerRadius(8).buttonStyle(QuizButtonStyle(highlightColor: Color.gray))
-                
-                Button(action: {
-                    if lastRemovedStroke != nil {
-                        strokes.append(lastRemovedStroke!)
-                        lastRemovedStroke = nil
+            }.cornerRadius(8).buttonStyle(QuizButtonStyle(highlightColor: Color.gray))
+            
+            Button(action: {
+                Task {
+                    let score =  await backendApi.getDrawingScore(strokes: strokes, currentHanzi: currentHanzi)
+                    if(score != nil){
+                        withAnimation(.linear(duration:0.2)){
+                            bottomSheetPosition = .top
+                        }
+                        withAnimation(.linear(duration: 0)){
+                            self.score = score!
+                        }
+                    }else{
+                        errorWrapper = ErrorWrapper(error: nil, guidance: String(localized: "ScoreFetchError"))
                     }
-               
-                }){
-                    ZStack{
-                        Rectangle().opacity(0).frame(height:10)
+                    
+                    
+                }
+            }){
+                ZStack{
+                    Rectangle().opacity(0).frame(height:10)
+                    HStack{
+                        Image(systemName: "checkmark").foregroundColor(.white)
+                    }
+                }
+            }
+            .sheet(item: $errorWrapper, onDismiss: {
+            }) { wrapper in
+                ErrorView(errorWrapper: wrapper)
+            }.cornerRadius(8).buttonStyle(QuizButtonStyle(highlightColor: Color.gray))
+            
+            Button(action: {
+                if lastRemovedStroke != nil {
+                    strokes.append(lastRemovedStroke!)
+                    lastRemovedStroke = nil
+                }
+                
+            }){
+                ZStack{
+                    Rectangle().opacity(0).frame(height:10)
                     HStack{
                         Image(systemName: "arrow.uturn.forward").foregroundColor(.white)
-                        //Text(String("Redo")).foregroundColor(.white)
                     }
-                    }
+                }
                 
-                } .cornerRadius(8).buttonStyle(QuizButtonStyle(highlightColor: Color.gray))
-                 
-                
-            }
+            } .cornerRadius(8).buttonStyle(QuizButtonStyle(highlightColor: Color.gray))
+            
+            
+        }
     }
 }
 

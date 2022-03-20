@@ -13,16 +13,16 @@ struct DeckDetailView: View {
     @State var isPresentingEditView = false
     var body: some View {
         List {
-            Section(header: Text("Deck Info")) {
+            Section(header: Text(String(localized: "Deck Info"))) {
                 NavigationLink(destination: PracticeView(deck: $deck)) {
-                    Label("Start Learning Session", systemImage: "graduationcap.fill")
+                    Label(String(localized: "Start Learning Session"), systemImage: "graduationcap.fill")
                         .font(.headline)
                         .foregroundColor(.accentColor)
                 }
                 HStack {
-                    Label("Deck Size", systemImage: "character.book.closed.fill.zh")
+                    Label(String(localized: "Deck Size"), systemImage: "character.book.closed.fill.zh")
                     Spacer()
-                    Text("\(deck.deckEntries.count) cards")
+                    Text("\(deck.deckEntries.count) " + String(localized: "cards"))
                 }
                 .accessibilityElement(children: .combine)
                 HStack {
@@ -36,7 +36,7 @@ struct DeckDetailView: View {
                 }
                 .accessibilityElement(children: .combine)
             }
-            Section(header: Text("Cards - Average Score")) {
+            Section(header: Text(String(localized: "Cards - Average Score"))) {
                 ForEach(deck.deckEntries) { deckEntry in
                     
                     HStack{
@@ -55,7 +55,7 @@ struct DeckDetailView: View {
                     
                 }
             }
-            Section(header: Text("History")) {
+            Section(header: Text(String(localized: "History"))) {
                 if deck.history.isEmpty {
                     Label("No sessions yet", systemImage: "calendar.badge.exclamationmark")
                 }
@@ -71,7 +71,7 @@ struct DeckDetailView: View {
         }
         .navigationTitle(deck.title)
         .toolbar {
-            Button("Edit") {
+            Button(String(localized: "Edit")) {
                 data = deck.data
                 isPresentingEditView = true
             }
@@ -82,12 +82,12 @@ struct DeckDetailView: View {
                     .navigationTitle(deck.title)
                     .toolbar {
                         ToolbarItem(placement: .cancellationAction) {
-                            Button("Cancel") {
+                            Button(String(localized: "Dismiss")) {
                                 isPresentingEditView = false
                             }
                         }
                         ToolbarItem(placement: .confirmationAction) {
-                            Button("Done") {
+                            Button(String(localized: "Done")) {
                                 isPresentingEditView = false
                                 deck.update(from: data)
                             }.disabled(deck.title == "" || deck.deckEntries.count == 0)

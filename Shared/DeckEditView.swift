@@ -13,11 +13,11 @@ struct DeckEditView: View {
     @State var newCards : String = ""
     var body: some View {
         Form {
-            Section(header: Text("Deck Info")) {
+            Section(header: Text(String(localized: "Deck Info"))) {
                 TextField("Title", text: $data.title)
                 ThemePicker(selection: $data.theme)
             }
-            Section(header: Text("Add Cards")) {
+            Section(header: Text(String(localized: "Add Cards"))) {
                 ForEach(data.deckEntries) { card in
                     Text(card.text)
                 }
@@ -25,7 +25,7 @@ struct DeckEditView: View {
                     data.deckEntries.remove(atOffsets: indices)
                 }
                 HStack {
-                    TextField("Add charachters e.g. 汉子", text: $newCards)
+                    TextField(String(localized: "Add charachters e.g. 汉子"), text: $newCards)
                     Button(action: {
                         
                         for hanzi in newCards{

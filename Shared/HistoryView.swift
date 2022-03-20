@@ -15,7 +15,7 @@ struct HistoryView: View {
     var body: some View {
         GeometryReader { geometry in
             List {
-                Section(header: Text("Session Info")) {
+                Section(header: Text(String(localized: "Session Info"))) {
                     
                     HStack {
                         Image(systemName: "calendar")
@@ -25,12 +25,12 @@ struct HistoryView: View {
                     HStack {
                         Label("Deck Size", systemImage: "character.book.closed.fill.zh")
                         Spacer()
-                        Text("\(history.sessionScores.count) cards")
+                        Text("\(history.sessionScores.count) " + String(localized: "cards"))
                     }
                     .accessibilityElement(children: .combine)
                     
                 }
-                Section(header: Text("Charachter scores")) {
+                Section(header: Text(String(localized: "Charachter scores"))) {
                     ForEach(history.sessionScores) { score in
                         HStack {
                             Text(score.text + ": ")
@@ -45,7 +45,7 @@ struct HistoryView: View {
                     }
                 }
             }
-            .navigationTitle("Session History")
+            .navigationTitle(String(localized: "Session History"))
         }
     }
     

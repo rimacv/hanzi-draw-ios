@@ -9,12 +9,13 @@ import SwiftUI
 import BottomSheet
 struct QuizButtonStyle : ButtonStyle {
     let highlightColor : Color
+    var defaultColor : Color = Color("dark")
     
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
             .padding()
-            .foregroundColor(configuration.isPressed ? highlightColor : Color("dark"))
-            .background(configuration.isPressed ? highlightColor : Color("dark"))
+            .foregroundColor(configuration.isPressed ? highlightColor : defaultColor)
+            .background(configuration.isPressed ? highlightColor : defaultColor)
             .cornerRadius(8.0)
             
         

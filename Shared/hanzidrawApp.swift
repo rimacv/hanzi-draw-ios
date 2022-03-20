@@ -7,19 +7,26 @@
 
 import SwiftUI
 import GoogleMobileAds
+import RevenueCat
+
 
 struct Constants {
     static var drawPadSize = CGFloat(200)
-    
-    static var adFrequency : Int = 5
+    static var adFrequency : Int = 3
 }
+
+
 
 @main
 struct hanzidrawApp: App {
     let adsVM = AdsViewModel.shared
-    
+    //@UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     init(){
         GADMobileAds.sharedInstance().start(completionHandler: nil)
+        Purchases.logLevel = .debug
+        Purchases.configure(withAPIKey: "appl_BODvJYsoznPWIKVhHRVTbRqcZFd")
+       
+     
     }
   
     var body: some Scene {

@@ -6,13 +6,14 @@
 //
 
 import SwiftUI
-
+import RevenueCat
 
 struct DeckListView: View {
     
     @Binding var decks: [Deck]
     @Environment(\.scenePhase) private var scenePhase
     @State private var isEditViewShown: Bool = false
+    @State private var isBuyFeatureViewShown: Bool = false
     @State private var newDeckData : Deck.Data =  Deck.Data()
     
     let saveAction: ()->Void
@@ -33,20 +34,19 @@ struct DeckListView: View {
                 ToolbarItem(placement: .navigationBarLeading) {
                     HStack{
                         NavigationLink(destination: InfoView()){
-                                Image(systemName: "info.circle")
-                            .accessibilityLabel(String(localized: "New Decks"))
+                            Image(systemName: "info.circle")
+                                .accessibilityLabel(String(localized: "App Info"))
                         }
-                     
+                        
                         
                         Button(action: {
-                            isEditViewShown
-                            = true
+                            isBuyFeatureViewShown = true
                         }) {
                             Image(systemName: "dollarsign.circle")
                         }
-                        .accessibilityLabel(String(localized: "New Decks"))
+                        .accessibilityLabel(String(localized: "Buy new features"))
                     }
-        
+                    
                 }
                 ToolbarItem(placement:  .navigationBarTrailing) {
                     Button(action: {
@@ -66,13 +66,13 @@ struct DeckListView: View {
                     DeckEditView(data: $newDeckData)
                         .toolbar {
                             ToolbarItem(placement: .cancellationAction) {
-                                Button("Dismiss") {
+                                Button(String(localized: "Dismiss")) {
                                     isEditViewShown = false
                                     newDeckData = Deck.Data()
                                 }
                             }
                             ToolbarItem(placement: .confirmationAction) {
-                                Button("Add") {
+                                Button(String(localized: "Add")) {
                                     let newDeck = Deck(data: newDeckData)
                                     decks.append(newDeck)
                                     newDeckData = Deck.Data()
@@ -80,6 +80,18 @@ struct DeckListView: View {
                                 }.disabled(newDeckData.title == "" || newDeckData.deckEntries.count == 0)
                             }
                         }
+                }
+            }
+            .sheet(isPresented: $isBuyFeatureViewShown){
+                NavigationView {
+                    BuyFeatureView()
+                    .toolbar {
+                        ToolbarItem(placement: .cancellationAction) {
+                            Button(String(localized: "Dismiss")) {
+                                isBuyFeatureViewShown = false
+                            }
+                        }
+                    }
                 }
             }
             .onChange(of: scenePhase) { phase in

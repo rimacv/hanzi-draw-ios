@@ -43,7 +43,7 @@ struct BottomSheetResultView: View {
                         
                         ProgressView(value: self.score,total: 100)
                             .progressViewStyle(ResultProgressBarStyle(theme: .bubblegum))
-                        Text(String(format: "%.2f",score))
+                        Text(String(format: "%.2f",score)).foregroundColor(.black)
                     }.padding(.leading).padding(.trailing).frame(height:50)
                     Spacer()
                     HStack{

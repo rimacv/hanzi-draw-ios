@@ -28,7 +28,7 @@ struct ErrorView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Dismiss") {
+                    Button(String(localized:"Dismiss")) {
                         dismiss()
                     }.foregroundColor(.black)
                 }

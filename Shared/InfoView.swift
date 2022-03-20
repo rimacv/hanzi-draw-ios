@@ -59,6 +59,10 @@ struct InfoView: View {
                     Label("CachedAsyncImage", systemImage: "doc")
                 }
                 
+                Link(destination: URL(string: "https://github.com/simibac/ConfettiSwiftUI/blob/master/LICENSE")!) {
+                    Label("ConfettiSwiftUI", systemImage: "doc")
+                }
+                
             }
             
             Section(header: Text(String(localized: "Privacy"))) {

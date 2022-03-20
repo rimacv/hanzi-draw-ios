@@ -19,14 +19,14 @@ class AdsManager: NSObject, ObservableObject {
     }
     
     final class Interstitial: NSObject, GADFullScreenContentDelegate, ObservableObject {
-
+        
         private var interstitial: GADInterstitialAd?
         
         override init() {
             super.init()
             requestInterstitialAds()
         }
-
+        
         func requestInterstitialAds() {
             let request = GADRequest()
             request.scene = UIApplication.shared.connectedScenes.first as? UIWindowScene

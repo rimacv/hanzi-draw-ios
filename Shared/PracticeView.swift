@@ -8,18 +8,40 @@
 import SwiftUI
 import CachedAsyncImage
 import BottomSheet
+import RevenueCat
 
 struct HanziImage : View{
     @Binding var hanziImageUrl : String
+    @Binding var currentHanzi : String
     
     var body: some View {
-        CachedAsyncImage(url: URL(string: hanziImageUrl)) { image in
-            image.resizable()
-                .aspectRatio(contentMode: .fit)
-        } placeholder: {
-            ProgressView()
+        if(!hanziImageUrl.isEmpty){
+            CachedAsyncImage(url: URL(string: hanziImageUrl)) { image in
+                image.resizable()
+                    .aspectRatio(contentMode: .fit)
+            } placeholder: {
+                ProgressView()
+            }
+            .frame(width: Constants.drawPadSize, height: Constants.drawPadSize)
+        }else{
+            Text(currentHanzi).font(.system(size: 60)).frame(width: Constants.drawPadSize, height: Constants.drawPadSize)
         }
-        .frame(width: Constants.drawPadSize, height: Constants.drawPadSize)
+       
+    }
+}
+
+struct HanziInfoView : View{
+    @Binding var pinyin : String
+    @Binding var definition : String
+    
+    var body: some View {
+     
+        VStack{
+            Text(pinyin)
+            Text(definition)
+        }
+        
+       
     }
 }
 
@@ -62,11 +84,13 @@ struct PracticeView: View {
     @State private var sessionScores = [SessionScore]()
     @Binding var deck : Deck
 
+    @State private var flip = false
+    @State private var disabled = false
     
     @EnvironmentObject var adsViewModel: AdsViewModel
     @Environment(\.dismiss) var dismiss
     
-    func test(size: Double){
+    func SetDrawPadSize(size: Double){
         Constants.drawPadSize = size
     }
 
@@ -80,11 +104,11 @@ struct PracticeView: View {
                         correctAnswerIndex = Int.random(in: 0..<4)
                     }
                     .task {
-                        test(size: geometry.size.height * 0.38)
+                        SetDrawPadSize(size: geometry.size.height * 0.38)
                         currentHanzi = deck.deckEntries[sessionInfo.getDeckIndex()].text
                         
                         
-                        hanziImageUrl =  await Api().getImageUrlForHanzi(hanzi:currentHanzi) ??  hanziImageUrl
+                        hanziImageUrl =  await Api().getImageUrlForHanzi(hanzi:currentHanzi) ??  ""
                         let hanziInfo = await Api().getHanziInfo(hanzi: currentHanzi)
                         currentHanziPinyin = hanziInfo?.pinyin ?? ""
                         currentHanziDefinition = hanziInfo?.definition ?? ""
@@ -100,8 +124,14 @@ struct PracticeView: View {
             }else{
                 
                     VStack{
-                        HanziImage(hanziImageUrl: $hanziImageUrl).padding(.bottom, 10)
-                      
+                        HStack{
+                            Rectangle().opacity(0).frame(width: geometry.size.width * 0.85, height: 0)
+                            Text("\(sessionInfo.getHanziCounter() + 1 ) / \(deck.numberOfEntries)  ")
+                        }
+                        
+                        FlipView(HanziImage(hanziImageUrl: $hanziImageUrl, currentHanzi: $currentHanzi).padding(.bottom, 10), HanziInfoView(pinyin: $currentHanziPinyin, definition: $currentHanziDefinition), tap: {}, flipped:$flip, disabled: $disabled )
+                  
+         
                         ZStack{
                             DrawingPadView(currentDrawing: $currentDrawing,
                                            drawings: $drawings,
@@ -111,10 +141,6 @@ struct PracticeView: View {
                             
                             Spacer()
                             QuizView(quizOpacity: $quizOpacity, currentHanziPinyin: $currentHanziPinyin, correctAnswerIndex: $correctAnswerIndex, pinyinList: pinyinList!).padding(.bottom, 20)
-                            
-                            
-                            
-                            
                         }
                         .bottomSheet( bottomSheetPosition: $bottomSheetPosition, options: [.cornerRadius(8),.notResizeable,]    ,content: {
                             BottomSheetResultView(score: $score, resetDrawField: resetDrawField, nextHanzi: nextHanzi)
@@ -139,11 +165,18 @@ struct PracticeView: View {
         sessionScores.append(SessionScore( text:currentHanzi, score: score))
         if(sessionInfo.getDeckIndex() < deck.numberOfEntries - 1){
             
-            if ((sessionInfo.getDeckIndex() + 1)  % Constants.adFrequency == 0) {
+            
+            print(sessionInfo.getHanziCounter() + 1 )
+            print((sessionInfo.getHanziCounter() + 1)  % Constants.adFrequency )
+            print(Constants.adFrequency )
+            
+            if ((sessionInfo.getHanziCounter() + 1)  % Constants.adFrequency == 0) {
                 adsViewModel.showInterstitial.toggle()
             }
             
-           
+//            ifAppIsNotAdFree(action: {
+//
+//            })
             
             resetDrawField()
             sessionInfo.nextHanzi()
@@ -160,11 +193,28 @@ struct PracticeView: View {
         }else{
             let newHistory = History(sessionScores: sessionScores)
             deck.history.insert(newHistory, at: 0)
-            adsViewModel.showInterstitial.toggle()
+            ifAppIsNotAdFree(action: {
+                adsViewModel.showInterstitial.toggle()
+            })
+            
             resetDrawField()
             dismiss()
         }
         
+    }
+    
+    func ifAppIsNotAdFree(action: @escaping () -> Void) {
+        Purchases.shared.getCustomerInfo { (purchaserInfo, error) in
+            if error == nil {
+                if purchaserInfo != nil {
+                    let hasUserAppFreeEntitlement = purchaserInfo?.entitlements.all.keys.contains("Ad Free")
+                    if hasUserAppFreeEntitlement != nil  && hasUserAppFreeEntitlement! {
+                        return
+                    }
+                }
+            }
+            action()
+        }
     }
 }
 
