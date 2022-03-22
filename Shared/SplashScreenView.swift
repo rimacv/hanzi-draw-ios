@@ -27,6 +27,17 @@ struct SplashScreenView: View {
             }.onAppear{
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     adsViewModel.askForTrackingPermission()
+                    
+                    
+                }
+                
+            }
+            .task {
+                // Ensures that data is saved when app is started the first time
+                do {
+                    try await DeckStore.save(scrums: store.decks)
+                } catch {
+                    //errorWrapper = ErrorWrapper(error: nil, guidance: String(localized: "SaveError"))
                 }
             }
         }else{

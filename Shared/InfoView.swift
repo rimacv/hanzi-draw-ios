@@ -63,6 +63,10 @@ struct InfoView: View {
                     Label("ConfettiSwiftUI", systemImage: "doc")
                 }
                 
+                Link(destination: URL(string: "https://github.com/RevenueCat/purchases-ios/blob/main/LICENSE")!) {
+                    Label("RevenueCat - purchases-ios", systemImage: "doc")
+                }
+                
             }
             
             Section(header: Text(String(localized: "Privacy"))) {

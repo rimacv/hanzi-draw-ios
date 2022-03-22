@@ -14,8 +14,6 @@ struct Constants {
     static var adFrequency : Int = 3
 }
 
-
-
 @main
 struct hanzidrawApp: App {
     let adsVM = AdsViewModel.shared
