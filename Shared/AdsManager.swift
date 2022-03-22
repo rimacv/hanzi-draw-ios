@@ -15,7 +15,7 @@ import AdSupport
 class AdsManager: NSObject, ObservableObject {
     
     private struct AdMobConstant {
-        static let interstitial1ID = "ca-app-pub-3940256099942544/4411468910"
+        static let interstitial1ID = "ca-app-pub-9021609527295015/4206259158"
     }
     
     final class Interstitial: NSObject, GADFullScreenContentDelegate, ObservableObject {
@@ -24,23 +24,22 @@ class AdsManager: NSObject, ObservableObject {
         
         override init() {
             super.init()
-            requestInterstitialAds()
         }
         
         func requestInterstitialAds() {
             let request = GADRequest()
             request.scene = UIApplication.shared.connectedScenes.first as? UIWindowScene
-            ATTrackingManager.requestTrackingAuthorization(completionHandler: { status in
-                GADInterstitialAd.load(withAdUnitID: AdMobConstant.interstitial1ID, request: request, completionHandler: { [self] ad, error in
-                    if let error = error {
-                        print("Failed to load interstitial ad with error: \(error.localizedDescription)")
-                        return
-                    }
-                    interstitial = ad
-                    interstitial?.fullScreenContentDelegate = self
-                })
+            GADInterstitialAd.load(withAdUnitID: AdMobConstant.interstitial1ID, request: request, completionHandler: { [self] ad, error in
+                if let error = error {
+                    print("Failed to load interstitial ad with error: \(error.localizedDescription)")
+                    return
+                }
+                interstitial = ad
+                interstitial?.fullScreenContentDelegate = self
             })
+           
         }
+        
         func showAd() {
             let root = UIApplication.shared.windows.last?.rootViewController
             if let fullScreenAds = interstitial {
@@ -69,4 +68,14 @@ class AdsViewModel: ObservableObject {
             }
         }
     }
+    
+    func askForTrackingPermission(){
+        ATTrackingManager.requestTrackingAuthorization(completionHandler: { [self] status in
+            if status == .authorized {
+                print(ASIdentifierManager.shared().advertisingIdentifier)
+            }
+            interstitial.requestInterstitialAds()
+        })
+    }
+    
 }

@@ -18,9 +18,16 @@ struct BuyFeatureView: View {
     var body: some View {
         GeometryReader{  geometry in
             VStack{
-                Text(String(localized: "AdFreeHeader")).font(.title).bold().scaledToFit()
-                    .minimumScaleFactor(0.01)
-                    .lineLimit(1).padding()
+                if(!isProductBought){
+                    Text(String(localized: "AdFreeHeader")).font(.title).bold().scaledToFit()
+                        .minimumScaleFactor(0.01)
+                        .lineLimit(1).padding()
+                }else{
+                    Text(String(localized: "Thank you!")).font(.title).bold().scaledToFit()
+                        .minimumScaleFactor(0.01)
+                        .lineLimit(1).padding()
+                }
+                
                 Spacer()
                 ZStack{
                     ConfettiCannon(counter: $counter,num: 50, openingAngle: Angle(degrees: 0), closingAngle: Angle(degrees: 360), radius: 200)
@@ -63,7 +70,6 @@ struct BuyFeatureView: View {
                                 
                                 if(packages.first != nil){
                                     let package = packages.first!
-                                    print(package.localizedPriceString)
                                     Purchases.shared.purchase(package: packages.first!) { (transaction, customerInfo, error, userCancelled) in
                                         if !userCancelled {
                                             if error != nil {

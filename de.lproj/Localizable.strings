@@ -37,7 +37,9 @@
 "Charachter scores" = "Erreichte Punkte je Schriftzeichen";
 "Start Learning Session" = "Lernen!";
 "Offer Price: " = "Angebotspreis: ";
-"Purchase Successful!" = "Kauf erfolgreich!";
+"Purchase Successful!" = "Funktionen freigeschaltet!";
 "Ads removed!" = "Werbung entfernt!";
 "BuyError" = "Fehler beim Kaufprozess.";
 "RestorePurchaseError" = "Fehler beim wiederherstellen des Kaufs.";
+"Thank you!" = "Vielen Dank!";
+"Stroke width" = "Strichbreite";

@@ -6,11 +6,15 @@
 //
 
 import SwiftUI
+import AdSupport
+import AppTrackingTransparency
+
 
 struct DeckDetailView: View {
     @Binding var deck : Deck
     @State private var data = Deck.Data()
     @State var isPresentingEditView = false
+    
     var body: some View {
         List {
             Section(header: Text(String(localized: "Deck Info"))) {
@@ -32,6 +36,15 @@ struct DeckDetailView: View {
                         .padding(4)
                         .foregroundColor(deck.theme.accentColor)
                         .background(deck.theme.mainColor)
+                        .cornerRadius(4)
+                }
+                .accessibilityElement(children: .combine)
+                
+                HStack {
+                    Label(String(localized: "Stroke width"), systemImage: "paintbrush.pointed.fill")
+                    Spacer()
+                    Text("\(Int(deck.strokeSize)) pts")
+                        .padding(4)
                         .cornerRadius(4)
                 }
                 .accessibilityElement(children: .combine)

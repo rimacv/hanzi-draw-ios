@@ -34,7 +34,7 @@ struct DrawingPadView: View {
                                     }
                                     self.add(drawing: self.currentDrawing, toPath: &path)
                                 }
-                                .stroke(self.color, lineWidth: self.lineWidth)
+                                .stroke(self.color, lineWidth: CGFloat(Int(self.lineWidth)))
                                 .background((.white.opacity(0.1)))
                                 .gesture(
                                     DragGesture(minimumDistance: 0.1)

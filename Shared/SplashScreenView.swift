@@ -6,8 +6,6 @@
 //
 
 import SwiftUI
-import AdSupport
-import AppTrackingTransparency
 
 @MainActor
 struct SplashScreenView: View {
@@ -15,6 +13,7 @@ struct SplashScreenView: View {
     
     @StateObject private var store = DeckStore()
     @State private var errorWrapper: ErrorWrapper?
+    @EnvironmentObject var adsViewModel: AdsViewModel
     var body: some View {
         if(hasTimeElapsed){
             DeckListView(decks: $store.decks){
@@ -25,17 +24,10 @@ struct SplashScreenView: View {
                         errorWrapper = ErrorWrapper(error: nil, guidance: String(localized: "SaveError"))
                     }
                 }
-            }.task {
+            }.onAppear{
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                        if #available(iOS 14, *) {
-                            ATTrackingManager.requestTrackingAuthorization(completionHandler: { status in
-                                DispatchQueue.main.async {
-                                    print(status.rawValue)
-                                    print(ASIdentifierManager.shared().advertisingIdentifier)
-                                }
-                            })
-                        }
-                    }
+                    adsViewModel.askForTrackingPermission()
+                }
             }
         }else{
             ZStack{
@@ -77,7 +69,6 @@ struct SplashScreenView: View {
                 Constants.adFrequency = adFrequency!
             }
         } catch {
-            print(error)
             store.decks = Deck.sampleData
             errorWrapper = ErrorWrapper(error: nil, guidance: String(localized: "DeckLoadError"))
         }

@@ -8,14 +8,24 @@
 import SwiftUI
 
 struct DeckEditView: View {
-
+    
     @Binding var data: Deck.Data
     @State var newCards : String = ""
+    
     var body: some View {
         Form {
             Section(header: Text(String(localized: "Deck Info"))) {
                 TextField("Title", text: $data.title)
                 ThemePicker(selection: $data.theme)
+                HStack{
+                    Slider(
+                        value: $data.strokeSize,
+                        in: 3...10
+                        
+                    )
+                    Text("\(Int(data.strokeSize)) pts")
+                }
+              
             }
             Section(header: Text(String(localized: "Add Cards"))) {
                 ForEach(data.deckEntries) { card in
@@ -45,7 +55,7 @@ struct DeckEditView: View {
             }
             
         }
-    
+        
     }
 }
 

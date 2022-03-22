@@ -68,7 +68,6 @@ struct PracticeView: View {
     @State private var currentDrawing: Stroke = Stroke()
     @State private var drawings: [Stroke] = [Stroke]()
     @State private var color: Color = Color.black
-    @State private var lineWidth: CGFloat = 3.0
     @State private var quizOpacity = 1.0
     @State private var showDrawPad = false
     @State private var bottomSheetPosition: BottomSheetPosition = .hidden
@@ -118,7 +117,6 @@ struct PracticeView: View {
                             hanziList += entry.text
                         }
                         pinyinList = await Api().getPinyinList(hanziList: hanziList)
-                        print(hanziImageUrl)
                         isLoaded.toggle()
                     }
             }else{
@@ -136,7 +134,7 @@ struct PracticeView: View {
                             DrawingPadView(currentDrawing: $currentDrawing,
                                            drawings: $drawings,
                                            color: $color,
-                                           lineWidth: $lineWidth,
+                                           lineWidth: $deck.strokeSize,
                                            inverseDrawPadOpacity: $quizOpacity, bottomSheetPosition: $bottomSheetPosition, score: $score, currentHanzi: $currentHanzi )
                             
                             Spacer()
@@ -165,18 +163,11 @@ struct PracticeView: View {
         sessionScores.append(SessionScore( text:currentHanzi, score: score))
         if(sessionInfo.getDeckIndex() < deck.numberOfEntries - 1){
             
-            
-            print(sessionInfo.getHanziCounter() + 1 )
-            print((sessionInfo.getHanziCounter() + 1)  % Constants.adFrequency )
-            print(Constants.adFrequency )
-            
-            if ((sessionInfo.getHanziCounter() + 1)  % Constants.adFrequency == 0) {
-                adsViewModel.showInterstitial.toggle()
-            }
-            
-//            ifAppIsNotAdFree(action: {
-//
-//            })
+            ifAppIsNotAdFree(action: {
+                if ((sessionInfo.getHanziCounter() + 1)  % Constants.adFrequency == 0) {
+                    adsViewModel.showInterstitial.toggle()
+                }
+            })
             
             resetDrawField()
             sessionInfo.nextHanzi()
