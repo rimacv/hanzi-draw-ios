@@ -863,6 +863,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "hanzidraw--iOS--Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Hanzi Draw";
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSUserTrackingUsageDescription = "See ads which are more relevant to you.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -899,6 +900,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "hanzidraw--iOS--Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Hanzi Draw";
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSUserTrackingUsageDescription = "See ads which are more relevant to you.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
