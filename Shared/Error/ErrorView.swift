@@ -10,16 +10,18 @@ struct ErrorView: View {
                 Text(String(localized: "ErrorTitle"))
                     .font(.title)
                     .padding(.bottom)
-                    .foregroundColor(.black)
+                    .foregroundColor(.black).multilineTextAlignment(.center)
+                
                 if(errorWrapper.error != nil){
                     Text(errorWrapper.error!.localizedDescription)
-                        .font(.headline)
+                        .font(.headline).multilineTextAlignment(.center)
                 }
                
                 Text(errorWrapper.guidance)
-                    .font(.caption)
+                    .font(.subheadline)
                     .padding(.top)
                     .foregroundColor(.black)
+                    .multilineTextAlignment(.center)
                 Spacer()
             }
             .padding()

@@ -19,9 +19,11 @@
 "Info" = "Info";
 "Buy" = "Kaufen";
 "Restore Purchase" = "Kauf wiederherstellen";
-"AdFreeHeader" = "Entferne jegliche Werbung. Für immer!";
-"AdFreeDescription" = "Beschleunige deinen Lernprozess, ohne Werbung!";
-"AdFreeSupportDescription" = "Unterstütze uns dabei mehr Funktionen hinzuzufügen. Vielen Dank!";
+
+"Purchase Header" = "Jetzt zu Pro wechseln!";
+"Purchase Description" = "- Entferne jegliche Werbung!";
+"Purchase Description 2" = "- Erstelle unbegrenzt Decks!";
+"Purchase Support Description" = "- Kein Schriftzeichen Limit";
 "Dismiss" = "Schließen";
 "Add Cards" = "Karten hinzufügen";
 "Add charachters e.g. 汉子" = "Füge Schriftzeichen hinzu z.B. 汉子";
@@ -36,7 +38,7 @@
 "Session History" = "Session Historie";
 "Charachter scores" = "Erreichte Punkte je Schriftzeichen";
 "Start Learning Session" = "Lernen!";
-"Offer Price: " = "Angebotspreis: ";
+"Offer Price" = "Angebotspreis: ";
 "Purchase Successful!" = "Funktionen freigeschaltet!";
 "Ads removed!" = "Werbung entfernt!";
 "BuyError" = "Fehler beim Kaufprozess.";

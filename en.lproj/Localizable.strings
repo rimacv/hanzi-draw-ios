@@ -19,9 +19,10 @@
 "Info" = "Info";
 "Buy" = "Buy";
 "Restore Purchase" = "Restore Purchase";
-"AdFreeHeader" = "Remove all ads for ever!";
-"AdFreeDescription" = "Speed up your learning and remove all ads!";
-"AdFreeSupportDescription" = "You also support us in creating more features. Thank you!";
+"Purchase Header" = "Upgrade to Pro!";
+"Purchase Description" = "- Remove all ads!";
+"Purchase Description 2" = "- Create unlimited decks!";
+"Purchase Support Description" = "- No charachter limit!";
 "Dismiss" = "Dismiss";
 "Add Cards" = "Add Cards";
 "Add charachters e.g. 汉子" = "Add charachters e.g. 汉子";
@@ -36,7 +37,7 @@
 "Session History" = "Session History";
 "Charachter scores" = "Charachter scores";
 "Start Learning Session"  = "Start Learning Session";
-"Offer Price: " = "Offer Price: ";
+"Offer Price" = "Offer Price: ";
 "Ads removed!" = "Ads removed!";
 "BuyError" = "Error during purchase.";
 "RestorePurchaseError" = "Error during purchase restorement.";
