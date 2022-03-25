@@ -26,7 +26,7 @@ extension Deck{
         var title: String = ""
         var deckEntries: [DeckEntry] = []
         var theme: Theme = .seafoam
-        var strokeSize : CGFloat = 3
+        var strokeSize : CGFloat = 7
     }
     
     var data: Data {
