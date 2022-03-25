@@ -23,7 +23,7 @@
 "Purchase Header" = "Jetzt zu Pro wechseln!";
 "Purchase Description" = "- Entferne jegliche Werbung!";
 "Purchase Description 2" = "- Erstelle unbegrenzt Decks!";
-"Purchase Support Description" = "- Kein Schriftzeichen Limit";
+"Purchase Support Description" = "";
 "Dismiss" = "Schließen";
 "Add Cards" = "Karten hinzufügen";
 "Add charachters e.g. 汉子" = "Füge Schriftzeichen hinzu z.B. 汉子";
@@ -45,3 +45,6 @@
 "RestorePurchaseError" = "Fehler beim wiederherstellen des Kaufs.";
 "Thank you!" = "Vielen Dank!";
 "Stroke width" = "Strichbreite";
+"Deck limit reached" = "Decklimit erreicht";
+"Upgrade to Pro to remove the limit." = "Wechsle zur Pro Version, um das Limit zu entfernen.";
+"Got it!" = "Alles klar!";

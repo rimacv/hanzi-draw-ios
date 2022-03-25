@@ -22,7 +22,7 @@
 "Purchase Header" = "Upgrade to Pro!";
 "Purchase Description" = "- Remove all ads!";
 "Purchase Description 2" = "- Create unlimited decks!";
-"Purchase Support Description" = "- No charachter limit!";
+"Purchase Support Description" = "";
 "Dismiss" = "Dismiss";
 "Add Cards" = "Add Cards";
 "Add charachters e.g. 汉子" = "Add charachters e.g. 汉子";
@@ -44,3 +44,6 @@
 "Thank you!" = "Thank you!";
 "Purchase Successful!" = "App upgraded!";
 "Stroke width" = "Stroke width";
+"Deck limit reached" = "Deck limit reached";
+"Upgrade to Pro to remove the limit." = "Upgrade to Pro to remove the limit.";
+"Got it!" = "Got it!";
