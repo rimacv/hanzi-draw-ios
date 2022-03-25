@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+import StoreKit
 @MainActor
 struct SplashScreenView: View {
     @State private var hasTimeElapsed = false
@@ -27,8 +27,10 @@ struct SplashScreenView: View {
             }.onAppear{
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     adsViewModel.askForTrackingPermission()
-                    
-                    
+                }
+                
+                if(isReviewViewToBeDisplayed(minimumLaunchCount: 6)){
+                    SKStoreReviewController.requestReview()
                 }
                 
             }
@@ -62,7 +64,7 @@ struct SplashScreenView: View {
                 ErrorView(errorWrapper: wrapper)
             }
         }
-    
+        
         
     }
     
@@ -87,14 +89,25 @@ struct SplashScreenView: View {
     
     func IsFirstLaunch() -> Bool{
         if !UserDefaults.standard.bool(forKey: "HasLaunched") {
-                  UserDefaults.standard.set(true, forKey: "HasLaunched")
-                  UserDefaults.standard.synchronize()
-                  return true
-              }
-              return false
+            UserDefaults.standard.set(true, forKey: "HasLaunched")
+            UserDefaults.standard.set(1, forKey: "launchCountUserDefaultsKey")
+            UserDefaults.standard.synchronize()
+            return true
+        }
+        return false
     }
     
-     private func oneshotTimer() async{
+    func isReviewViewToBeDisplayed(minimumLaunchCount:Int) -> Bool {
+        let launchCount = UserDefaults.standard.integer(forKey: "launchCountUserDefaultsKey")
+        if launchCount >= minimumLaunchCount {
+            return true
+        } else {
+            UserDefaults.standard.set((launchCount + 1), forKey: "launchCountUserDefaultsKey")
+        }
+        return false
+    }
+    
+    private func oneshotTimer() async{
         try? await Task.sleep(nanoseconds: 1_000_000_000)
         hasTimeElapsed = true
     }
