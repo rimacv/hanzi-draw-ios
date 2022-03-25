@@ -79,8 +79,8 @@
 		9599871127A4AAB100862A05 /* ThemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9599870F27A4AAB100862A05 /* ThemeView.swift */; };
 		95A2105C27B01FB900945948 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A2105B27B01FB900945948 /* InfoView.swift */; };
 		95A2105D27B01FB900945948 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A2105B27B01FB900945948 /* InfoView.swift */; };
-		95ACC07827ED12D3007F82AA /* BuyFeatureView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ACC07727ED12D3007F82AA /* BuyFeatureView2.swift */; };
-		95ACC07927ED12D3007F82AA /* BuyFeatureView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ACC07727ED12D3007F82AA /* BuyFeatureView2.swift */; };
+		95ACC07B27EE603C007F82AA /* PurchaseWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ACC07A27EE603C007F82AA /* PurchaseWrapper.swift */; };
+		95ACC07C27EE603C007F82AA /* PurchaseWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ACC07A27EE603C007F82AA /* PurchaseWrapper.swift */; };
 		95AF52BC2783915D00CBACFD /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AF52BB2783915D00CBACFD /* Tests_iOS.swift */; };
 		95AF52BE2783915D00CBACFD /* Tests_iOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AF52BD2783915D00CBACFD /* Tests_iOSLaunchTests.swift */; };
 		95AF52C82783915D00CBACFD /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AF52C72783915D00CBACFD /* Tests_macOS.swift */; };
@@ -150,7 +150,7 @@
 		9599870F27A4AAB100862A05 /* ThemeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeView.swift; sourceTree = "<group>"; };
 		95A2105B27B01FB900945948 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		95ACC07527E7AC28007F82AA /* AppTrackingTransparency.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppTrackingTransparency.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.4.sdk/System/Library/Frameworks/AppTrackingTransparency.framework; sourceTree = DEVELOPER_DIR; };
-		95ACC07727ED12D3007F82AA /* BuyFeatureView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyFeatureView2.swift; sourceTree = "<group>"; };
+		95ACC07A27EE603C007F82AA /* PurchaseWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseWrapper.swift; sourceTree = "<group>"; };
 		95AF52A32783915C00CBACFD /* hanzidrawApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hanzidrawApp.swift; sourceTree = "<group>"; };
 		95AF52A42783915C00CBACFD /* DeckListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckListView.swift; sourceTree = "<group>"; };
 		95AF52A52783915D00CBACFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -312,10 +312,10 @@
 				95A2105B27B01FB900945948 /* InfoView.swift */,
 				957F270A27A305A700DFA8FF /* DeckEditView.swift */,
 				9578859527E5D6BA00E3F559 /* BuyFeatureView.swift */,
-				95ACC07727ED12D3007F82AA /* BuyFeatureView2.swift */,
 				9577582527A57C440099C271 /* DeckDetailView.swift */,
 				9532E2AC27AB329A007C7960 /* HistoryView.swift */,
 				957D25192789C4DA00029D6C /* PracticeView.swift */,
+				95ACC07A27EE603C007F82AA /* PurchaseWrapper.swift */,
 				9578859B27E649E400E3F559 /* FlipView.swift */,
 				957D253827941AAA00029D6C /* Backend */,
 				957D2532278F7AC000029D6C /* QuizView.swift */,
@@ -639,7 +639,6 @@
 				957D25142789B49500029D6C /* SplashScreenView.swift in Sources */,
 				957D25172789C02F00029D6C /* DeckView.swift in Sources */,
 				957D254427976ED000029D6C /* ValidationRequest.swift in Sources */,
-				95ACC07827ED12D3007F82AA /* BuyFeatureView2.swift in Sources */,
 				957D2559279C559300029D6C /* HanziRequest.swift in Sources */,
 				95A2105C27B01FB900945948 /* InfoView.swift in Sources */,
 				9532E2AD27AB329A007C7960 /* HistoryView.swift in Sources */,
@@ -649,6 +648,7 @@
 				9577582627A57C440099C271 /* DeckDetailView.swift in Sources */,
 				957F270527A09DA500DFA8FF /* ErrorWrapper.swift in Sources */,
 				957D254A279A0A1A00029D6C /* BottomSheetResultView.swift in Sources */,
+				95ACC07B27EE603C007F82AA /* PurchaseWrapper.swift in Sources */,
 				9577582927A5812C0099C271 /* History.swift in Sources */,
 				9577582C27A5AA580099C271 /* DeckStore.swift in Sources */,
 				957D2553279C48B200029D6C /* ViewForeground.swift in Sources */,
@@ -680,7 +680,6 @@
 				957D25152789B49500029D6C /* SplashScreenView.swift in Sources */,
 				957D25182789C02F00029D6C /* DeckView.swift in Sources */,
 				957D254527976ED000029D6C /* ValidationRequest.swift in Sources */,
-				95ACC07927ED12D3007F82AA /* BuyFeatureView2.swift in Sources */,
 				957D255A279C559300029D6C /* HanziRequest.swift in Sources */,
 				95A2105D27B01FB900945948 /* InfoView.swift in Sources */,
 				9532E2AE27AB329A007C7960 /* HistoryView.swift in Sources */,
@@ -690,6 +689,7 @@
 				9577582727A57C440099C271 /* DeckDetailView.swift in Sources */,
 				957F270627A09DA500DFA8FF /* ErrorWrapper.swift in Sources */,
 				957D254B279A0A1A00029D6C /* BottomSheetResultView.swift in Sources */,
+				95ACC07C27EE603C007F82AA /* PurchaseWrapper.swift in Sources */,
 				9577582A27A5812C0099C271 /* History.swift in Sources */,
 				9577582D27A5AA580099C271 /* DeckStore.swift in Sources */,
 				957D2554279C48B200029D6C /* ViewForeground.swift in Sources */,
