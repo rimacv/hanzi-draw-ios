@@ -11,11 +11,11 @@ struct DeckEditView: View {
     
     @Binding var data: Deck.Data
     @State var newCards : String = ""
-    
+    @FocusState  var isFocused  : Bool 
     var body: some View {
         Form {
             Section(header: Text(String(localized: "Deck Info"))) {
-                TextField("Title", text: $data.title)
+                TextField("Title", text: $data.title, onCommit: {isFocused = true})
                 ThemePicker(selection: $data.theme)
                 HStack{
                     Slider(
@@ -35,26 +35,28 @@ struct DeckEditView: View {
                     data.deckEntries.remove(atOffsets: indices)
                 }
                 HStack {
-                    TextField(String(localized: "Add charachters e.g. 汉子"), text: $newCards)
-                    Button(action: {
-                        
-                        for hanzi in newCards{
-                            if(hanzi != " "){
-                                let deckEntry = Deck.DeckEntry(text: String(hanzi))
-                                data.deckEntries.append(deckEntry)
-                            }
-                        }
-                        newCards = ""
-                        
-                    }) {
+                    TextField(String(localized: "Add charachters e.g. 汉子"), text: $newCards, onCommit:addCharachters ).focused($isFocused)
+                    Button(action:addCharachters) {
                         Image(systemName: "plus.circle.fill")
                             .accessibilityLabel("Add cards")
                     }
                     .disabled(newCards.isEmpty)
+                    
                 }
             }
             
         }
+        
+    }
+    
+    func addCharachters() {
+        for hanzi in newCards{
+            if(hanzi != " "){
+                let deckEntry = Deck.DeckEntry(text: String(hanzi))
+                data.deckEntries.append(deckEntry)
+            }
+        }
+        newCards = ""
         
     }
 }
