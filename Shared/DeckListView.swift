@@ -15,6 +15,7 @@ struct DeckListView: View {
     @State private var isEditViewShown: Bool = false
     @State private var isBuyFeatureViewShown: Bool = false
     @State private var newDeckData : Deck.Data =  Deck.Data()
+    @State private var showLimitReachAlert = false
     
     let saveAction: ()->Void
     
@@ -50,12 +51,24 @@ struct DeckListView: View {
                 }
                 ToolbarItem(placement:  .navigationBarTrailing) {
                     Button(action: {
-                        isEditViewShown
-                        = true
+                        
+                        PurchaseWrapper.ifAppIsAdFreeElse(
+                            onAdFree: {
+                                isEditViewShown = true
+                                
+                            },
+                            onNotAdFree:   {
+                                if decks.count >= 4 {
+                                    showLimitReachAlert = true
+                                }
+                        })
                     }) {
                         Image(systemName: "plus")
                     }
                     .accessibilityLabel(String(localized: "New Decks"))
+                    .alert(isPresented: $showLimitReachAlert) {
+                        Alert(title: Text(String(localized:"Deck limit reached")), message: Text(String(localized: "Upgrade to Pro to remove the limit.")), dismissButton: .default(Text(String(localized: "Got it!"))))
+                    }
                 }
                 
             } )
@@ -85,13 +98,13 @@ struct DeckListView: View {
             .sheet(isPresented: $isBuyFeatureViewShown){
                 NavigationView {
                     BuyFeatureView()
-                    .toolbar {
-                        ToolbarItem(placement: .cancellationAction) {
-                            Button(String(localized: "Dismiss")) {
-                                isBuyFeatureViewShown = false
+                        .toolbar {
+                            ToolbarItem(placement: .cancellationAction) {
+                                Button(String(localized: "Dismiss")) {
+                                    isBuyFeatureViewShown = false
+                                }
                             }
                         }
-                    }
                 }
             }
             .onChange(of: scenePhase) { phase in
