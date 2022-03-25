@@ -27,6 +27,7 @@ struct hanzidrawApp: App {
         WindowGroup {
             SplashScreenView()
                 .environmentObject(adsVM)
+                
         }
     }
 }
