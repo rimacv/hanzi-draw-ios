@@ -122,12 +122,22 @@ struct PracticeView: View {
             }else{
                 
                     VStack{
-                        HStack{
-                            Rectangle().opacity(0).frame(width: geometry.size.width * 0.85, height: 0)
-                            Text("\(sessionInfo.getHanziCounter() + 1 ) / \(deck.numberOfEntries)  ")
-                        }
                         
-                        FlipView(HanziImage(hanziImageUrl: $hanziImageUrl, currentHanzi: $currentHanzi).padding(.bottom, 10), HanziInfoView(pinyin: $currentHanziPinyin, definition: $currentHanziDefinition), tap: {}, flipped:$flip, disabled: $disabled )
+                        ZStack
+                        {
+                            VStack{
+                                HStack{
+                                    Spacer()
+                                    Label("\(sessionInfo.getHanziCounter() + 1 ) / \(deck.numberOfEntries)",systemImage: "character.book.closed.fill.zh").padding()
+                                   
+                                }
+                                Spacer()
+                            }
+                        
+                            
+                            FlipView(HanziImage(hanziImageUrl: $hanziImageUrl, currentHanzi: $currentHanzi).padding(.bottom, 10), HanziInfoView(pinyin: $currentHanziPinyin, definition: $currentHanziDefinition), tap: {}, flipped:$flip, disabled: $disabled )
+                        }
+
                   
          
                         ZStack{
@@ -163,7 +173,7 @@ struct PracticeView: View {
         sessionScores.append(SessionScore( text:currentHanzi, score: score))
         if(sessionInfo.getDeckIndex() < deck.numberOfEntries - 1){
             
-            ifAppIsNotAdFree(action: {
+            PurchaseWrapper.ifAppIsNotAdFree(action: {
                 if ((sessionInfo.getHanziCounter() + 1)  % Constants.adFrequency == 0) {
                     adsViewModel.showInterstitial.toggle()
                 }
@@ -184,7 +194,7 @@ struct PracticeView: View {
         }else{
             let newHistory = History(sessionScores: sessionScores)
             deck.history.insert(newHistory, at: 0)
-            ifAppIsNotAdFree(action: {
+            PurchaseWrapper.ifAppIsNotAdFree(action: {
                 adsViewModel.showInterstitial.toggle()
             })
             
@@ -192,20 +202,6 @@ struct PracticeView: View {
             dismiss()
         }
         
-    }
-    
-    func ifAppIsNotAdFree(action: @escaping () -> Void) {
-        Purchases.shared.getCustomerInfo { (purchaserInfo, error) in
-            if error == nil {
-                if purchaserInfo != nil {
-                    let hasUserAppFreeEntitlement = purchaserInfo?.entitlements.all.keys.contains("Ad Free")
-                    if hasUserAppFreeEntitlement != nil  && hasUserAppFreeEntitlement! {
-                        return
-                    }
-                }
-            }
-            action()
-        }
     }
 }
 
