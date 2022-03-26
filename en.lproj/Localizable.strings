@@ -6,6 +6,7 @@
 "ScoreFetchError" = "Score could not be calculated. Check your internet connection.";
 "DeckLoadError" = "Deck data could not be read. Hanzi Draw will load sample data and continue";
 "SaveError" = "Data could not be save. File might be corrupted.";
+"SessionLoadError" = "Data needed for session could not be loaded. Check your internet connection.";
 "ErrorTitle" = "对不起! - Sorry!";
 "Decks" = "Decks";
 "New Decks" = "New Decks";
@@ -47,3 +48,9 @@
 "Deck limit reached" = "Deck limit reached";
 "Upgrade to Pro to remove the limit." = "Upgrade to Pro to remove the limit.";
 "Got it!" = "Got it!";
+"Help" = "Help";
+"Tooltip" = "Info";
+"TapInfo" = "Tap the charachter to see its definition and pinyin.";
+"No sessions yet" = "No sessions yet";
+"Score" = "Score";
+"No info available" = "No info available";

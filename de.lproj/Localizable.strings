@@ -3,9 +3,10 @@
 "Continue" = "Weiter";
 "Well done" = "Gut gemacht";
 "Retry" = "Nochmal";
-"ScoreFetchError" = "Score konnte nicht berechnet werden.  Prüfe deine Internetverbindung.";
+"ScoreFetchError" = "Score konnte nicht berechnet werden. Prüfe deine Internetverbindung.";
 "DeckLoadError" = "Daten konnten nicht geladen werden.\nHanzi Draw fährt mit Beispieldaten fort.";
 "SaveError" = "Daten konnten nicht gespeichert werden. ";
+"SessionLoadError" = "Für Sitzung benötigte Daten konnten nicht geladen werden. Prüfe deine Internetverbindung.";
 "ErrorTitle" = "对不起! - Entschuldigung!";
 "Decks" = "Decks";
 "New Decks" = "Neues Deck";
@@ -48,3 +49,9 @@
 "Deck limit reached" = "Decklimit erreicht";
 "Upgrade to Pro to remove the limit." = "Wechsle zur Pro Version, um das Limit zu entfernen.";
 "Got it!" = "Alles klar!";
+"Help" = "Hilfe";
+"Tooltip" = "Info";
+"TapInfo" = "Tippe auf das Schriftzeichen um seine Definition zu sehen.";
+"No sessions yet" = "Noch keine Historie";
+"Score" = "Score";
+"No info available" = "Keine Definition verfügbar";
