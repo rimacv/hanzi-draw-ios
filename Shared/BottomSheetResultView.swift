@@ -25,18 +25,21 @@ struct DialogButton : ButtonStyle {
     }
 }
 
-
-
 struct BottomSheetResultView: View {
     @Binding var score : CGFloat
     var resetDrawField: () -> Void
     var nextHanzi: () -> Void
+    @Binding var bottomSheetPosition : BottomSheetPosition
+    @Environment(\.colorScheme) var colorScheme
     var body: some View {
         GeometryReader{  geometry in
             ZStack{
                 Rectangle().fill(.white).border(.white)
                 VStack{
-                    Rectangle().fill(Color("dark")).border(Color("dark")).overlay(Text("Score").bold().foregroundColor(.white)).padding(.leading,0).padding(.bottom, 20).frame(height:geometry.size.height * 0.35)
+                    Rectangle().fill(Color("dark")).border(Color("dark")).overlay(Text(String(localized: "Score")).bold().foregroundColor(
+                        colorScheme == .dark && bottomSheetPosition == .hidden  ? .black : .white))
+                    
+                    .padding(.leading,0).padding(.bottom, 20).frame(height:geometry.size.height * 0.35)
                     
                     Spacer()
                     HStack{
@@ -83,6 +86,6 @@ struct BottomSheetResultView: View {
 struct BottomSheetResultView_Previews: PreviewProvider {
     @State static private var score : CGFloat = 1
     static var previews: some View {
-        BottomSheetResultView(score: $score, resetDrawField: {}, nextHanzi: {}).previewLayout(.fixed(width: 200, height: 200))
+        BottomSheetResultView(score: $score, resetDrawField: {}, nextHanzi: {},bottomSheetPosition: .constant(.hidden)).previewLayout(.fixed(width: 200, height: 200))
     }
 }
