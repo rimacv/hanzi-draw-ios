@@ -14,7 +14,7 @@ struct DeckDetailView: View {
     @Binding var deck : Deck
     @State private var data = Deck.Data()
     @State var isPresentingEditView = false
-    
+    @State private var  cards = String(localized: "cards")
     var body: some View {
         List {
             Section(header: Text(String(localized: "Deck Info"))) {
@@ -26,7 +26,9 @@ struct DeckDetailView: View {
                 HStack {
                     Label(String(localized: "Deck Size"), systemImage: "character.book.closed.fill.zh")
                     Spacer()
-                    Text("\(deck.deckEntries.count) " + String(localized: "cards"))
+                    Text("\(deck.deckEntries.count) " + cards).onAppear{
+                        updateCardsText()
+                    }
                 }
                 .accessibilityElement(children: .combine)
                 HStack {
@@ -103,10 +105,18 @@ struct DeckDetailView: View {
                             Button(String(localized: "Done")) {
                                 isPresentingEditView = false
                                 deck.update(from: data)
+                                updateCardsText()
                             }.disabled(deck.title == "" || deck.deckEntries.count == 0)
                         }
                     }
             }
+        }
+    }
+    func updateCardsText(){
+        if(deck.deckEntries.count == 1){
+            cards = String(localized: "card")
+        }else{
+            cards = String(localized: "cards")
         }
     }
     

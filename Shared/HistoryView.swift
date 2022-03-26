@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HistoryView: View {
     let history: History
-
+    @State private var  cards = String(localized: "cards")
     
     
     var body: some View {
@@ -25,7 +25,11 @@ struct HistoryView: View {
                     HStack {
                         Label("Deck Size", systemImage: "character.book.closed.fill.zh")
                         Spacer()
-                        Text("\(history.sessionScores.count) " + String(localized: "cards"))
+                        Text("\(history.sessionScores.count) " + cards).onAppear{
+                            if(history.sessionScores.count == 1){
+                                cards = String(localized: "card")
+                            }
+                        }
                     }
                     .accessibilityElement(children: .combine)
                     
