@@ -60,6 +60,8 @@ struct DeckListView: View {
                             onNotAdFree:   {
                                 if decks.count >= 4 {
                                     showLimitReachAlert = true
+                                }else{
+                                    isEditViewShown = true
                                 }
                         })
                     }) {
