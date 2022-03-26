@@ -70,7 +70,7 @@ struct DeckDetailView: View {
             }
             Section(header: Text(String(localized: "History"))) {
                 if deck.history.isEmpty {
-                    Label("No sessions yet", systemImage: "calendar.badge.exclamationmark")
+                    Label(String(localized: "No sessions yet"), systemImage: "calendar.badge.exclamationmark")
                 }
                 ForEach(deck.history) { history in
                     NavigationLink(destination:HistoryView(history:history)){
