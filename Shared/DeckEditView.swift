@@ -11,11 +11,12 @@ struct DeckEditView: View {
     
     @Binding var data: Deck.Data
     @State var newCards : String = ""
-    @FocusState  var isFocused  : Bool 
+    @FocusState  var isFocused  : Bool
     var body: some View {
         Form {
             Section(header: Text(String(localized: "Deck Info"))) {
-                TextField("Title", text: $data.title, onCommit: {isFocused = true})
+                TextField("Title", text: $data.title, onCommit: {
+                    isFocused = true})
                 ThemePicker(selection: $data.theme)
                 HStack{
                     Slider(
