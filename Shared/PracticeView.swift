@@ -37,8 +37,12 @@ struct HanziInfoView : View{
     var body: some View {
      
         VStack{
-            Text(pinyin)
-            Text(definition)
+            if(pinyin != "" && definition != ""){
+                Text(pinyin)
+                Text(definition)
+            } else{
+                Text(String(localized: "No info available"))
+            }
         }
         
        
@@ -81,6 +85,8 @@ struct PracticeView: View {
     @State private var isLoaded = false
     @State private var correctAnswerIndex = Int.random(in: 0..<4)
     @State private var sessionScores = [SessionScore]()
+    @State private var showHelp = false
+    @State private var errorWrapper: ErrorWrapper?
     @Binding var deck : Deck
 
     @State private var flip = false
@@ -117,26 +123,27 @@ struct PracticeView: View {
                             hanziList += entry.text
                         }
                         pinyinList = await Api().getPinyinList(hanziList: hanziList)
-                        isLoaded.toggle()
+                        if(pinyinList != nil){
+                            isLoaded.toggle()
+                      
+                        }else{
+                            errorWrapper =  ErrorWrapper(error: nil, guidance: String(localized: "SessionLoadError"))
+                        }
+                       
                     }
+                    .sheet(item: $errorWrapper, onDismiss: {
+                    }) { wrapper in
+                        ErrorView(errorWrapper: wrapper)
+                    }.cornerRadius(8).buttonStyle(QuizButtonStyle(highlightColor: Color.gray))
             }else{
                 
                     VStack{
                         
-                        ZStack
-                        {
-                            VStack{
-                                HStack{
-                                    Spacer()
-                                    Label("\(sessionInfo.getHanziCounter() + 1 ) / \(deck.numberOfEntries)",systemImage: "character.book.closed.fill.zh").padding()
-                                   
-                                }
-                                Spacer()
-                            }
+                    
                         
-                            
-                            FlipView(HanziImage(hanziImageUrl: $hanziImageUrl, currentHanzi: $currentHanzi).padding(.bottom, 10), HanziInfoView(pinyin: $currentHanziPinyin, definition: $currentHanziDefinition), tap: {}, flipped:$flip, disabled: $disabled )
-                        }
+                                                
+                      FlipView(HanziImage(hanziImageUrl: $hanziImageUrl, currentHanzi: $currentHanzi).padding(.bottom, 10), HanziInfoView(pinyin: $currentHanziPinyin, definition: $currentHanziDefinition), tap: {}, flipped:$flip, disabled: $disabled )
+                        
 
                   
          
@@ -149,9 +156,32 @@ struct PracticeView: View {
                             
                             Spacer()
                             QuizView(quizOpacity: $quizOpacity, currentHanziPinyin: $currentHanziPinyin, correctAnswerIndex: $correctAnswerIndex, pinyinList: pinyinList!).padding(.bottom, 20)
+
+                        }
+                        .toolbar {
+                
+                            ToolbarItem(placement: .principal){
+                            
+                                ProgressView(value: CGFloat(sessionInfo.getHanziCounter() + 1), total: CGFloat(deck.numberOfEntries))
+                                    .progressViewStyle(ResultProgressBarStyle(theme: .sky))
+                            }
+                            
+                        ToolbarItem(placement: .navigationBarTrailing){
+                                 Button(action: {
+                                     showHelp = true
+                                 }) {
+                                     Image(systemName: "questionmark.circle.fill")
+                                 }
+                                .accessibilityLabel(String(localized: "Help"))
+                                .alert(isPresented: $showHelp) {
+                                    Alert(title: Text(String(localized: "Tooltip")), message: Text(String(localized: "TapInfo")), dismissButton: .default(Text(String(localized: "Got it!"))))
+                                }
+                                
+                            }
+                          
                         }
                         .bottomSheet( bottomSheetPosition: $bottomSheetPosition, options: [.cornerRadius(8),.notResizeable,]    ,content: {
-                            BottomSheetResultView(score: $score, resetDrawField: resetDrawField, nextHanzi: nextHanzi)
+                            BottomSheetResultView(score: $score, resetDrawField: resetDrawField, nextHanzi: nextHanzi, bottomSheetPosition: $bottomSheetPosition)
                         })
                     }
 
