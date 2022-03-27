@@ -27,17 +27,18 @@ class AdsManager: NSObject, ObservableObject {
         }
         
         func requestInterstitialAds() {
-            let request = GADRequest()
-            request.scene = UIApplication.shared.connectedScenes.first as? UIWindowScene
-            GADInterstitialAd.load(withAdUnitID: AdMobConstant.interstitial1ID, request: request, completionHandler: { [self] ad, error in
-                if let error = error {
-                    print("Failed to load interstitial ad with error: \(error.localizedDescription)")
-                    return
-                }
-                interstitial = ad
-                interstitial?.fullScreenContentDelegate = self
-            })
-           
+            DispatchQueue.main.async {
+                let request = GADRequest()
+                request.scene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+                GADInterstitialAd.load(withAdUnitID: AdMobConstant.interstitial1ID, request: request, completionHandler: { [self] ad, error in
+                    if let error = error {
+                        print("Failed to load interstitial ad with error: \(error.localizedDescription)")
+                        return
+                    }
+                    interstitial = ad
+                    interstitial?.fullScreenContentDelegate = self
+                })
+            }
         }
         
         func showAd() {
