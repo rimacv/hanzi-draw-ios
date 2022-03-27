@@ -129,6 +129,6 @@ struct Api : BackendApi {
     }
     
     func getHeaders() -> HTTPHeaders {
-        return  ["Content-Type" : "application/json", "App-Version": "0.1", "Accept-Language": "en", "Platform" : "ios" ]
+        return  ["Content-Type" : "application/json", "App-Version": Constants.appVersion, "Accept-Language": "en", "Platform" : "ios" ]
     }
 }
