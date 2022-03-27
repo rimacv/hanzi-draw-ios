@@ -35,7 +35,7 @@ struct InfoView: View {
                     Text(String(localized: "汉子")).font(.headline)
                     Text(String(localized: "app_name")).font(.headline)
                     Text(String(localized: "Version")).font(.subheadline)
-                    Text("\(Bundle.main.appVersionLong)").font(.subheadline)
+                    Text("\(Constants.appVersion)").font(.subheadline)
                 }
                 Spacer()
              
