@@ -13,6 +13,7 @@ struct BuyFeatureView: View {
     @State var offerPrice: String = ""
     @State var counter : Int = 0
     @State var isProductBought = false
+
     @State private var errorWrapper: ErrorWrapper?
     
     var body: some View {
@@ -75,7 +76,7 @@ struct BuyFeatureView: View {
                                     
                                     if(packages.first != nil){
                                         let package = packages.first!
-                                        Purchases.shared.purchase(package: packages.first!) { (transaction, customerInfo, error, userCancelled) in
+                                        Purchases.shared.purchase(package: package) { (transaction, customerInfo, error, userCancelled) in
                                             if !userCancelled {
                                                 if error != nil {
                                                     errorWrapper = ErrorWrapper(error: error, guidance: String(localized: "BuyError"))
