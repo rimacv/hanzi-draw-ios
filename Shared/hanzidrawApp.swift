@@ -8,11 +8,12 @@
 import SwiftUI
 import GoogleMobileAds
 import RevenueCat
-
+import Firebase
 struct Constants {
     static var drawPadSize = CGFloat(200)
     static var adFrequency : Int = 3
     static var appVersion = "0.0.1"
+    static var buildNumber = "r1"
 }
 
 @main
@@ -27,9 +28,11 @@ struct hanzidrawApp: App {
             Constants.appVersion = appVersion as! String
             let buildNumber = Bundle.main.infoDictionary?["CFBundleVersion"]
             if(buildNumber != nil && buildNumber is String){
-                Constants.appVersion += "."
-                Constants.appVersion += buildNumber as! String
+                Constants.buildNumber = buildNumber as! String
             }
+        }
+        if FirebaseApp.app() == nil {
+            FirebaseApp.configure()
         }
     }
   
