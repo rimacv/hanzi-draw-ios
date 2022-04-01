@@ -106,7 +106,7 @@ struct DeckDetailView: View {
                                 isPresentingEditView = false
                                 deck.update(from: data)
                                 updateCardsText()
-                            }.disabled(deck.title == "" || data.deckEntries.count == 0)
+                            }.disabled(data.title == "" || data.deckEntries.count == 0)
                         }
                     }
             }
