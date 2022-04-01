@@ -7,6 +7,7 @@
 
 import SwiftUI
 import StoreKit
+
 @MainActor
 struct SplashScreenView: View {
     @State private var hasTimeElapsed = false
@@ -30,7 +31,9 @@ struct SplashScreenView: View {
                 }
                 
                 if(isReviewViewToBeDisplayed(minimumLaunchCount: 6)){
-                    SKStoreReviewController.requestReview()
+                    if let scene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene {
+                        SKStoreReviewController.requestReview(in: scene)
+                    }
                 }
                 
             }
