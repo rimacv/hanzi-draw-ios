@@ -12,6 +12,23 @@ import GoogleMobileAds
 import AppTrackingTransparency
 import AdSupport
 
+extension UIApplication {
+    
+    var keyWindow: UIWindow? {
+        // Get connected scenes
+        return UIApplication.shared.connectedScenes
+            // Keep only active scenes, onscreen and visible to the user
+            .filter { $0.activationState == .foregroundActive }
+            // Keep only the first `UIWindowScene`
+            .first(where: { $0 is UIWindowScene })
+            // Get its associated windows
+            .flatMap({ $0 as? UIWindowScene })?.windows
+            // Finally, keep only the key window
+            .first(where: \.isKeyWindow)
+    }
+    
+}
+
 class AdsManager: NSObject, ObservableObject {
     
     private struct AdMobConstant {
@@ -42,12 +59,26 @@ class AdsManager: NSObject, ObservableObject {
         }
         
         func showAd() {
-            let root = UIApplication.shared.windows.last?.rootViewController
+            let root = getKeyWindow()?.rootViewController
             if let fullScreenAds = interstitial {
-                fullScreenAds.present(fromRootViewController: root!)
+                if(root != nil){
+                    fullScreenAds.present(fromRootViewController: root!)
+                }
             } else {
                 print("not ready")
             }
+        }
+        
+        func getKeyWindow () -> UIWindow? {
+            return UIApplication.shared.connectedScenes
+                // Keep only active scenes, onscreen and visible to the user
+                .filter { $0.activationState == .foregroundActive }
+                // Keep only the first `UIWindowScene`
+                .first(where: { $0 is UIWindowScene })
+                // Get its associated windows
+                .flatMap({ $0 as? UIWindowScene })?.windows
+                // Finally, keep only the key window
+                .first(where: \.isKeyWindow)
         }
         
     }
@@ -74,6 +105,7 @@ class AdsViewModel: ObservableObject {
         ATTrackingManager.requestTrackingAuthorization(completionHandler: { [self] status in
             if status == .authorized {
                 print(ASIdentifierManager.shared().advertisingIdentifier)
+              
             }
             interstitial.requestInterstitialAds()
         })
