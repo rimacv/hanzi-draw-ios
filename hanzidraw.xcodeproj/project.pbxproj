@@ -81,6 +81,10 @@
 		95A2105D27B01FB900945948 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A2105B27B01FB900945948 /* InfoView.swift */; };
 		95ACC07B27EE603C007F82AA /* PurchaseWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ACC07A27EE603C007F82AA /* PurchaseWrapper.swift */; };
 		95ACC07C27EE603C007F82AA /* PurchaseWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ACC07A27EE603C007F82AA /* PurchaseWrapper.swift */; };
+		95ACC08127F5F770007F82AA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 95ACC08027F5F770007F82AA /* GoogleService-Info.plist */; };
+		95ACC08427F5F8EB007F82AA /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 95ACC08327F5F8EB007F82AA /* FirebaseAnalytics */; };
+		95ACC08627F5F8EB007F82AA /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 95ACC08527F5F8EB007F82AA /* FirebaseAnalyticsWithoutAdIdSupport */; };
+		95ACC08827F5F8EB007F82AA /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 95ACC08727F5F8EB007F82AA /* FirebaseCrashlytics */; };
 		95AF52BC2783915D00CBACFD /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AF52BB2783915D00CBACFD /* Tests_iOS.swift */; };
 		95AF52BE2783915D00CBACFD /* Tests_iOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AF52BD2783915D00CBACFD /* Tests_iOSLaunchTests.swift */; };
 		95AF52C82783915D00CBACFD /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AF52C72783915D00CBACFD /* Tests_macOS.swift */; };
@@ -151,6 +155,7 @@
 		95A2105B27B01FB900945948 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		95ACC07527E7AC28007F82AA /* AppTrackingTransparency.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppTrackingTransparency.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.4.sdk/System/Library/Frameworks/AppTrackingTransparency.framework; sourceTree = DEVELOPER_DIR; };
 		95ACC07A27EE603C007F82AA /* PurchaseWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseWrapper.swift; sourceTree = "<group>"; };
+		95ACC08027F5F770007F82AA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		95AF52A32783915C00CBACFD /* hanzidrawApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hanzidrawApp.swift; sourceTree = "<group>"; };
 		95AF52A42783915C00CBACFD /* DeckListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckListView.swift; sourceTree = "<group>"; };
 		95AF52A52783915D00CBACFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -175,10 +180,13 @@
 			files = (
 				957D25412794B32100029D6C /* Alamofire in Frameworks */,
 				9532E2AB27A9DA94007C7960 /* BottomSheet in Frameworks */,
+				95ACC08427F5F8EB007F82AA /* FirebaseAnalytics in Frameworks */,
 				9581B3B227E3D5160016C25A /* RevenueCat in Frameworks */,
 				9581B3B427E4BF2E0016C25A /* StoreKit.framework in Frameworks */,
 				957D252E278B162900029D6C /* CachedAsyncImage in Frameworks */,
 				23D5A71EE83CB88FC89647E8 /* Pods_hanzidraw__iOS_.framework in Frameworks */,
+				95ACC08827F5F8EB007F82AA /* FirebaseCrashlytics in Frameworks */,
+				95ACC08627F5F8EB007F82AA /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				9578859A27E62A2900E3F559 /* ConfettiSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -288,6 +296,7 @@
 		95AF529D2783915B00CBACFD = {
 			isa = PBXGroup;
 			children = (
+				95ACC08027F5F770007F82AA /* GoogleService-Info.plist */,
 				957D255B279D5A0700029D6C /* hanzidraw--iOS--Info.plist */,
 				957D250E2789B22600029D6C /* Localizable.strings */,
 				95AF52A22783915C00CBACFD /* Shared */,
@@ -404,6 +413,9 @@
 				9532E2AA27A9DA94007C7960 /* BottomSheet */,
 				9581B3B127E3D5160016C25A /* RevenueCat */,
 				9578859927E62A2900E3F559 /* ConfettiSwiftUI */,
+				95ACC08327F5F8EB007F82AA /* FirebaseAnalytics */,
+				95ACC08527F5F8EB007F82AA /* FirebaseAnalyticsWithoutAdIdSupport */,
+				95ACC08727F5F8EB007F82AA /* FirebaseCrashlytics */,
 			);
 			productName = "hanzidraw (iOS)";
 			productReference = 95AF52AA2783915D00CBACFD /* hanzidraw.app */;
@@ -505,6 +517,7 @@
 				9532E2A927A9DA94007C7960 /* XCRemoteSwiftPackageReference "BottomSheet" */,
 				9581B3B027E3D5160016C25A /* XCRemoteSwiftPackageReference "purchases-ios" */,
 				9578859827E62A2900E3F559 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */,
+				95ACC08227F5F8EB007F82AA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 95AF52AB2783915D00CBACFD /* Products */;
 			projectDirPath = "";
@@ -525,6 +538,7 @@
 			files = (
 				95AF52CF2783915D00CBACFD /* Assets.xcassets in Resources */,
 				957D25102789B22600029D6C /* Localizable.strings in Resources */,
+				95ACC08127F5F770007F82AA /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -866,7 +880,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 32KY4QPK6D;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -885,7 +899,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
 				NEW_SETTING = "";
 				NEW_SETTING1 = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.papanda.hanzidraw;
@@ -904,7 +918,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 32KY4QPK6D;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -923,7 +937,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
 				NEW_SETTING = "";
 				NEW_SETTING1 = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.papanda.hanzidraw;
@@ -1156,6 +1170,14 @@
 				minimumVersion = 4.0.0;
 			};
 		};
+		95ACC08227F5F8EB007F82AA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1183,6 +1205,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9581B3B027E3D5160016C25A /* XCRemoteSwiftPackageReference "purchases-ios" */;
 			productName = RevenueCat;
+		};
+		95ACC08327F5F8EB007F82AA /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 95ACC08227F5F8EB007F82AA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		95ACC08527F5F8EB007F82AA /* FirebaseAnalyticsWithoutAdIdSupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 95ACC08227F5F8EB007F82AA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsWithoutAdIdSupport;
+		};
+		95ACC08727F5F8EB007F82AA /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 95ACC08227F5F8EB007F82AA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
