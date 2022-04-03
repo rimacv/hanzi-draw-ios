@@ -15,6 +15,8 @@ struct DrawingControlsView: View {
     @Binding var bottomSheetPosition: BottomSheetPosition
     @Binding var score: CGFloat
     @Binding var currentHanzi: String
+    
+    @Binding var percentage: CGFloat
     @State private var lastRemovedStroke : Stroke? = nil
     @State private var errorWrapper: ErrorWrapper?
     let backendApi : BackendApi
@@ -26,6 +28,7 @@ struct DrawingControlsView: View {
             
             Button(action: {
                 if self.strokes.count > 0 {
+                    percentage = 0
                     lastRemovedStroke = strokes.removeLast()
                 }
             }){
@@ -68,6 +71,7 @@ struct DrawingControlsView: View {
             
             Button(action: {
                 if lastRemovedStroke != nil {
+                    percentage = 0
                     strokes.append(lastRemovedStroke!)
                     lastRemovedStroke = nil
                 }
@@ -95,6 +99,7 @@ struct DrawingControlsView_Previews: PreviewProvider {
     @State static private var score: CGFloat = 0
     static private var backendApi = Api()
     static var previews: some View {
-        DrawingControlsView(strokes:$drawings,color:$color, lineWidth:$lineWidth,bottomSheetPosition:$bottomSheetPosition, score: $score, currentHanzi: .constant(""), backendApi: backendApi)
+        DrawingControlsView(strokes:$drawings,color:$color, lineWidth:$lineWidth,bottomSheetPosition:$bottomSheetPosition, score: $score, currentHanzi: .constant(""), percentage: .constant(0.0),
+                            backendApi: backendApi)
     }
 }

@@ -7,12 +7,14 @@ struct Deck: Identifiable, Codable {
     var history : [History] = []
     var theme: Theme
     var strokeSize : CGFloat
-    init(id: UUID = UUID(), title: String, deckEntries: [DeckEntry],theme: Theme, strokeSize : CGFloat = 7) {
+    var mode : Mode
+    init(id: UUID = UUID(), title: String, deckEntries: [DeckEntry],theme: Theme, strokeSize : CGFloat = 7, mode : Mode = .guided) {
         self.id = id
         self.title = title
         self.deckEntries = deckEntries
         self.theme = theme
         self.strokeSize = strokeSize
+        self.mode = mode
     }
 }
 
@@ -27,10 +29,11 @@ extension Deck{
         var deckEntries: [DeckEntry] = []
         var theme: Theme = .seafoam
         var strokeSize : CGFloat = 7
+        var mode : Mode = Mode.guided
     }
     
     var data: Data {
-        Data(title: title, deckEntries: deckEntries, theme: theme, strokeSize: strokeSize)
+        Data(title: title, deckEntries: deckEntries, theme: theme, strokeSize: strokeSize, mode: mode )
     }
     
     mutating func update(from data: Data) {
@@ -38,6 +41,7 @@ extension Deck{
         deckEntries = data.deckEntries
         theme = data.theme
         strokeSize = data.strokeSize
+        mode = data.mode
     }
     
     init(data: Data) {
@@ -46,6 +50,7 @@ extension Deck{
         deckEntries = data.deckEntries
         theme = data.theme
         strokeSize = data.strokeSize
+        mode = data.mode
     }
 }
 
@@ -72,4 +77,23 @@ extension Deck {
         ]
     }
     
+}
+
+enum Mode: String, CaseIterable, Identifiable, Codable {
+    case guided
+    case free
+
+    var name: String {
+        rawValue.capitalized
+    }
+    var id: String {
+        name
+    }
+    
+    func getLocalizedName() -> String {
+        switch self {
+        case .guided : return String(localized: "GUIDED")
+        case .free : return String(localized: "FREE")
+        }
+    }
 }

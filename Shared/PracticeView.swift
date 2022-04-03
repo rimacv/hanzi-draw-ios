@@ -53,10 +53,15 @@ struct Info{
     private var randomizeHanzis = false
     private var deckIndex = 0
     private var hanziCounter = 0
+    private var resetDrawfieldCounter = 0
     
     mutating func nextHanzi(){
         hanziCounter += 1
         deckIndex += 1
+    }
+    
+    mutating func IncreaseResetCounter(){
+        resetDrawfieldCounter += 1
     }
     
     func getDeckIndex() -> Int{
@@ -66,10 +71,14 @@ struct Info{
     func getHanziCounter() -> Int{
         return hanziCounter
     }
+    
+    func getResetDrawfieldCounter() -> Int{
+        return resetDrawfieldCounter
+    }
 }
 
 struct PracticeView: View {
-    @State private var currentDrawing: Stroke = Stroke()
+    @State private var currentStroke: Stroke = Stroke()
     @State private var drawings: [Stroke] = [Stroke]()
     @State private var color: Color = Color.black
     @State private var quizOpacity = 1.0
@@ -87,6 +96,10 @@ struct PracticeView: View {
     @State private var sessionScores = [SessionScore]()
     @State private var showHelp = false
     @State private var errorWrapper: ErrorWrapper?
+    
+    @State private var percentage: CGFloat = .zero
+    @State private var strokeOpacity = 1.0
+    @State private var hintStrokes: [Stroke] = [Stroke]()
     @Binding var deck : Deck
 
     @State private var flip = false
@@ -118,6 +131,11 @@ struct PracticeView: View {
                         currentHanziPinyin = hanziInfo?.pinyin ?? ""
                         currentHanziDefinition = hanziInfo?.definition ?? ""
                         
+                        let data = await Api().getStrokeHints(hanzi: currentHanzi)
+                        if(data != nil){
+                            hintStrokes = data!
+                        }
+                        
                         var hanziList = ""
                         for entry in deck.deckEntries{
                             hanziList += entry.text
@@ -138,24 +156,27 @@ struct PracticeView: View {
             }else{
                 
                     VStack{
-                        
-                    
-                        
-                                                
+                                                                      
                       FlipView(HanziImage(hanziImageUrl: $hanziImageUrl, currentHanzi: $currentHanzi).padding(.bottom, 10), HanziInfoView(pinyin: $currentHanziPinyin, definition: $currentHanziDefinition), tap: {}, flipped:$flip, disabled: $disabled )
                         
 
-                  
-         
                         ZStack{
-                            DrawingPadView(currentDrawing: $currentDrawing,
-                                           drawings: $drawings,
-                                           color: $color,
-                                           lineWidth: $deck.strokeSize,
-                                           inverseDrawPadOpacity: $quizOpacity, bottomSheetPosition: $bottomSheetPosition, score: $score, currentHanzi: $currentHanzi )
                             
+                            if(deck.mode == .guided){
+                                DrawingPadWithGuidance(currentStroke: $currentStroke,
+                                               strokes: $drawings,
+                                               color: $color,
+                                               lineWidth: $deck.strokeSize,
+                                                inverseDrawPadOpacity: $quizOpacity, bottomSheetPosition: $bottomSheetPosition, score: $score, currentHanzi: $currentHanzi, percentage: $percentage, strokeOpacity : $strokeOpacity, hintStrokes: $hintStrokes)
+                            }else{
+                                DrawingPadView(currentStroke: $currentStroke,
+                                               strokes: $drawings,
+                                               color: $color,
+                                               lineWidth: $deck.strokeSize,
+                                                inverseDrawPadOpacity: $quizOpacity, bottomSheetPosition: $bottomSheetPosition, score: $score, currentHanzi: $currentHanzi)
+                            }
                             Spacer()
-                            QuizView(quizOpacity: $quizOpacity, currentHanziPinyin: $currentHanziPinyin, correctAnswerIndex: $correctAnswerIndex, pinyinList: pinyinList!).padding(.bottom, 20)
+                            QuizView(quizOpacity: $quizOpacity, currentHanziPinyin: $currentHanziPinyin, correctAnswerIndex: $correctAnswerIndex,flip: $flip, pinyinList: pinyinList!).padding(.bottom, 20)
 
                         }
                         .toolbar {
@@ -191,24 +212,33 @@ struct PracticeView: View {
     }
     
     func resetDrawField() -> Void {
+        
+        // if session is finished ad will be shown due to logic in nextHanzi()
+        if(isSessionOngoing()){
+            PurchaseWrapper.ifAppIsNotAdFree(action: {
+                if ((sessionInfo.getResetDrawfieldCounter() + 1)  % Constants.adFrequency == 0) {
+                    adsViewModel.showInterstitial.toggle()
+                }
+            })
+        }
+        sessionInfo.IncreaseResetCounter()
         bottomSheetPosition = .hidden
-        currentDrawing = Stroke()
+        currentStroke = Stroke()
         drawings = [Stroke]()
         score = 0
+        strokeOpacity = 1
+        percentage = 0
+        if(flip){
+            flip = false
+        }
     }
     
 
     func nextHanzi() -> Void {
         
         sessionScores.append(SessionScore( text:currentHanzi, score: score))
-        if(sessionInfo.getDeckIndex() < deck.numberOfEntries - 1){
-            
-            PurchaseWrapper.ifAppIsNotAdFree(action: {
-                if ((sessionInfo.getHanziCounter() + 1)  % Constants.adFrequency == 0) {
-                    adsViewModel.showInterstitial.toggle()
-                }
-            })
-            
+        if(isSessionOngoing()){
+
             resetDrawField()
             sessionInfo.nextHanzi()
             currentHanzi = deck.deckEntries[sessionInfo.getDeckIndex()].text
@@ -219,7 +249,10 @@ struct PracticeView: View {
                 let hanziInfo = await Api().getHanziInfo(hanzi: currentHanzi)
                 currentHanziPinyin = hanziInfo?.pinyin ?? ""
                 currentHanziDefinition = hanziInfo?.definition ?? ""
-                
+                let data = await Api().getStrokeHints(hanzi: currentHanzi)
+                if(data != nil){
+                    hintStrokes = data!
+                }
             }
         }else{
             let newHistory = History(sessionScores: sessionScores)
@@ -232,6 +265,10 @@ struct PracticeView: View {
             dismiss()
         }
         
+    }
+    
+    func isSessionOngoing() -> Bool {
+        return sessionInfo.getDeckIndex() < deck.numberOfEntries - 1
     }
 }
 

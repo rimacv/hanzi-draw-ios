@@ -73,10 +73,14 @@
 		957F270C27A305A700DFA8FF /* DeckEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957F270A27A305A700DFA8FF /* DeckEditView.swift */; };
 		9581B3B227E3D5160016C25A /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = 9581B3B127E3D5160016C25A /* RevenueCat */; };
 		9581B3B427E4BF2E0016C25A /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9581B3B327E4BF2E0016C25A /* StoreKit.framework */; };
+		9588C15127F876300081D32B /* OnAnimationCompleted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9588C15027F876300081D32B /* OnAnimationCompleted.swift */; };
+		9588C15227F876300081D32B /* OnAnimationCompleted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9588C15027F876300081D32B /* OnAnimationCompleted.swift */; };
 		9599870D27A4AA7A00862A05 /* ThemePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9599870C27A4AA7A00862A05 /* ThemePicker.swift */; };
 		9599870E27A4AA7A00862A05 /* ThemePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9599870C27A4AA7A00862A05 /* ThemePicker.swift */; };
 		9599871027A4AAB100862A05 /* ThemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9599870F27A4AAB100862A05 /* ThemeView.swift */; };
 		9599871127A4AAB100862A05 /* ThemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9599870F27A4AAB100862A05 /* ThemeView.swift */; };
+		959B87E627F785C400C60386 /* DrawingPadWithGuidance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959B87E527F785C400C60386 /* DrawingPadWithGuidance.swift */; };
+		959B87E727F785C400C60386 /* DrawingPadWithGuidance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959B87E527F785C400C60386 /* DrawingPadWithGuidance.swift */; };
 		95A2105C27B01FB900945948 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A2105B27B01FB900945948 /* InfoView.swift */; };
 		95A2105D27B01FB900945948 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A2105B27B01FB900945948 /* InfoView.swift */; };
 		95ACC07B27EE603C007F82AA /* PurchaseWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ACC07A27EE603C007F82AA /* PurchaseWrapper.swift */; };
@@ -150,8 +154,10 @@
 		957F270727A09DC900DFA8FF /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		957F270A27A305A700DFA8FF /* DeckEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckEditView.swift; sourceTree = "<group>"; };
 		9581B3B327E4BF2E0016C25A /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.2.sdk/System/Library/Frameworks/StoreKit.framework; sourceTree = DEVELOPER_DIR; };
+		9588C15027F876300081D32B /* OnAnimationCompleted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnAnimationCompleted.swift; sourceTree = "<group>"; };
 		9599870C27A4AA7A00862A05 /* ThemePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemePicker.swift; sourceTree = "<group>"; };
 		9599870F27A4AAB100862A05 /* ThemeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeView.swift; sourceTree = "<group>"; };
+		959B87E527F785C400C60386 /* DrawingPadWithGuidance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingPadWithGuidance.swift; sourceTree = "<group>"; };
 		95A2105B27B01FB900945948 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		95ACC07527E7AC28007F82AA /* AppTrackingTransparency.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppTrackingTransparency.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.4.sdk/System/Library/Frameworks/AppTrackingTransparency.framework; sourceTree = DEVELOPER_DIR; };
 		95ACC07A27EE603C007F82AA /* PurchaseWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseWrapper.swift; sourceTree = "<group>"; };
@@ -271,6 +277,7 @@
 			children = (
 				957D2526278AF1CE00029D6C /* DrawingPadView.swift */,
 				957D2535278F7D6300029D6C /* DrawingControlsView.swift */,
+				959B87E527F785C400C60386 /* DrawingPadWithGuidance.swift */,
 			);
 			path = DrawingField;
 			sourceTree = "<group>";
@@ -280,6 +287,7 @@
 			children = (
 				957D2552279C48B200029D6C /* ViewForeground.swift */,
 				957F2700279E037900DFA8FF /* ViewDidLoadModifier.swift */,
+				9588C15027F876300081D32B /* OnAnimationCompleted.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -649,6 +657,7 @@
 				95AF52CB2783915D00CBACFD /* hanzidrawApp.swift in Sources */,
 				957F270827A09DC900DFA8FF /* ErrorView.swift in Sources */,
 				957D2533278F7AC000029D6C /* QuizView.swift in Sources */,
+				959B87E627F785C400C60386 /* DrawingPadWithGuidance.swift in Sources */,
 				957D252A278AF1F900029D6C /* Stroke.swift in Sources */,
 				957D25142789B49500029D6C /* SplashScreenView.swift in Sources */,
 				957D25172789C02F00029D6C /* DeckView.swift in Sources */,
@@ -670,6 +679,7 @@
 				9599870D27A4AA7A00862A05 /* ThemePicker.swift in Sources */,
 				957D2563279DEE2F00029D6C /* FillUpPinyin.swift in Sources */,
 				957D254E279AB12600029D6C /* ResultProgressBarStyle.swift in Sources */,
+				9588C15127F876300081D32B /* OnAnimationCompleted.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -690,6 +700,7 @@
 				95AF52CC2783915D00CBACFD /* hanzidrawApp.swift in Sources */,
 				957F270927A09DC900DFA8FF /* ErrorView.swift in Sources */,
 				957D2534278F7AC000029D6C /* QuizView.swift in Sources */,
+				959B87E727F785C400C60386 /* DrawingPadWithGuidance.swift in Sources */,
 				957D252B278AF1F900029D6C /* Stroke.swift in Sources */,
 				957D25152789B49500029D6C /* SplashScreenView.swift in Sources */,
 				957D25182789C02F00029D6C /* DeckView.swift in Sources */,
@@ -711,6 +722,7 @@
 				9599870E27A4AA7A00862A05 /* ThemePicker.swift in Sources */,
 				957D2564279DEE2F00029D6C /* FillUpPinyin.swift in Sources */,
 				957D254F279AB12600029D6C /* ResultProgressBarStyle.swift in Sources */,
+				9588C15227F876300081D32B /* OnAnimationCompleted.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -880,7 +892,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 32KY4QPK6D;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -899,7 +911,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.1.0;
 				NEW_SETTING = "";
 				NEW_SETTING1 = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.papanda.hanzidraw;
@@ -918,7 +930,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 32KY4QPK6D;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -937,7 +949,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.1.0;
 				NEW_SETTING = "";
 				NEW_SETTING1 = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.papanda.hanzidraw;

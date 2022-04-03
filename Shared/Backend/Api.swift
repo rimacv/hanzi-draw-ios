@@ -128,6 +128,44 @@ struct Api : BackendApi {
         }
     }
     
+    func getStrokeHints(hanzi: String) async ->  [Stroke]? {
+        do {
+            let headers = getHeaders()
+            let parameters =  HanziRequest(hanzi: hanzi)
+            let response =  try await AF.request("https://hanzi-draw.de/api/strokehints",
+                                                 method: .post,
+                                                 parameters: parameters,
+                                                 encoder: JSONParameterEncoder.default,
+                                                 headers: headers).serializingData().value
+            let decodedResponse = try JSONDecoder().decode(StrokeHints.self, from: response)
+            var medians : [Stroke] = [Stroke]()
+            for stroke in decodedResponse.medians {
+                var median: Stroke = Stroke ()
+                for point in stroke {
+                    median.points.append(CGPoint(x: Api.normalizeX(x: Double(point[0]), width: 1024), y: Api.normalizeY(y: Double(point[1]), width: 1024)))
+                }
+                medians.append(median)
+            }
+            return medians
+        }
+        catch {
+            print("Unexpected error: \(error).")
+            return nil
+        }
+    }
+    
+    static func normalizeX(x: Double, width: Double) -> Int{
+        return Int((x / width ) * Constants.drawPadSize)
+    }
+    
+    static func normalizeY(y: Double, width: Double) -> Int{
+        var myY = y - 900
+        if(myY < 0){
+            myY *= -1
+        }
+        return Int((myY / width ) * Constants.drawPadSize)
+    }
+    
     func getHeaders() -> HTTPHeaders {
         return  ["Content-Type" : "application/json", "App-Version": Constants.appVersion, "Accept-Language": "en", "Platform" : "ios" ]
     }

@@ -39,5 +39,10 @@ struct AdFrequenceResponse : Decodable {
     let frequence: Int
 }
 
+struct StrokeHints : Decodable {
+    let medians: [[[Int]]]
+}
+
+
 
 

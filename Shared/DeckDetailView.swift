@@ -24,6 +24,14 @@ struct DeckDetailView: View {
                         .foregroundColor(.accentColor)
                 }
                 HStack {
+                    Label(String(localized: "Mode"), systemImage: "eyeglasses")
+                    Spacer()
+                    Text(deck.mode.getLocalizedName())
+                        .padding(4)
+                        .cornerRadius(4)
+                }
+                .accessibilityElement(children: .combine)
+                HStack {
                     Label(String(localized: "Deck Size"), systemImage: "character.book.closed.fill.zh")
                     Spacer()
                     Text("\(deck.deckEntries.count) " + cards).onAppear{
@@ -50,6 +58,7 @@ struct DeckDetailView: View {
                         .cornerRadius(4)
                 }
                 .accessibilityElement(children: .combine)
+                
             }
             Section(header: Text(String(localized: "Cards - Average Score"))) {
                 ForEach(deck.deckEntries) { deckEntry in

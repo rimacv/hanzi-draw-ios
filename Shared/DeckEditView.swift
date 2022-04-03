@@ -17,6 +17,10 @@ struct DeckEditView: View {
             Section(header: Text(String(localized: "Deck Info"))) {
                 TextField("Title", text: $data.title, onCommit: {
                     isFocused = true})
+                Picker(String(localized: "Mode"), selection: $data.mode) {
+                    Text(String(localized: "GUIDED")).tag(Mode.guided)
+                    Text(String(localized: "FREE")).tag(Mode.free)
+                }
                 ThemePicker(selection: $data.theme)
                 HStack{
                     Slider(
@@ -26,6 +30,8 @@ struct DeckEditView: View {
                     )
                     Text("\(Int(data.strokeSize)) pts")
                 }
+                
+          
               
             }
             Section(header: Text(String(localized: "Add Cards"))) {

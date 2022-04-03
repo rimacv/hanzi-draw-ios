@@ -57,3 +57,6 @@
 "Score" = "Score";
 "No info available" = "Keine Definition verfügbar";
 "Build" = "Build";
+"FREE" = "Frei - (Testen)";
+"GUIDED" = "Geführt - (Lernen)";
+"Mode" = "Lernmodus";

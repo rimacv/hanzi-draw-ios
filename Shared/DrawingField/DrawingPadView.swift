@@ -11,8 +11,8 @@ import BottomSheet
 
 
 struct DrawingPadView: View {
-    @Binding var currentDrawing: Stroke
-    @Binding var drawings: [Stroke]
+    @Binding var currentStroke: Stroke
+    @Binding var strokes: [Stroke]
     @Binding var color: Color
     @Binding var lineWidth: CGFloat
     @Binding var inverseDrawPadOpacity : Double
@@ -29,12 +29,12 @@ struct DrawingPadView: View {
                         .overlay{
                             GeometryReader { geometry in
                                 Path { path in
-                                    for drawing in self.drawings {
-                                        self.add(drawing: drawing, toPath: &path)
+                                    for stroke in self.strokes {
+                                        self.add(stroke: stroke, toPath: &path)
                                     }
-                                    self.add(drawing: self.currentDrawing, toPath: &path)
+                                    self.add(stroke: self.currentStroke, toPath: &path)
                                 }
-                                .stroke(self.color, lineWidth: CGFloat(Int(self.lineWidth)))
+                                .stroke(self.color, style: StrokeStyle(lineWidth: CGFloat(Int(self.lineWidth)), lineCap: .round, lineJoin: .round))
                                 .background((.white.opacity(0.1)))
                                 .gesture(
                                     DragGesture(minimumDistance: 0.1)
@@ -44,12 +44,12 @@ struct DrawingPadView: View {
                                                 && currentPoint.y < geometry.size.height && currentPoint.x < geometry.size.width && currentPoint.x >= 0{
                                                 
                                                 
-                                                self.currentDrawing.points.append(currentPoint)
+                                                self.currentStroke.points.append(currentPoint)
                                             }
                                         })
                                         .onEnded({ (value) in
-                                            self.drawings.append(self.currentDrawing)
-                                            self.currentDrawing = Stroke()
+                                            self.strokes.append(self.currentStroke)
+                                            self.currentStroke = Stroke()
                                         })
                                 )
                             }
@@ -63,15 +63,15 @@ struct DrawingPadView: View {
             .opacity((1 - inverseDrawPadOpacity))
             
             Spacer()
-                DrawingControlsView(strokes: $drawings,
+                DrawingControlsView(strokes: $strokes,
                                     color: $color,
-                                    lineWidth: $lineWidth,bottomSheetPosition: $bottomSheetPosition, score:$score, currentHanzi: $currentHanzi, backendApi: Api()).opacity((1 - inverseDrawPadOpacity)).padding().padding(.top, 5).padding(.bottom, 10)
+                                    lineWidth: $lineWidth,bottomSheetPosition: $bottomSheetPosition, score:$score, currentHanzi: $currentHanzi, percentage: .constant(1), backendApi: Api()).opacity((1 - inverseDrawPadOpacity)).padding().padding(.top, 5).padding(.bottom, 10)
             Spacer()
         }
     }
     
-    private func add(drawing: Stroke, toPath path: inout Path) {
-        let points = drawing.points
+    private func add(stroke: Stroke, toPath path: inout Path) {
+        let points = stroke.points
         if points.count > 1 {
             for i in 0..<points.count-1 {
                 let current = points[i]
